@@ -33,24 +33,18 @@ class WorkflowService:
     @staticmethod
     async def create_report(
         supervisor_id: str,
-        discipline_id: int, # CHANGED
+        discipline_id: int,
         report_data: Dict[str, Any]
     ) -> Optional[int]:
         """Создает новый отчет с использованием discipline_id."""
         try:
-            # CHANGED: Запрос теперь вставляет discipline_id вместо discipline_name
-            query = """
-                SELECT r.*, 
-                       s.supervisor_name, 
-                       m.master_name,
-                       k.kiok_name,
-                       d.name as discipline_name
-                FROM reports r
-                LEFT JOIN supervisors s ON r.supervisor_id = s.user_id
-                LEFT JOIN masters m ON r.master_id = m.user_id
-                LEFT JOIN kiok k ON r.kiok_id = k.user_id
-                LEFT JOIN disciplines d ON r.discipline_id = d.id
-                WHERE r.id = %s
+            # FIXED: Правильный INSERT запрос
+            insert_query = """
+                INSERT INTO reports (
+                    supervisor_id, report_date, brigade_name, corpus_name, 
+                    discipline_id, work_type_name, workflow_status, report_data
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) 
+                RETURNING id
             """
             
             params = (
@@ -58,13 +52,15 @@ class WorkflowService:
                 report_data.get('report_date'),
                 report_data.get('brigade_name'),
                 report_data.get('corpus_name'),
-                discipline_id, # CHANGED
+                discipline_id,
                 report_data.get('work_type_name'),
                 WorkflowStatus.PENDING_MASTER.value,
                 json.dumps(report_data.get('details', {}))
             )
             
-            report_id = await db_query_single(query, params)
+            result = await db_query(insert_query, params)
+            report_id = result[0][0] if result else None
+            
             if report_id:
                 logger.info(f"✅ Супервайзер {supervisor_id} создал отчет ID: {report_id}")
                 return report_id
@@ -73,7 +69,7 @@ class WorkflowService:
             logger.error(f"❌ Ошибка создания отчета: {e}")
         
         return None
-
+    
     @staticmethod
     async def get_report_details(report_id: int) -> Optional[Dict[str, Any]]:
         """Получает полные детали отчета включая все подписи и вложения"""

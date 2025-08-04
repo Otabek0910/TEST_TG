@@ -12,7 +12,7 @@ from services.user_service import UserService
 from services.menu_service import MenuService
 from bot.middleware.security import check_user_role
 from utils.chat_utils import auto_clean  # <-- Импортируем наш НОВЫЙ декоратор
-from utils.localization import get_user_language # <-- Добавил недостающий импорт
+from utils.localization import get_user_language, get_user_language_sync
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,7 @@ async def show_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     user_id = str(update.effective_user.id)
     user_role = check_user_role(user_id)  # СИНХРОННЫЙ вызов
-    lang = await get_user_language(user_id)  # АСИНХРОННЫЙ выз
+    lang = get_user_language(user_id)  # АСИНХРОННЫЙ выз
     
     profile_text = "👤 **Ваш профиль**\n\n"
     user_info = await UserService.get_user_info(user_id)

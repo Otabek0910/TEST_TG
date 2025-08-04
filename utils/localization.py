@@ -298,3 +298,13 @@ async def update_user_language(user_id: str, lang_code: str):
     tables = ['admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok']
     for table in tables:
         await db_execute(f"UPDATE {table} SET language_code = %s WHERE user_id = %s", (lang_code, user_id))
+
+def get_user_language_sync(user_id: str) -> str:
+    """Синхронно получает язык пользователя из любой таблицы ролей."""
+    from database.queries import db_query_sync
+    tables = ['admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok']
+    for table in tables:
+        lang_code_raw = db_query_sync(f"SELECT language_code FROM {table} WHERE user_id = %s", (user_id,))
+        if lang_code_raw and lang_code_raw[0] and lang_code_raw[0][0]:
+            return lang_code_raw[0][0]
+    return 'ru'

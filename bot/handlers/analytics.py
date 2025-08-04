@@ -106,7 +106,7 @@ async def generate_discipline_dashboard(update: Update, context: ContextTypes.DE
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     await query.edit_message_text(
         f"⏳ {get_text('loading_please_wait', lang)} ({get_data_translation(discipline_name, lang)})...", 
@@ -204,7 +204,7 @@ async def show_overview_dashboard_menu(update: Update, context: ContextTypes.DEF
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Показываем индикатор загрузки
     if query.message:
@@ -287,7 +287,7 @@ async def prompt_for_overview_date(update: Update, context: ContextTypes.DEFAULT
     query = update.callback_query
     await query.answer()
     
-    lang = get_user_language(str(query.from_user.id))
+    lang = await get_user_language(str(query.from_user.id))
     
     await query.edit_message_text(
         text=get_text('prompt_overview_date', lang),
@@ -303,7 +303,7 @@ async def prompt_for_overview_date(update: Update, context: ContextTypes.DEFAULT
 async def process_overview_date(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Обработка введенной даты для обзорного дашборда"""
     user_input = update.message.text.strip()
-    lang = get_user_language(str(update.effective_user.id))
+    lang = await get_user_language(str(update.effective_user.id))
     
     try:
         # Пробуем разные форматы даты
@@ -354,7 +354,7 @@ async def generate_overview_chart(update: Update, context: ContextTypes.DEFAULT_
     await query.answer()
     
     user_id = str(query.from_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     try:
         # Парсим callback_data
@@ -428,7 +428,7 @@ async def show_hr_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Проверяем права доступа
     if not (user_role.get('isAdmin') or user_role.get('isManager') or user_role.get('isPto')):
@@ -474,7 +474,7 @@ async def get_hr_date(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
     discipline_id = query.data.replace('hr_date_select_', '')
     context.user_data['hr_discipline_id'] = discipline_id
     
-    lang = get_user_language(str(query.from_user.id))
+    lang = await get_user_language(str(query.from_user.id))
     
     # Получаем название дисциплины
     disc_name_raw = await db_query("SELECT name FROM disciplines WHERE id = %s", (discipline_id,)) # FIXED: await
@@ -514,7 +514,7 @@ async def process_hr_date(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
         selected_date = datetime.strptime(user_input, "%d.%m.%Y").date()
         await show_hr_report_for_date(update, context, discipline_id, selected_date)
     except ValueError:
-        lang = get_user_language(str(update.effective_user.id))
+        lang = await get_user_language(str(update.effective_user.id))
         await update.message.reply_text(
             "❌ Неверный формат даты. Используйте ДД.ММ.ГГГГ (например: 15.01.2025)",
             reply_markup=InlineKeyboardMarkup([[
@@ -594,7 +594,7 @@ async def handle_problem_brigades_button(update: Update, context: ContextTypes.D
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Проверяем права доступа
     if not (user_role.get('isAdmin') or user_role.get('isManager')):
@@ -621,7 +621,7 @@ async def generate_problem_brigades_report(update: Update, context: ContextTypes
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Определяем дату
     if "today" in query.data:
@@ -687,7 +687,7 @@ async def show_foreman_performance(update: Update, context: ContextTypes.DEFAULT
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Проверяем права доступа
     if not (user_role.get('isAdmin') or user_role.get('isManager')):

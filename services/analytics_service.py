@@ -2,12 +2,14 @@
 
 import logging
 import pandas as pd
+import asyncio  # ADDED
 from datetime import date
-from typing import Dict, Any
+from typing import Dict, Any, Optional, List
+from functools import partial  # ADDED
 from sqlalchemy import create_engine, text
 
 from config.settings import DATABASE_URL
-from database.queries import db_fetch_all, db_fetch_val # CHANGED: Импортируем новые async функции
+from database.queries import db_query, db_execute  # FIXED: Используем правильные импорты
 
 logger = logging.getLogger(__name__)
 
@@ -23,8 +25,6 @@ def _run_pandas_query(query: str, params: dict) -> pd.DataFrame:
     except Exception as e:
         logger.error(f"Ошибка выполнения Pandas-запроса: {e}")
         return pd.DataFrame()
-    
-    
 
 # --- ASYNC SERVICE METHODS ---
 
@@ -41,7 +41,7 @@ class AnalyticsService:
             
             user_counts = {'brigades': 0, 'pto': 0, 'kiok': 0}
             if disc_id:
-                brigade_count = await db_query("SELECT COUNT(*) FROM brigades_reference WHERE discipline_id = %s", (disc_id,))
+                brigade_count = await db_query("SELECT COUNT(*) FROM brigades WHERE discipline_id = %s", (disc_id,))
                 pto_count = await db_query("SELECT COUNT(*) FROM pto WHERE discipline_id = %s", (disc_id,))
                 kiok_count = await db_query("SELECT COUNT(*) FROM kiok WHERE discipline_id = %s", (disc_id,))
                 user_counts['brigades'] = brigade_count[0][0] if brigade_count else 0
@@ -56,7 +56,7 @@ class AnalyticsService:
             report_stats = {str(status): count for status, count in report_stats_raw} if report_stats_raw else {}
             
             today_str = date.today().strftime('%Y-%m-%d')
-            all_brigades_q = await db_query("SELECT brigade_name FROM brigades_reference WHERE discipline_id = %s AND is_active = true", (disc_id,)) if disc_id else []
+            all_brigades_q = await db_query("SELECT brigade_name FROM brigades WHERE discipline_id = %s", (disc_id,)) if disc_id else []
             all_brigades = {row[0] for row in all_brigades_q}
             
             reported_today_raw = await db_query("""
@@ -83,7 +83,6 @@ class AnalyticsService:
             logger.error(f"Ошибка сбора данных дашборда для {discipline_name}: {e}")
             return {}
 
- # === НОВЫЕ МЕТОДЫ, КОТОРЫХ НЕ ХВАТАЛО === 
     @staticmethod
     async def get_hr_report_data(discipline_id: int, selected_date: date) -> Optional[Dict[str, Any]]:
         """Асинхронно собирает данные для HR-отчета."""
@@ -93,7 +92,7 @@ class AnalyticsService:
         if not disc_name_raw: return None
         
         summary_q = await db_query("""
-            SELECT pr.role_name, SUM(drd.people_count) as total_by_role
+            SELECT pr.role_name, SUM(drd.personnel_count) as total_by_role
             FROM daily_roster_details drd
             JOIN daily_rosters dr ON drd.roster_id = dr.id
             JOIN personnel_roles pr ON drd.role_id = pr.id
@@ -120,18 +119,14 @@ class AnalyticsService:
     @staticmethod
     async def get_problem_brigades_data(selected_date: date, user_role: Dict[str, Any]) -> Dict[str, List]:
         """Асинхронно собирает данные о проблемных бригадах."""
-        # ... (здесь будет сложная логика, пока добавим заглушку, чтобы код работал)
         logger.info("Функция get_problem_brigades_data вызвана, но пока не реализована.")
         return {"non_reporters": [], "low_performers": []}
 
     @staticmethod
     async def get_foreman_performance_data(user_role: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Асинхронно собирает данные о производительности бригадиров."""
-        # ... (здесь будет сложная логика, пока добавим заглушку, чтобы код работал)
         logger.info("Функция get_foreman_performance_data вызвана, но пока не реализована.")
         return []
-
-   # === НОВЫЕ МЕТОДЫ, КОТОРЫХ НЕ ХВАТАЛО (конец) === 
     
     @staticmethod
     async def _calculate_work_performance(discipline_name: str) -> Dict[str, Any]:
@@ -202,7 +197,7 @@ class AnalyticsService:
             report_stats = {str(status): count for status, count in report_stats_raw} if report_stats_raw else {}
             
             today_str = date.today().strftime('%Y-%m-%d')
-            all_brigades_count = await db_query("SELECT COUNT(*) FROM brigades_reference WHERE is_active = true")
+            all_brigades_count = await db_query("SELECT COUNT(*) FROM brigades WHERE is_active = true")
             total_brigades = all_brigades_count[0][0] if all_brigades_count else 0
             
             reported_today_count = await db_query("SELECT COUNT(DISTINCT brigade_name) FROM reports WHERE report_date = %s", (today_str,))
@@ -288,6 +283,7 @@ class AnalyticsService:
                     'main_people': int(main_df['people_count'].sum()),
                     'other_people': int(other_df['people_count'].sum()),
                     'performance': (main_df['volume'].sum() / plan_volume * 100) if plan_volume > 0 else 0,
+                    'fact_volume': main_df['volume'].sum() if not main_df.empty else 0
                 })
         
         return {'selected_date': selected_date, 'discipline_data': discipline_data}

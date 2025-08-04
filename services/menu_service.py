@@ -115,7 +115,7 @@ class MenuService:
                 pending_count = 0
                 if WORKFLOW_AVAILABLE:
                     try:
-                        pending_reports = WorkflowService.get_pending_reports_for_master(user_id)
+                        pending_reports = await WorkflowService.get_pending_reports_for_master(user_id)  # FIXED: добавлен await
                         pending_count = len(pending_reports)
                     except Exception as e:
                         logger.error(f"Ошибка получения счетчика для мастера: {e}")
@@ -136,7 +136,7 @@ class MenuService:
                 pending_count = 0
                 if WORKFLOW_AVAILABLE:
                     try:
-                        pending_reports = WorkflowService.get_pending_reports_for_kiok(user_id)
+                        pending_reports = await WorkflowService.get_pending_reports_for_kiok(user_id)  # FIXED: добавлен await
                         pending_count = len(pending_reports)
                     except Exception as e:
                         logger.error(f"Ошибка получения счетчика для КИОК: {e}")

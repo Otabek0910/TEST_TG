@@ -7,7 +7,7 @@ from telegram.ext import Application
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from config.settings import TOKEN, OWNER_ID, DATABASE_URL
-from database.connection import db_manager
+from database.connection import db_manager  # FIXED: Правильный импорт
 from bot.handlers.common import register_common_handlers
 from bot.handlers.workflow import register_workflow_handlers, create_rejection_conversation
 from bot.handlers.approval import register_approval_handlers
@@ -31,7 +31,7 @@ async def run_bot():
     application = builder.build()
 
     async def post_init(app: Application) -> None:
-        await db_manager.initialize()
+        await db_manager.initialize()  # FIXED: Используем правильный метод
         logger.info("✅ Database инициализирована")
         
         scheduler = AsyncIOScheduler(timezone='Asia/Tashkent')
