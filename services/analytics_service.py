@@ -2,14 +2,14 @@
 
 import logging
 import pandas as pd
-import asyncio  # ADDED
+import asyncio
 from datetime import date
 from typing import Dict, Any, Optional, List
-from functools import partial  # ADDED
+from functools import partial
 from sqlalchemy import create_engine, text
 
 from config.settings import DATABASE_URL
-from database.queries import db_query, db_execute  # FIXED: Используем правильные импорты
+from database.queries import db_query, db_execute
 
 logger = logging.getLogger(__name__)
 
@@ -53,17 +53,17 @@ class AnalyticsService:
                 FROM reports r JOIN disciplines d ON r.discipline_id = d.id 
                 WHERE d.name = %s GROUP BY workflow_status
             """, params)
-            report_stats = {str(status): count for status, count in report_stats_raw} if report_stats_raw else {}
-            
+            report_stats = {str(status): count for status, count in (report_stats_raw or [])}
+
             today_str = date.today().strftime('%Y-%m-%d')
             all_brigades_q = await db_query("SELECT brigade_name FROM brigades WHERE discipline_id = %s", (disc_id,)) if disc_id else []
-            all_brigades = {row[0] for row in all_brigades_q}
-            
+            all_brigades = {row[0] for row in (all_brigades_q or [])}
+
             reported_today_raw = await db_query("""
                 SELECT DISTINCT r.brigade_name FROM reports r JOIN disciplines d ON r.discipline_id = d.id
                 WHERE d.name = %s AND r.report_date = %s
             """, params + (today_str,))
-            reported_today = {row[0] for row in reported_today_raw} if reported_today_raw else set()
+            reported_today = {row[0] for row in (reported_today_raw or [])}
 
             analysis_data = {}
             if not user_role.get('isKiok'):
@@ -107,8 +107,8 @@ class AnalyticsService:
             WHERE dr.roster_date = %s AND b.discipline_id = %s
         """, (date_str, discipline_id))
         
-        total_people = sum(item[1] for item in summary_q) if summary_q else 0
-        
+        total_people = sum(item[1] for item in (summary_q or []))
+
         return {
             "discipline_name": disc_name_raw[0][0],
             "roster_data": summary_q or [],
@@ -194,8 +194,8 @@ class AnalyticsService:
                 SELECT CASE workflow_status WHEN 'approved' THEN '1' WHEN 'rejected' THEN '-1' ELSE '0' END as status, COUNT(*)
                 FROM reports GROUP BY workflow_status
             """)
-            report_stats = {str(status): count for status, count in report_stats_raw} if report_stats_raw else {}
-            
+            report_stats = {str(status): count for status, count in (report_stats_raw or [])}
+
             today_str = date.today().strftime('%Y-%m-%d')
             all_brigades_count = await db_query("SELECT COUNT(*) FROM brigades WHERE is_active = true")
             total_brigades = all_brigades_count[0][0] if all_brigades_count else 0
