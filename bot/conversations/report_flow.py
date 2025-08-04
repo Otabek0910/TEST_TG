@@ -60,7 +60,7 @@ async def start_report_creation(update: Update, context: ContextTypes.DEFAULT_TY
     await query.answer()
     
     user_id = str(update.effective_user.id)
-    user_role = await check_user_role(user_id)
+    user_role = check_user_role(user_id)
     
     if not user_role.get('isSupervisor'):
         await query.answer("❌ Создание отчетов доступно только супервайзерам", show_alert=True)

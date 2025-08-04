@@ -64,8 +64,8 @@ async def show_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     
     user_id = str(update.effective_user.id)
-    user_role = await check_user_role(user_id)
-    lang = await get_user_language(user_id)
+    user_role = check_user_role(user_id)  # СИНХРОННЫЙ вызов
+    lang = await get_user_language(user_id)  # АСИНХРОННЫЙ выз
     
     profile_text = "👤 **Ваш профиль**\n\n"
     user_info = await UserService.get_user_info(user_id)

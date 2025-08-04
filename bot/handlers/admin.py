@@ -35,7 +35,7 @@ async def manage_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     user_id = str(query.from_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
 
     # Проверяем права доступа
     if not (user_role.get('isAdmin') or user_role.get('isManager')):

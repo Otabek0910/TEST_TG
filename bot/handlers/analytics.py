@@ -21,8 +21,8 @@ async def show_historical_report_menu(update: Update, context: ContextTypes.DEFA
     await query.answer()
     
     user_id = str(query.from_user.id)
-    user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
+    user_role = check_user_role(user_id)  # СИНХРОННЫЙ вызов
+    lang = await get_user_language(user_id)  # АСИНХРОННЫЙ вызов
     
     await query.edit_message_text(f"⏳ {get_text('loading_please_wait', lang)}...", parse_mode=ParseMode.MARKDOWN)
     

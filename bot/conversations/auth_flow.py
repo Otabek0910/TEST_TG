@@ -1,14 +1,12 @@
 """
-ConversationHandler для процесса авторизации (исправленная версия)
+ConversationHandler для процесса авторизации
 """
 
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
-# FIXED: Импортируем ParseMode для корректной работы с форматированием
 from telegram.constants import ParseMode
 from telegram.ext import ConversationHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 
-from config.settings import OWNER_ID
 from utils.constants import SELECTING_ROLE, GETTING_NAME, GETTING_CONTACT, SELECTING_MANAGER_LEVEL, SELECTING_DISCIPLINE
 from utils.localization import get_text, get_user_language
 from utils.chat_utils import clean_chat, track_message
@@ -16,15 +14,13 @@ from database.queries import db_query
 from services.admin_service import AdminService
 
 logger = logging.getLogger(__name__)
-# ===== ENTRY POINT & ROLE SELECTION (простые обработчики кнопок) =====
 
 async def start_auth(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Начало процесса авторизации со всеми ролями и HTML-форматированием."""
+    """Начало процесса авторизации"""
     query = update.callback_query
     await query.answer()
-    lang = await get_user_language(str(update.effective_user.id))
+    lang = await get_user_language(str(update.effective_user.id))  # ASYNC
     
-    # FIXED: Добавлены все роли для регистрации
     keyboard = [
         [InlineKeyboardButton("👨‍🔧 Супервайзер", callback_data="auth_supervisor")],
         [InlineKeyboardButton("🔨 Мастер", callback_data="auth_master")],
@@ -35,7 +31,6 @@ async def start_auth(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         [InlineKeyboardButton(get_text('back_button', lang), callback_data="cancel_auth")]
     ]
     
-    # FIXED: Используем parse_mode=ParseMode.HTML
     await query.edit_message_text(
         text=get_text('auth_prompt_role', lang),
         reply_markup=InlineKeyboardMarkup(keyboard),
@@ -43,36 +38,29 @@ async def start_auth(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     )
     return SELECTING_ROLE
 
-
-logger = logging.getLogger(__name__)
-
-# ===== ВЫБОР РОЛИ =====
 async def select_role(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Обработка выбора роли и запрос ФИО."""
+    """Обработка выбора роли"""
     query = update.callback_query
     await query.answer()
-    lang = await get_user_language(str(update.effective_user.id))
+    lang = await get_user_language(str(update.effective_user.id))  # ASYNC
     
     context.user_data['selected_role'] = query.data.replace('auth_', '')
     
-    # FIXED: Добавлен parse_mode
     await query.edit_message_text(
         text=get_text('auth_prompt_name', lang),
         parse_mode=ParseMode.HTML
     )
     return GETTING_NAME
 
-# ===== ПОЛУЧЕНИЕ ИМЕНИ И КОНТАКТА =====
 async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Получение ФИО и запрос контакта."""
-    lang = await get_user_language(str(update.effective_user.id))
+    """Получение ФИО"""
+    lang = await get_user_language(str(update.effective_user.id))  # ASYNC
     
     await clean_chat(context, update.effective_chat.id)
     await update.message.delete()
 
     user_input = update.message.text.strip()
     if ' ' not in user_input or len(user_input.split()) < 2:
-        # FIXED: Добавлен parse_mode
         sent_message = await context.bot.send_message(
             update.effective_chat.id, 
             get_text('auth_error_name', lang),
@@ -88,7 +76,7 @@ async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         [[KeyboardButton(text=get_text('auth_contact_button', lang), request_contact=True)]],
         resize_keyboard=True, one_time_keyboard=True
     )
-    # FIXED: Добавлен parse_mode
+    
     sent_message = await context.bot.send_message(
         update.effective_chat.id, 
         get_text('auth_prompt_contact', lang), 
@@ -98,8 +86,8 @@ async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await track_message(context, sent_message)
     return GETTING_CONTACT
 
-async def get_contact(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Получение контакта и переход к следующему шагу."""
+async def get_contact(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:  # FIXED: return int
+    """Получение контакта"""
     await clean_chat(context, update.effective_chat.id)
     await update.message.delete()
     
@@ -111,31 +99,32 @@ async def get_contact(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     role = context.user_data.get('selected_role')
     if role == 'manager':
-        return await handle_manager_level(update, context, is_entry=True)
+        return await handle_manager_level_entry(update, context)
     else:
-        return await show_disciplines_selection(update, context, is_entry=True)
+        return await show_disciplines_selection_entry(update, context)
 
-# ===== УРОВЕНЬ МЕНЕДЖЕРА И ВЫБОР ДИСЦИПЛИНЫ =====
-async def handle_manager_level(update: Update, context: ContextTypes.DEFAULT_TYPE, is_entry: bool = False):
-    """Запрос и обработка уровня менеджера."""
-    lang = await get_user_language(str(update.effective_user.id))
+async def handle_manager_level_entry(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Entry point для выбора уровня менеджера"""
+    lang = await get_user_language(str(update.effective_user.id))  # ASYNC
     
-    if is_entry:
-        keyboard = [
-            [InlineKeyboardButton(get_text('auth_manager_level1', lang), callback_data="level_1")],
-            [InlineKeyboardButton(get_text('auth_manager_level2', lang), callback_data="level_2")]
-        ]
-        # FIXED: Добавлен parse_mode
-        await context.bot.send_message(
-            update.effective_chat.id, 
-            get_text('auth_prompt_manager_level', lang), 
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode=ParseMode.HTML
-        )
-        return SELECTING_MANAGER_LEVEL
+    keyboard = [
+        [InlineKeyboardButton(get_text('auth_manager_level1', lang), callback_data="level_1")],
+        [InlineKeyboardButton(get_text('auth_manager_level2', lang), callback_data="level_2")]
+    ]
     
+    await context.bot.send_message(
+        update.effective_chat.id, 
+        get_text('auth_prompt_manager_level', lang), 
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode=ParseMode.HTML
+    )
+    return SELECTING_MANAGER_LEVEL
+
+async def handle_manager_level(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Обработка выбора уровня менеджера"""
     query = update.callback_query
     await query.answer()
+    
     level = int(query.data.replace('level_', ''))
     context.user_data['manager_level'] = level
     
@@ -144,11 +133,10 @@ async def handle_manager_level(update: Update, context: ContextTypes.DEFAULT_TYP
     else:
         return await show_disciplines_selection(update, context)
 
-
-async def show_disciplines_selection(update: Update, context: ContextTypes.DEFAULT_TYPE, is_entry: bool = False):
-    """Показ списка дисциплин для выбора с локализацией и форматированием."""
-    lang = await get_user_language(str(update.effective_user.id))
-    disciplines = await db_query("SELECT id, name FROM disciplines ORDER BY name")
+async def show_disciplines_selection_entry(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Entry point для выбора дисциплины"""
+    lang = await get_user_language(str(update.effective_user.id))  # ASYNC
+    disciplines = await db_query("SELECT id, name FROM disciplines ORDER BY name")  # ASYNC
     
     if not disciplines:
         await context.bot.send_message(update.effective_chat.id, "❌ Ошибка: дисциплины не найдены в системе.")
@@ -156,7 +144,6 @@ async def show_disciplines_selection(update: Update, context: ContextTypes.DEFAU
 
     keyboard = [[InlineKeyboardButton(name, callback_data=f"disc_{disc_id}")] for disc_id, name in disciplines]
     
-    # FIXED: Добавлена карта для перевода ролей на русский язык
     role_key = context.user_data.get('selected_role', '')
     role_map_loc = {
         'supervisor': 'супервайзера', 'master': 'мастера', 'manager': 'менеджера',
@@ -167,28 +154,47 @@ async def show_disciplines_selection(update: Update, context: ContextTypes.DEFAU
     text_template = get_text('auth_prompt_discipline', lang)
     text = text_template.format(role=role_for_text)
 
-    # FIXED: Добавлен parse_mode и исправлена логика возврата состояния
-    if is_entry:
-        await context.bot.send_message(update.effective_chat.id, text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.HTML)
-    else:
-        query = update.callback_query
-        await query.answer()
-        await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.HTML)
-    
+    await context.bot.send_message(update.effective_chat.id, text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.HTML)
     return SELECTING_DISCIPLINE
 
-# ===== ФИНАЛИЗАЦИЯ И ОТМЕНА =====
-async def handle_discipline(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обработка выбора дисциплины и финализация."""
+async def show_disciplines_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Callback для выбора дисциплины"""
+    query = update.callback_query
+    await query.answer()
+    
+    lang = await get_user_language(str(update.effective_user.id))  # ASYNC
+    disciplines = await db_query("SELECT id, name FROM disciplines ORDER BY name")  # ASYNC
+    
+    if not disciplines:
+        await query.edit_message_text("❌ Ошибка: дисциплины не найдены в системе.")
+        return ConversationHandler.END
+
+    keyboard = [[InlineKeyboardButton(name, callback_data=f"disc_{disc_id}")] for disc_id, name in disciplines]
+    
+    role_key = context.user_data.get('selected_role', '')
+    role_map_loc = {
+        'supervisor': 'супервайзера', 'master': 'мастера', 'manager': 'менеджера',
+        'foreman': 'бригадира', 'kiok': 'КИОК', 'pto': 'ПТО'
+    }
+    role_for_text = role_map_loc.get(role_key, role_key)
+    
+    text_template = get_text('auth_prompt_discipline', lang)
+    text = text_template.format(role=role_for_text)
+
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.HTML)
+    return SELECTING_DISCIPLINE
+
+async def handle_discipline(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Обработка выбора дисциплины"""
     query = update.callback_query
     await query.answer()
     context.user_data['discipline_id'] = query.data.replace('disc_', '')
     return await finalize_registration(update, context)
 
-async def finalize_registration(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Отправка запроса админам."""
+async def finalize_registration(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Финализация регистрации"""
     user_id = str(update.effective_user.id)
-    lang = await get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     
     success = await AdminService.send_approval_request(context, context.user_data, user_id)
     
@@ -198,13 +204,11 @@ async def finalize_registration(update: Update, context: ContextTypes.DEFAULT_TY
         text = "❌ Ошибка при отправке запроса. Попробуйте позже."
     
     query = update.callback_query
-    # FIXED: Добавлен parse_mode
     await query.edit_message_text(text, parse_mode=ParseMode.HTML)
     return ConversationHandler.END
 
-
-async def cancel_auth(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Отмена процесса авторизации."""
+async def cancel_auth(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Отмена процесса авторизации"""
     query = update.callback_query
     await query.answer("❌ Регистрация отменена")
     context.user_data.clear()
@@ -213,9 +217,8 @@ async def cancel_auth(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await back_to_start(update, context)
     return ConversationHandler.END
 
-# ===== СОЗДАНИЕ CONVERSATION HANDLER =====
 def create_auth_conversation():
-    """Создание ConversationHandler для авторизации."""
+    """Создание ConversationHandler для авторизации"""
     return ConversationHandler(
         entry_points=[
             CallbackQueryHandler(start_auth, pattern="^start_auth$")

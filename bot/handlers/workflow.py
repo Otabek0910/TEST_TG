@@ -6,18 +6,17 @@ from telegram.ext import (
     CallbackQueryHandler, ContextTypes, MessageHandler, filters, ConversationHandler
 )
 
-from bot.middleware.security import check_user_role
+from bot.middleware.security import check_user_role  # СИНХРОННАЯ функция
 from services.workflow_service import WorkflowService
 from services.notification_service import NotificationService
 from utils.chat_utils import auto_clean
 from utils.localization import get_text, get_user_language
-from utils.constants import ( # NEW: Импортируем состояния для нового хендлера
+from utils.constants import (
     AWAITING_MASTER_REJECTION, AWAITING_KIOK_INSPECTION_NUM, AWAITING_KIOK_REJECTION
 )
-from database.queries import db_query_single
+from database.queries import db_query_single  # АСИНХРОННАЯ функция
 
 logger = logging.getLogger(__name__)
-
 
 async def show_master_approval_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Показывает список отчетов для подтверждения мастера"""
@@ -25,8 +24,7 @@ async def show_master_approval_menu(update: Update, context: ContextTypes.DEFAUL
     await query.answer()
     
     user_id = str(query.from_user.id)
-    # Этот хендлер уже использует исправленный WorkflowService, здесь изменений не нужно.
-    pending_reports = WorkflowService.get_pending_reports_for_master(user_id)
+    pending_reports = await WorkflowService.get_pending_reports_for_master(user_id)  # ASYNC
     
     if not pending_reports:
         text = "Нет отчетов для подтверждения."
@@ -47,8 +45,7 @@ async def show_master_report_details(update: Update, context: ContextTypes.DEFAU
     await query.answer()
     report_id = int(query.data.split('_')[-1])
     
-    # Этот хендлер уже использует исправленный WorkflowService, здесь изменений не нужно.
-    report_details = WorkflowService.get_report_details(report_id)
+    report_details = await WorkflowService.get_report_details(report_id)  # ASYNC
     
     if not report_details:
         return await query.answer("❌ Отчет не найден", show_alert=True)
@@ -81,13 +78,13 @@ async def master_approve_report(update: Update, context: ContextTypes.DEFAULT_TY
     user_id = str(query.from_user.id)
     report_id = int(query.data.split('_')[-1])
     
-    success = WorkflowService.master_approve(report_id, user_id)
+    success = await WorkflowService.master_approve(report_id, user_id)  # ASYNC
     
     if success:
-        # # CHANGED: Логика уведомлений теперь использует discipline_id
-        discipline_id = db_query_single("SELECT discipline_id FROM reports WHERE id = %s", (report_id,))
+        # FIXED: discipline_id получаем асинхронно
+        discipline_id = await db_query_single("SELECT discipline_id FROM reports WHERE id = %s", (report_id,))
         if discipline_id:
-            kiok_users = NotificationService.get_users_for_discipline_notification(discipline_id, 'kiok')
+            kiok_users = await NotificationService.get_users_for_discipline_notification(discipline_id, 'kiok')  # ASYNC
             for kiok_user in kiok_users:
                 await NotificationService.notify_kiok_new_report(context, report_id, kiok_user)
         
@@ -104,7 +101,7 @@ async def master_reject_report_prompt(update: Update, context: ContextTypes.DEFA
     await query.answer()
     
     user_id = str(query.from_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     report_id = int(query.data.split('_')[-1])
     
     context.user_data['rejecting_report_id'] = report_id
@@ -120,23 +117,20 @@ async def master_reject_report_prompt(update: Update, context: ContextTypes.DEFA
     )
     
     context.user_data['rejection_message_id'] = message.message_id
-    # NEW: Возвращаем состояние для нового ConversationHandler
     return AWAITING_MASTER_REJECTION
 
 async def process_master_rejection_reason(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает причину отклонения от мастера"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     reason = update.message.text
     
     report_id = context.user_data.get('rejecting_report_id')
     if not report_id:
         return
     
-    # Удаляем сообщение пользователя
     await update.message.delete()
     
-    # Удаляем сообщение с запросом причины
     message_id = context.user_data.get('rejection_message_id')
     if message_id:
         try:
@@ -144,11 +138,9 @@ async def process_master_rejection_reason(update: Update, context: ContextTypes.
         except:
             pass
     
-    # Отклоняем отчет
-    success = WorkflowService.master_reject(report_id, user_id, reason)
+    success = await WorkflowService.master_reject(report_id, user_id, reason)  # ASYNC
     
     if success:
-        # Уведомляем супервайзера
         await NotificationService.notify_supervisor_status_change(
             context, report_id, 'rejected', user_id, reason
         )
@@ -166,11 +158,9 @@ async def process_master_rejection_reason(update: Update, context: ContextTypes.
         parse_mode='Markdown'
     )
     
-    # Очищаем данные
     context.user_data.pop('rejecting_report_id', None)
     context.user_data.pop('rejecting_role', None)
     context.user_data.pop('rejection_message_id', None)
-    # NEW: Завершаем маленький диалог
     return ConversationHandler.END
 
 # ===== КИОК HANDLERS =====
@@ -181,14 +171,14 @@ async def show_kiok_review_menu(update: Update, context: ContextTypes.DEFAULT_TY
     await query.answer()
     
     user_id = str(query.from_user.id)
-    lang = get_user_language(user_id)
-    user_role = check_user_role(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
+    user_role = check_user_role(user_id)  # СИНХРОННЫЙ вызов
     
     if not user_role.get('isKiok'):
         await query.answer("❌ У вас нет прав КИОК", show_alert=True)
         return
     
-    pending_reports = WorkflowService.get_pending_reports_for_kiok(user_id)
+    pending_reports = await WorkflowService.get_pending_reports_for_kiok(user_id)  # ASYNC
     
     if not pending_reports:
         text = get_text('kiok_no_pending_reports', lang)
@@ -212,20 +202,18 @@ async def show_kiok_review_menu(update: Update, context: ContextTypes.DEFAULT_TY
     )
 
 async def show_kiok_report_details(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Показывает детали отчета для КИОК (исправленная версия)"""
+    """Показывает детали отчета для КИОК"""
     query = update.callback_query
     await query.answer()
     report_id = int(query.data.split('_')[-1])
 
-    # # REFACTORED: Удален прямой запрос к БД. Используется сервисный метод.
-    report_details = WorkflowService.get_report_details(report_id)
+    report_details = await WorkflowService.get_report_details(report_id)  # ASYNC
     if not report_details:
         return await query.answer("❌ Отчет не найден", show_alert=True)
 
     report_data = report_details.get('report_data', {})
     master_signed_at = report_details.get('master_signed_at')
     
-    # # CHANGED: Формируем текст из словаря, а не из кортежа с индексами
     text_lines = [
         f"*🔍 КИОК проверка отчета ID: {report_id}*",
         f"Супервайзер: {report_details.get('supervisor_name', 'Неизвестно')}",
@@ -251,14 +239,13 @@ async def show_kiok_report_details(update: Update, context: ContextTypes.DEFAULT
     
     return await query.edit_message_text(text=text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode='Markdown')
 
-
 async def kiok_approve_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Запрашивает номер проверки для согласования КИОК"""
     query = update.callback_query
     await query.answer()
     
     user_id = str(query.from_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     report_id = int(query.data.split('_')[-1])
     
     context.user_data['approving_report_id'] = report_id
@@ -273,23 +260,20 @@ async def kiok_approve_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
     
     context.user_data['approval_message_id'] = message.message_id
-    # NEW: Возвращаем состояние для нового ConversationHandler
     return AWAITING_KIOK_INSPECTION_NUM
 
 async def process_kiok_inspection_number(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает номер проверки от КИОК"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     inspection_number = update.message.text.strip()
     
     report_id = context.user_data.get('approving_report_id')
     if not report_id:
         return
     
-    # Удаляем сообщение пользователя
     await update.message.delete()
     
-    # Удаляем сообщение с запросом номера
     message_id = context.user_data.get('approval_message_id')
     if message_id:
         try:
@@ -297,11 +281,9 @@ async def process_kiok_inspection_number(update: Update, context: ContextTypes.D
         except:
             pass
     
-    # Согласовываем отчет
-    success = WorkflowService.kiok_approve(report_id, user_id, inspection_number)
+    success = await WorkflowService.kiok_approve(report_id, user_id, inspection_number)  # ASYNC
     
     if success:
-        # Уведомляем супервайзера
         await NotificationService.notify_supervisor_status_change(
             context, report_id, 'approved', user_id
         )
@@ -322,10 +304,8 @@ async def process_kiok_inspection_number(update: Update, context: ContextTypes.D
         parse_mode='Markdown'
     )
     
-    # Очищаем данные
     context.user_data.pop('approving_report_id', None)
     context.user_data.pop('approval_message_id', None)
-    # NEW: Завершаем маленький диалог
     return ConversationHandler.END
 
 async def kiok_reject_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -334,7 +314,7 @@ async def kiok_reject_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await query.answer()
     
     user_id = str(query.from_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     report_id = int(query.data.split('_')[-1])
     
     context.user_data['rejecting_report_id'] = report_id
@@ -350,23 +330,20 @@ async def kiok_reject_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE)
     )
     
     context.user_data['rejection_message_id'] = message.message_id
-    # NEW: Возвращаем состояние для нового ConversationHandler
     return AWAITING_KIOK_REJECTION
 
 async def process_kiok_rejection_reason(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает причину отклонения от КИОК"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)  # ASYNC
     reason = update.message.text
     
     report_id = context.user_data.get('rejecting_report_id')
     if not report_id:
         return
     
-    # Удаляем сообщение пользователя
     await update.message.delete()
     
-    # Удаляем сообщение с запросом причины
     message_id = context.user_data.get('rejection_message_id')
     if message_id:
         try:
@@ -374,11 +351,9 @@ async def process_kiok_rejection_reason(update: Update, context: ContextTypes.DE
         except:
             pass
     
-    # Отклоняем отчет
-    success = WorkflowService.kiok_reject(report_id, user_id, reason)
+    success = await WorkflowService.kiok_reject(report_id, user_id, reason)  # ASYNC
     
     if success:
-        # Уведомляем супервайзера
         await NotificationService.notify_supervisor_status_change(
             context, report_id, 'rejected', user_id, reason
         )
@@ -396,11 +371,9 @@ async def process_kiok_rejection_reason(update: Update, context: ContextTypes.DE
         parse_mode='Markdown'
     )
     
-    # Очищаем данные
     context.user_data.pop('rejecting_report_id', None)
     context.user_data.pop('rejecting_role', None)
     context.user_data.pop('rejection_message_id', None)
-    # NEW: Завершаем маленький диалог
     return ConversationHandler.END
 
 async def cancel_rejection_flow(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -408,14 +381,12 @@ async def cancel_rejection_flow(update: Update, context: ContextTypes.DEFAULT_TY
     query = update.callback_query
     await query.answer()
     
-    # Очищаем контекст от временных данных
     context.user_data.pop('rejecting_report_id', None)
     context.user_data.pop('rejecting_role', None)
     context.user_data.pop('rejection_message_id', None)
     context.user_data.pop('approving_report_id', None)
     context.user_data.pop('approval_message_id', None)
     
-    # Возвращаемся в соответствующее меню
     if "master" in query.data:
         await show_master_approval_menu(update, context)
     elif "kiok" in query.data:
@@ -447,15 +418,11 @@ def create_rejection_conversation():
 
 def register_workflow_handlers(application):
     """Регистрация workflow handlers"""
-    # Мастер handlers
     application.add_handler(CallbackQueryHandler(show_master_approval_menu, pattern="^approve_reports$"))
     application.add_handler(CallbackQueryHandler(show_master_report_details, pattern="^master_view_"))
     application.add_handler(CallbackQueryHandler(master_approve_report, pattern="^master_approve_\\d+$"))
-    # Кнопка master_reject теперь является точкой входа в create_rejection_conversation
 
-    # КИОК handlers
     application.add_handler(CallbackQueryHandler(show_kiok_review_menu, pattern="^kiok_review$"))
     application.add_handler(CallbackQueryHandler(show_kiok_report_details, pattern="^kiok_view_"))
-    # Кнопки kiok_approve_final и kiok_reject_final теперь являются точками входа в create_rejection_conversation
     
     logger.info("✅ Workflow handlers зарегистрированы")

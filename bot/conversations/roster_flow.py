@@ -20,7 +20,7 @@ async def start_roster_submission(update: Update, context: ContextTypes.DEFAULT_
     await query.answer()
     
     user_id = str(query.from_user.id)
-    user_role = await check_user_role(user_id)
+    user_role = check_user_role(user_id)
     lang = await get_user_language(user_id)
     
     # Проверяем, что пользователь - бригадир
