@@ -21,7 +21,7 @@ class UserManagementService:
         """Показывает меню редактирования конкретного пользователя"""
         try:
             # Получаем данные пользователя
-            user_data = db_query(f"SELECT first_name, last_name, username, phone_number FROM {role} WHERE user_id = %s", (user_id_to_edit,))
+            user_data = await db_query(f"SELECT first_name, last_name, username, phone_number FROM {role} WHERE user_id = %s", (user_id_to_edit,))
             
             if not user_data:
                 await query.edit_message_text("❌ Пользователь не найден.")

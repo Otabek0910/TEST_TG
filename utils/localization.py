@@ -284,19 +284,17 @@ def get_data_translation(original_text: str, lang_code: str = 'ru') -> str:
     cleaned_text = original_text.strip()
     return DATA_TRANSLATIONS.get(cleaned_text, {}).get(lang_code, cleaned_text)
 
-async def get_user_language(user_id: str) -> str: # FIXED: async def
+async def get_user_language(user_id: str) -> str:
     """Асинхронно получает язык пользователя из любой таблицы ролей."""
     tables = ['admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok']
     for table in tables:
-        # FIXED: await
         lang_code_raw = await db_query(f"SELECT language_code FROM {table} WHERE user_id = %s", (user_id,))
         if lang_code_raw and lang_code_raw[0] and lang_code_raw[0][0]:
             return lang_code_raw[0][0]
     return 'ru'
 
-async def update_user_language(user_id: str, lang_code: str): # FIXED: async def
+async def update_user_language(user_id: str, lang_code: str):
     """Асинхронно обновляет язык пользователя во всех таблицах."""
     tables = ['admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok']
     for table in tables:
-        # FIXED: await
         await db_execute(f"UPDATE {table} SET language_code = %s WHERE user_id = %s", (lang_code, user_id))

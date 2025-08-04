@@ -27,7 +27,7 @@ class MenuService:
     @staticmethod
     async def get_main_menu_text_and_buttons(user_id: str):
         """Получает текст и кнопки главного меню для пользователя"""
-        user_role = await check_user_role(user_id)
+        user_role = check_user_role(user_id)
         lang =  await get_user_language(user_id)
         
         welcome_text = get_text('welcome_message', lang)

@@ -16,6 +16,7 @@ class AdminService:
     
     @staticmethod
     async def get_admin_list():
+        """ASYNC получение списка админов"""
         admin_ids_raw = await db_query("SELECT user_id FROM admins")
         admin_ids = [row[0] for row in admin_ids_raw] if admin_ids_raw else []
         return list(set(admin_ids + [OWNER_ID]))

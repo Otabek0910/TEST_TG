@@ -40,12 +40,17 @@ class WorkflowService:
         try:
             # CHANGED: Запрос теперь вставляет discipline_id вместо discipline_name
             query = """
-                INSERT INTO reports (
-                    supervisor_id, report_date, brigade_name, corpus_name,
-                    discipline_id, work_type_name, workflow_status, 
-                    report_data, supervisor_signed_at
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, NOW()) 
-                RETURNING id
+                SELECT r.*, 
+                       s.supervisor_name, 
+                       m.master_name,
+                       k.kiok_name,
+                       d.name as discipline_name
+                FROM reports r
+                LEFT JOIN supervisors s ON r.supervisor_id = s.user_id
+                LEFT JOIN masters m ON r.master_id = m.user_id
+                LEFT JOIN kiok k ON r.kiok_id = k.user_id
+                LEFT JOIN disciplines d ON r.discipline_id = d.id
+                WHERE r.id = %s
             """
             
             params = (

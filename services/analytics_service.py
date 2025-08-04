@@ -2,14 +2,12 @@
 
 import logging
 import pandas as pd
-import asyncio
-from functools import partial
-from datetime import date, datetime, timedelta
-from typing import Dict, List, Any, Optional
+from datetime import date
+from typing import Dict, Any
 from sqlalchemy import create_engine, text
 
 from config.settings import DATABASE_URL
-from database.queries import db_query
+from database.queries import db_fetch_all, db_fetch_val # CHANGED: Импортируем новые async функции
 
 logger = logging.getLogger(__name__)
 
