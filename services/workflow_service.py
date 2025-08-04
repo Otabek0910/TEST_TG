@@ -6,8 +6,8 @@ import os
 from datetime import datetime
 from typing import Dict, Any, Optional, List
 from enum import Enum
-import asyncio # CHANGED: Добавлен импорт
-from functools import partial # CHANGED: Добавлен импорт
+import asyncio
+from functools import partial
 
 from database.queries import db_query, db_execute, db_query_single
 
@@ -20,7 +20,7 @@ class WorkflowStatus(Enum):
     APPROVED = "approved"
     REJECTED = "rejected"
 
-    # --- СИНХРОННЫЙ HELPER ДЛЯ ФАЙЛОВ ---
+# --- СИНХРОННЫЙ HELPER ДЛЯ ФАЙЛОВ ---
 def _save_file_sync(file_data: bytes, file_path: str):
     """[БЛОКИРУЮЩАЯ] Создает директорию и сохраняет файл."""
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -163,10 +163,21 @@ class WorkflowService:
     async def master_reject(report_id: int, master_id: str, reason: str) -> bool:
         """Мастер отклоняет отчет"""
         try:
-            # Добавляем причину отклонения в report_data
-            report_data = await db_query("SELECT report_data FROM reports WHERE id = %s", (report_id,))
-            if report_data:
-                data = report_data[0][0] or {}
+            # FIXED: Правильно получаем и обрабатываем JSON данные
+            report_data_raw = await db_query("SELECT report_data FROM reports WHERE id = %s", (report_id,))
+            if report_data_raw:
+                current_data = report_data_raw[0][0] or "{}"
+                
+                # Парсим JSON если это строка
+                if isinstance(current_data, str):
+                    try:
+                        data = json.loads(current_data)
+                    except json.JSONDecodeError:
+                        data = {}
+                else:
+                    data = current_data or {}
+                
+                # Добавляем информацию об отклонении
                 data['master_rejection_reason'] = reason
                 data['master_rejected_at'] = datetime.now().isoformat()
                 
@@ -177,7 +188,7 @@ class WorkflowService:
                 """
                 
                 return await db_execute(update_query, (
-                    WorkflowStatus.REJECTED.value, master_id, data,
+                    WorkflowStatus.REJECTED.value, master_id, json.dumps(data),
                     report_id, WorkflowStatus.PENDING_MASTER.value
                 ))
             
@@ -224,53 +235,63 @@ class WorkflowService:
     @staticmethod
     async def kiok_reject(report_id: int, kiok_id: str, reason: str, 
                 remark_file_path: str = None, attachments: List[str] = None) -> bool:
-      """КИОК отклоняет отчет с замечаниями (может быть файл с фото внутри)"""
-      try:
-         update_query = """
+        """КИОК отклоняет отчет с замечаниями (может быть файл с фото внутри)"""
+        try:
+            update_query = """
                 UPDATE reports 
                 SET workflow_status = %s, 
-                   kiok_id = %s, 
-                 kiok_signed_at = NOW(),
-                   kiok_notes = %s,
+                    kiok_id = %s, 
+                    kiok_signed_at = NOW(),
+                    kiok_notes = %s,
                     kiok_remark_document = %s, 
                     kiok_attachments = %s
                 WHERE id = %s AND workflow_status = %s
             """
         
-            # Добавляем детальную причину в report_data
-         report_data = await db_query("SELECT report_data FROM reports WHERE id = %s", (report_id,))
-         if report_data:
-              data = json.loads(report_data[0][0]) if report_data[0][0] else {}
-              data['kiok_rejection'] = {
+            # FIXED: Правильно обрабатываем JSON данные
+            report_data_raw = await db_query("SELECT report_data FROM reports WHERE id = %s", (report_id,))
+            if report_data_raw:
+                current_data = report_data_raw[0][0] or "{}"
+                
+                # Парсим JSON если это строка
+                if isinstance(current_data, str):
+                    try:
+                        data = json.loads(current_data)
+                    except json.JSONDecodeError:
+                        data = {}
+                else:
+                    data = current_data or {}
+                
+                # Добавляем детальную причину в report_data
+                data['kiok_rejection'] = {
                     'reason': reason,
                     'rejected_at': datetime.now().isoformat(),
                     'kiok_id': kiok_id,
-                   'has_remark_file': bool(remark_file_path),
+                    'has_remark_file': bool(remark_file_path),
                     'attachments_count': len(attachments or [])
-              }
+                }
             
-              await db_execute("UPDATE reports SET report_data = %s WHERE id = %s", 
-                         (json.dumps(data), report_id))
+                await db_execute("UPDATE reports SET report_data = %s WHERE id = %s", 
+                                (json.dumps(data), report_id))
         
-         success = await db_execute(update_query, (
+            success = await db_execute(update_query, (
                 WorkflowStatus.REJECTED.value, 
                 kiok_id, 
                 reason,
                 remark_file_path,
                 json.dumps(attachments or []),
                 report_id, 
-             WorkflowStatus.PENDING_KIOK.value
-          ))
+                WorkflowStatus.PENDING_KIOK.value
+            ))
         
-         if success:
-              logger.info(f"✅ КИОК {kiok_id} отклонил отчет {report_id} с замечаниями")
+            if success:
+                logger.info(f"✅ КИОК {kiok_id} отклонил отчет {report_id} с замечаниями")
         
-         return success
+            return success
         
-      except Exception as e:
-           logger.error(f"❌ Ошибка отклонения КИОК: {e}")
-           return False
-    
+        except Exception as e:
+            logger.error(f"❌ Ошибка отклонения КИОК: {e}")
+            return False
     
     @staticmethod
     async def get_pending_reports_for_master(master_id: str) -> List[Dict[str, Any]]:
@@ -321,6 +342,7 @@ class WorkflowService:
         except Exception as e:
             logger.error(f"Ошибка получения отчетов для КИОК: {e}")
             return []
+
     @staticmethod
     async def can_user_approve_report(user_id: str, report_id: int, role: str) -> bool:
         """Проверяет, может ли пользователь подтвердить отчет, по discipline_id."""
@@ -351,15 +373,15 @@ class WorkflowService:
         
     @staticmethod
     async def get_supervisor_brigades(supervisor_id: str) -> List[str]:
-       """Получает список бригад, закрепленных за супервайзером"""
-       try:
-           result = await db_query("SELECT brigade_ids FROM supervisors WHERE user_id = %s", (supervisor_id,))
-           if result and result[0][0]:
-               return result[0][0]  # PostgreSQL array field
-           return []
-       except Exception as e:
-           logger.error(f"❌ Ошибка получения бригад супервайзера: {e}")
-           return []
+        """Получает список бригад, закрепленных за супервайзером"""
+        try:
+            result = await db_query("SELECT brigade_ids FROM supervisors WHERE user_id = %s", (supervisor_id,))
+            if result and result[0][0]:
+                return result[0][0]  # PostgreSQL array field
+            return []
+        except Exception as e:
+            logger.error(f"❌ Ошибка получения бригад супервайзера: {e}")
+            return []
 
     @staticmethod
     async def save_file_attachment(file_data: bytes, filename: str, report_id: int, 

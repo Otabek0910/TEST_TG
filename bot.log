@@ -40,3 +40,253 @@
 2025-08-04 11:53:46,037 - bot.app - INFO - ✅ Конверсации зарегистрированы
 2025-08-04 11:53:46,037 - bot.app - INFO - 🚀 Бот готов к работе!
 2025-08-04 11:53:46,038 - __main__ - CRITICAL - ❌ Критическая ошибка: Cannot close a running event loop
+2025-08-04 12:17:38,741 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-04 12:17:38,852 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-04 12:17:40,691 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-04 12:17:42,138 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-04 12:17:42,138 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-04 12:17:42,955 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-04 12:17:42,955 - bot.app - INFO - ==================================================
+2025-08-04 12:17:42,955 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-04 12:17:42,955 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-04 12:17:42,955 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-04 12:17:42,956 - bot.app - INFO - ==================================================
+2025-08-04 12:17:43,037 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-04 12:17:43,037 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-04 12:17:43,038 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-04 12:17:43,040 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-04 12:17:43,040 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-04 12:17:43,041 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-04 12:17:43,041 - bot.app - INFO - ✅ Обработчики зарегистрированы
+2025-08-04 12:17:43,045 - bot.app - INFO - ✅ Конверсации зарегистрированы
+2025-08-04 12:17:43,045 - bot.app - INFO - 🚀 Бот готов к работе!
+2025-08-04 12:17:43,045 - __main__ - CRITICAL - ❌ Критическая ошибка: Cannot close a running event loop
+2025-08-04 12:19:43,655 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-04 12:19:48,799 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-04 12:19:48,799 - bot.app - INFO - ==================================================
+2025-08-04 12:19:48,799 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-04 12:19:48,800 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-04 12:19:48,800 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-04 12:19:48,800 - bot.app - INFO - ==================================================
+2025-08-04 12:19:49,044 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-04 12:19:49,044 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-04 12:19:49,045 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-04 12:19:49,049 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-04 12:19:49,050 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-04 12:19:49,050 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-04 12:19:49,050 - bot.app - INFO - ✅ Обработчики зарегистрированы
+2025-08-04 12:19:49,085 - bot.app - INFO - ✅ Конверсации зарегистрированы
+2025-08-04 12:19:49,085 - bot.app - INFO - 🚀 Бот готов к работе!
+2025-08-04 12:19:49,086 - __main__ - CRITICAL - ❌ Критическая ошибка: Cannot close a running event loop
+2025-08-04 17:46:03,760 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-04 17:46:03,879 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-04 17:46:05,671 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-04 17:46:07,466 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-04 17:46:07,466 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-04 17:46:08,459 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-04 17:46:08,459 - bot.app - INFO - ==================================================
+2025-08-04 17:46:08,460 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-04 17:46:08,460 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-04 17:46:08,460 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-04 17:46:08,460 - bot.app - INFO - ==================================================
+2025-08-04 17:46:08,566 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-04 17:46:08,566 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-04 17:46:08,567 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-04 17:46:08,569 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-04 17:46:08,570 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-04 17:46:08,570 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-04 17:46:08,571 - bot.app - INFO - ✅ Обработчики зарегистрированы
+2025-08-04 17:46:08,583 - bot.app - INFO - ✅ Конверсации зарегистрированы
+2025-08-04 17:46:08,583 - bot.app - INFO - 🚀 Бот готов к работе!
+2025-08-04 17:46:08,583 - __main__ - CRITICAL - ❌ Критическая ошибка: Cannot close a running event loop
+2025-08-04 17:51:26,318 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-04 17:51:26,458 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-04 17:51:28,545 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-04 17:51:30,046 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-04 17:51:30,046 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-04 17:51:30,951 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-04 17:51:30,952 - bot.app - INFO - ==================================================
+2025-08-04 17:51:30,952 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-04 17:51:30,952 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-04 17:51:30,953 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-04 17:51:30,953 - bot.app - INFO - ==================================================
+2025-08-04 17:51:31,057 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-04 17:51:31,058 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-04 17:51:31,058 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-04 17:51:31,060 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-04 17:51:31,061 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-04 17:51:31,061 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-04 17:51:31,061 - bot.app - INFO - ✅ Обработчики зарегистрированы
+2025-08-04 17:51:31,072 - bot.app - INFO - ✅ Конверсации зарегистрированы
+2025-08-04 17:51:31,073 - bot.app - INFO - 🚀 Бот готов к работе!
+2025-08-04 17:51:31,074 - __main__ - CRITICAL - ❌ Критическая ошибка: Cannot close a running event loop
+2025-08-04 17:59:23,340 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-04 17:59:23,484 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-04 17:59:25,332 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-04 17:59:27,104 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-04 17:59:27,105 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-04 17:59:27,105 - __main__ - INFO - 🪟 Windows система - используем KeyboardInterrupt для остановки
+2025-08-04 17:59:27,937 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-04 17:59:27,937 - bot.app - INFO - ==================================================
+2025-08-04 17:59:27,937 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-04 17:59:27,937 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-04 17:59:27,938 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-04 17:59:27,938 - bot.app - INFO - ==================================================
+2025-08-04 17:59:28,054 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-04 17:59:28,055 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-04 17:59:28,056 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-04 17:59:28,059 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-04 17:59:28,060 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-04 17:59:28,061 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-04 17:59:28,061 - bot.app - INFO - ✅ Обработчики зарегистрированы
+2025-08-04 17:59:28,070 - bot.app - INFO - ✅ Конверсации зарегистрированы
+2025-08-04 17:59:28,071 - bot.app - INFO - 🚀 Бот готов к работе!
+2025-08-04 17:59:28,655 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getMe "HTTP/1.1 200 OK"
+2025-08-04 17:59:28,656 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-04 17:59:28,657 - telegram.ext.Application - INFO - Application started
+2025-08-04 17:59:28,814 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-04 17:59:28,816 - __main__ - ERROR - ❌ Ошибка в работе бота: This Application is still running!
+2025-08-04 17:59:28,816 - __main__ - INFO - 🧹 Очистка ресурсов...
+2025-08-04 17:59:28,817 - __main__ - INFO - ✅ Соединение с БД закрыто
+2025-08-04 17:59:28,820 - __main__ - INFO - 👋 Программа завершена
+2025-08-04 18:04:16,871 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-04 18:04:17,005 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-04 18:04:19,133 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-04 18:04:21,130 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-04 18:04:21,130 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-04 18:04:21,131 - __main__ - INFO - 🪟 Windows система - используем KeyboardInterrupt для остановки
+2025-08-04 18:04:22,256 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-04 18:04:22,256 - bot.app - INFO - ==================================================
+2025-08-04 18:04:22,256 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-04 18:04:22,257 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-04 18:04:22,257 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-04 18:04:22,257 - bot.app - INFO - ==================================================
+2025-08-04 18:04:22,412 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-04 18:04:22,412 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-04 18:04:22,413 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-04 18:04:22,417 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-04 18:04:22,418 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-04 18:04:22,420 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-04 18:04:22,420 - bot.app - INFO - ✅ Обработчики зарегистрированы
+2025-08-04 18:04:22,426 - bot.app - INFO - ✅ Конверсации зарегистрированы
+2025-08-04 18:04:22,427 - bot.app - INFO - 🚀 Бот готов к работе!
+2025-08-04 18:04:22,944 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getMe "HTTP/1.1 200 OK"
+2025-08-04 18:04:22,946 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-04 18:04:22,947 - telegram.ext.Application - INFO - Application started
+2025-08-04 18:04:23,105 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-04 18:04:33,588 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:04:43,742 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:04:53,907 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:04,100 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:14,269 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:24,429 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:34,579 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:38,739 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:38,741 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-04 18:05:40,465 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/sendMessage "HTTP/1.1 200 OK"
+2025-08-04 18:05:48,908 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:49,235 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:49,236 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-04 18:05:50,618 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/sendMessage "HTTP/1.1 200 OK"
+2025-08-04 18:05:55,309 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:55,472 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:05:56,478 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:05:58,639 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:05:58,816 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:05:59,897 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:00,789 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:00,968 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:06:01,259 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:03,898 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:03,900 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-04 18:06:05,005 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/sendMessage "HTTP/1.1 200 OK"
+2025-08-04 18:06:06,053 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:09,324 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:09,326 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-04 18:06:10,481 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/sendMessage "HTTP/1.1 200 OK"
+2025-08-04 18:06:11,635 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:11,843 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:06:12,966 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:13,380 - database.queries - ERROR - Ошибка выполнения DB query: ОШИБКА:  столбец "is_active" не существует
+LINE 1: SELECT COUNT(*) FROM brigades WHERE is_active = true
+                                            ^
+
+Запрос: SELECT COUNT(*) FROM brigades WHERE is_active = true
+2025-08-04 18:06:14,293 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:17,736 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:24,497 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:24,498 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-04 18:06:26,142 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/sendMessage "HTTP/1.1 200 OK"
+2025-08-04 18:06:28,315 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:28,465 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:06:29,542 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:32,475 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:32,625 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:06:32,805 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:34,256 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:34,456 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-04 18:06:34,609 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/editMessageText "HTTP/1.1 200 OK"
+2025-08-04 18:06:37,020 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/sendDocument "HTTP/1.1 200 OK"
+2025-08-04 18:06:37,180 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/deleteMessage "HTTP/1.1 200 OK"
+2025-08-04 18:06:44,428 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:06:54,588 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAEBcaSwVwBJTwxpW4nNY9Kk9sN32XFY7Mg/getUpdates "HTTP/1.1 200 OK"
+2025-08-04 18:07:01,563 - bot.app - INFO - 🔄 Останавливаем бота...
+2025-08-04 18:07:01,563 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-04 18:07:01,567 - __main__ - ERROR - ❌ Ошибка в работе бота: This Updater is still running!
+2025-08-04 18:07:01,567 - __main__ - INFO - 🧹 Очистка ресурсов...
+2025-08-04 18:07:01,568 - __main__ - INFO - ✅ Соединение с БД закрыто
+2025-08-04 18:07:01,569 - asyncio - ERROR - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-2' coro=<run_bot() done, defined at H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\bot\app.py:24> exception=RuntimeError('This Updater is still running!')>
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\selectors.py", line 324, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+  File "C:\Python310\lib\selectors.py", line 315, in _select
+    r, w, x = select.select(r, w, w, timeout)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\bot\app.py", line 102, in run_bot
+    await application.stop()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 685, in stop
+    await self.__update_fetcher_task
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\main.py", line 70, in main
+    await asyncio.wait_for(bot_task, timeout=None)
+  File "C:\Python310\lib\asyncio\tasks.py", line 408, in wait_for
+    return await fut
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\bot\app.py", line 78, in run_bot
+    async with application:
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 385, in __aexit__
+    await self.shutdown()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 547, in shutdown
+    await self.updater.shutdown()
+  File "C:\Python310\lib\site-packages\telegram\ext\_updater.py", line 197, in shutdown
+    raise RuntimeError("This Updater is still running!")
+RuntimeError: This Updater is still running!
+2025-08-04 18:07:01,607 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-04 18:07:01,607 - __main__ - INFO - 👋 Программа завершена

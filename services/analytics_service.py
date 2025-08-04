@@ -38,7 +38,7 @@ class AnalyticsService:
             params = (discipline_name,)
             discipline_id_raw = await db_query("SELECT id FROM disciplines WHERE name = %s", params)
             disc_id = discipline_id_raw[0][0] if discipline_id_raw else None
-            
+
             user_counts = {'brigades': 0, 'pto': 0, 'kiok': 0}
             if disc_id:
                 brigade_count = await db_query("SELECT COUNT(*) FROM brigades WHERE discipline_id = %s", (disc_id,))
@@ -47,30 +47,33 @@ class AnalyticsService:
                 user_counts['brigades'] = brigade_count[0][0] if brigade_count else 0
                 user_counts['pto'] = pto_count[0][0] if pto_count else 0
                 user_counts['kiok'] = kiok_count[0][0] if kiok_count else 0
-            
+
             report_stats_raw = await db_query("""
-                SELECT CASE workflow_status WHEN 'approved' THEN '1' WHEN 'rejected' THEN '-1' ELSE '0' END as status, COUNT(*) 
-                FROM reports r JOIN disciplines d ON r.discipline_id = d.id 
+                SELECT CASE workflow_status WHEN 'approved' THEN '1' WHEN 'rejected' THEN '-1' ELSE '0' END as status, COUNT(*)
+                FROM reports r JOIN disciplines d ON r.discipline_id = d.id
                 WHERE d.name = %s GROUP BY workflow_status
             """, params)
+            # FIXED: Handle case where db_query returns None
             report_stats = {str(status): count for status, count in (report_stats_raw or [])}
 
             today_str = date.today().strftime('%Y-%m-%d')
             all_brigades_q = await db_query("SELECT brigade_name FROM brigades WHERE discipline_id = %s", (disc_id,)) if disc_id else []
+            # FIXED: Handle case where db_query returns None
             all_brigades = {row[0] for row in (all_brigades_q or [])}
 
             reported_today_raw = await db_query("""
                 SELECT DISTINCT r.brigade_name FROM reports r JOIN disciplines d ON r.discipline_id = d.id
                 WHERE d.name = %s AND r.report_date = %s
             """, params + (today_str,))
+            # FIXED: Handle case where db_query returns None
             reported_today = {row[0] for row in (reported_today_raw or [])}
 
             analysis_data = {}
             if not user_role.get('isKiok'):
                 analysis_data = await AnalyticsService._calculate_work_performance(discipline_name)
-            
+
             low_performance_count = await AnalyticsService._get_low_performance_brigade_count(discipline_name)
-            
+
             return {
                 'report_stats': report_stats,
                 'total_reports': sum(report_stats.values()),
@@ -87,10 +90,10 @@ class AnalyticsService:
     async def get_hr_report_data(discipline_id: int, selected_date: date) -> Optional[Dict[str, Any]]:
         """Асинхронно собирает данные для HR-отчета."""
         date_str = selected_date.strftime('%Y-%m-%d')
-        
+
         disc_name_raw = await db_query("SELECT name FROM disciplines WHERE id = %s", (discipline_id,))
         if not disc_name_raw: return None
-        
+
         summary_q = await db_query("""
             SELECT pr.role_name, SUM(drd.personnel_count) as total_by_role
             FROM daily_roster_details drd
@@ -107,6 +110,7 @@ class AnalyticsService:
             WHERE dr.roster_date = %s AND b.discipline_id = %s
         """, (date_str, discipline_id))
         
+        # FIXED: Handle case where db_query returns None
         total_people = sum(item[1] for item in (summary_q or []))
 
         return {
@@ -194,8 +198,9 @@ class AnalyticsService:
                 SELECT CASE workflow_status WHEN 'approved' THEN '1' WHEN 'rejected' THEN '-1' ELSE '0' END as status, COUNT(*)
                 FROM reports GROUP BY workflow_status
             """)
+            # FIXED: Handle case where db_query returns None
             report_stats = {str(status): count for status, count in (report_stats_raw or [])}
-
+            
             today_str = date.today().strftime('%Y-%m-%d')
             all_brigades_count = await db_query("SELECT COUNT(*) FROM brigades WHERE is_active = true")
             total_brigades = all_brigades_count[0][0] if all_brigades_count else 0

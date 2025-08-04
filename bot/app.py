@@ -1,13 +1,15 @@
 """
-Основной модуль Telegram бота - ИСПРАВЛЕННАЯ ВЕРСИЯ
+Основной модуль Telegram бота - ФИНАЛЬНАЯ ИСПРАВЛЕННАЯ ВЕРСИЯ
 """
 
 import logging
+import asyncio
+import sys
 from telegram.ext import Application
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from config.settings import TOKEN, OWNER_ID, DATABASE_URL
-from database.connection import db_manager  # FIXED: Правильный импорт
+from database.connection import db_manager
 from bot.handlers.common import register_common_handlers
 from bot.handlers.workflow import register_workflow_handlers, create_rejection_conversation
 from bot.handlers.approval import register_approval_handlers
@@ -31,7 +33,7 @@ async def run_bot():
     application = builder.build()
 
     async def post_init(app: Application) -> None:
-        await db_manager.initialize()  # FIXED: Используем правильный метод
+        await db_manager.initialize()
         logger.info("✅ Database инициализирована")
         
         scheduler = AsyncIOScheduler(timezone='Asia/Tashkent')
@@ -46,6 +48,7 @@ async def run_bot():
         if "scheduler" in app.bot_data:
             app.bot_data["scheduler"].shutdown()
         await db_manager.close()
+        await application.stop() 
         logger.info("✅ Ресурсы освобождены")
 
     # Регистрация handlers
@@ -68,7 +71,35 @@ async def run_bot():
 
     application.post_init = post_init
     application.post_stop = post_stop
-    
+
     logger.info("🚀 Бот готов к работе!")
-    # КЛЮЧЕВОЙ МОМЕНТ: Запуск цикла бота через await
-    await application.run_polling(drop_pending_updates=True)
+
+    # ИСПРАВЛЕНО: Используем await внутри async функции
+    async with application:
+        await application.start()
+        await application.updater.start_polling(drop_pending_updates=True)
+        # Ждем сигнала остановки
+        stop_event = asyncio.Event()
+
+        def stop_handler():
+            stop_event.set()
+
+        # Для Windows и Unix разная обработка
+        if sys.platform != "win32":
+            import signal
+            for sig in (signal.SIGINT, signal.SIGTERM):
+                try:
+                    asyncio.get_running_loop().add_signal_handler(sig, stop_handler)
+                except NotImplementedError:
+                    pass
+
+        try:
+            await stop_event.wait()
+        except KeyboardInterrupt:
+            logger.info("🛑 Получен Ctrl+C")
+        finally:
+            logger.info("🔄 Останавливаем бота...")
+            await application.stop()
+
+if __name__ == "__main__":
+    asyncio.run(run_bot())
