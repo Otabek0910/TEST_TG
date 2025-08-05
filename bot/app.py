@@ -20,6 +20,7 @@ from bot.handlers.admin import register_admin_handlers, create_admin_management_
 from bot.handlers.auth_new import register_new_auth_handlers  # CHANGED: используем auth_new напрямую
 from bot.conversations.report_flow import create_report_conversation
 from bot.conversations.roster_flow import create_roster_conversation
+from bot.handlers.export import register_export_handlers
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +46,7 @@ async def run_bot():
     register_workflow_handlers(application)
     register_analytics_handlers(application)
     register_admin_handlers(application)
+    register_export_handlers(application)
 
     # ConversationHandlers
     application.add_handler(create_report_conversation())

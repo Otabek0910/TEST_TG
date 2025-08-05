@@ -3261,3 +3261,785 @@ asyncio.exceptions.CancelledError
 2025-08-05 16:39:38,745 - bot.app - INFO - 🔻 Бот остановлен
 2025-08-05 16:39:38,748 - __main__ - INFO - 🛑 Бот остановлен пользователем
 2025-08-05 16:39:38,749 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:46:37,086 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:46:37,257 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:46:39,213 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:46:41,056 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:46:41,056 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:46:42,090 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:46:42,090 - bot.app - INFO - ==================================================
+2025-08-05 16:46:42,091 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:46:42,091 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:46:42,091 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:46:42,092 - bot.app - INFO - ==================================================
+2025-08-05 16:46:42,517 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:46:42,517 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:46:42,596 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:46:42,597 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:46:42,597 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:46:42,598 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:46:42,601 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:46:42,602 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:46:42,607 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:46:42,655 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:46:42,656 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:46:42,657 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:46:42,657 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:46:42,657 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:46:42,658 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:46:42,658 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:46:43,125 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:46:43,126 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:46:43,128 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:46:43,271 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:46:43,273 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:46:45,020 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:46:45,023 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 16:46:45,904 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:46:47,528 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:46:47,680 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:46:48,639 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:46:49,640 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:46:49,842 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:46:50,018 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:46:53,040 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:46:53,307 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:46:53,587 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:46:58,931 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:47:09,068 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:47:19,210 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:47:29,357 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:47:39,500 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:47:49,642 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:47:59,777 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:48:09,912 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:48:20,046 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:48:30,182 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:48:40,316 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:48:40,817 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:48:40,818 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:48:40,818 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:48:40,819 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:48:44,235 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:48:44,236 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:48:44,236 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:48:44,239 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:48:44,239 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:48:44,240 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:48:44,248 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:48:44,248 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:48:44,250 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:48:44,253 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:48:44,254 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:53:32,509 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:53:32,661 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:53:34,511 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:53:36,165 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:53:36,166 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:53:37,200 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:53:37,201 - bot.app - INFO - ==================================================
+2025-08-05 16:53:37,201 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:53:37,201 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:53:37,201 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:53:37,202 - bot.app - INFO - ==================================================
+2025-08-05 16:53:37,656 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:53:37,657 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:53:37,736 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:53:37,737 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:53:37,737 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:53:37,737 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:53:37,739 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:53:37,740 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:53:37,744 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:53:37,788 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:53:37,789 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:53:37,790 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:53:37,790 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:53:37,790 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:53:37,791 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:53:37,791 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:53:38,195 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:53:38,196 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:53:38,197 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:53:38,329 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:53:38,330 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:53:40,676 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:53:40,679 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 16:53:41,637 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:53:42,858 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:53:42,997 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:53:43,989 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:53:44,893 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:53:45,039 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:53:45,203 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:53:46,498 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:53:46,644 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:53:46,810 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:53:51,332 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:53:51,486 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:53:51,677 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getFile "HTTP/1.1 200 OK"
+2025-08-05 16:53:51,943 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot7970286602%3AAAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/documents/file_0.xlsx "HTTP/1.1 200 OK"
+2025-08-05 16:53:52,409 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:53:52,411 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1311, in process_update
+    await coroutine
+  File "C:\Python310\lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\utils\chat_utils.py", line 48, in wrapper
+    result_message = await func(update, context, *args, **kwargs)
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\bot\handlers\export.py", line 422, in handle_db_restore_file
+    os.remove(file_path)
+PermissionError: [WinError 32] Процесс не может получить доступ к файлу, так как этот файл занят другим процессом: 'temp_files\\restore_353175654.xlsx'
+2025-08-05 16:54:01,471 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:54:11,614 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:54:21,759 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:54:31,910 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:54:42,046 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:54:52,188 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:55:02,325 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:55:12,460 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:55:22,603 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:55:25,487 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:55:25,487 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:55:25,487 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:55:25,488 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:55:25,941 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:55:25,944 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:55:25,945 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:55:25,949 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:55:25,950 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:55:25,952 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:55:25,974 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:55:25,975 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:55:25,976 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:55:25,982 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:55:25,983 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:56:42,566 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:56:42,681 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:56:44,741 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:56:46,458 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:56:46,458 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:56:47,211 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:56:47,211 - bot.app - INFO - ==================================================
+2025-08-05 16:56:47,211 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:56:47,211 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:56:47,212 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:56:47,212 - bot.app - INFO - ==================================================
+2025-08-05 16:56:47,593 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:56:47,593 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:56:47,684 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:56:47,684 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:56:47,685 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:56:47,685 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:56:47,687 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:56:47,687 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:56:47,691 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:56:47,746 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:56:47,747 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:56:47,748 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:56:47,749 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:56:47,749 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:56:47,749 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:56:47,749 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:56:48,206 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:56:48,208 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:56:48,209 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:56:48,343 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:56:48,344 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:56:53,129 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:56:53,131 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 16:56:54,451 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:56:55,721 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:56:55,947 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:56:57,024 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:56:58,008 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:56:58,158 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:56:58,322 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:57:00,316 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:57:00,477 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:57:00,656 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:57:07,528 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:57:07,988 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:57:08,187 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getFile "HTTP/1.1 200 OK"
+2025-08-05 16:57:08,486 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot7970286602%3AAAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/documents/file_1.xlsx "HTTP/1.1 200 OK"
+2025-08-05 16:57:08,843 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:57:09,120 - bot.handlers.export - INFO - Временный файл удален: temp_files\restore_353175654.xlsx
+2025-08-05 16:57:17,667 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:57:27,801 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:57:37,933 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:57:48,066 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:57:58,200 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:08,340 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:14,965 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:14,967 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 16:58:16,374 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:58:17,817 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:18,002 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:58:19,115 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:58:20,160 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:20,311 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:58:20,473 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:58:22,025 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:22,183 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:58:22,338 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:58:22,849 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendDocument "HTTP/1.1 200 OK"
+2025-08-05 16:58:23,008 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:58:32,165 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:42,303 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:58:52,453 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:59:02,593 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:59:12,727 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:59:22,866 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:59:32,996 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:59:43,131 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:59:53,268 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:00:03,408 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:00:13,549 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:00:23,685 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:00:33,818 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:00:43,956 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:00:54,118 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:01:04,277 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:01:14,418 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:01:24,556 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:01:34,692 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:01:44,830 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:01:54,956 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:02:05,093 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:02:08,657 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 17:02:08,658 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 17:02:08,659 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 17:02:08,661 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 17:02:09,099 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:02:09,101 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 17:02:09,102 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 17:02:09,108 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 17:02:09,108 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 17:02:09,110 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 17:02:09,111 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 17:02:09,112 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 17:02:09,112 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 17:02:09,118 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 17:02:09,119 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 17:06:50,834 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 17:06:54,300 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 17:06:56,411 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 17:06:58,040 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 17:06:58,040 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 17:06:58,993 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 17:06:58,994 - bot.app - INFO - ==================================================
+2025-08-05 17:06:58,994 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 17:06:58,994 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 17:06:58,995 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 17:06:58,995 - bot.app - INFO - ==================================================
+2025-08-05 17:06:59,432 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 17:06:59,432 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 17:06:59,517 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 17:06:59,517 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 17:06:59,518 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 17:06:59,518 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 17:06:59,520 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 17:06:59,521 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 17:06:59,524 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 17:06:59,574 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 17:06:59,575 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 17:06:59,576 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 17:06:59,576 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 17:06:59,577 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 17:06:59,577 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 17:06:59,577 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 17:07:00,055 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 17:07:00,057 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 17:07:00,058 - telegram.ext.Application - INFO - Application started
+2025-08-05 17:07:00,197 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 17:07:00,198 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 17:07:02,579 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:02,581 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 17:07:03,518 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 17:07:04,597 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:04,832 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:07:05,966 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:07:07,224 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:07,381 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:07:07,580 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:07:08,863 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:09,130 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:07:09,402 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:07:19,001 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:21,135 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:21,609 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 17:07:21,765 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getFile "HTTP/1.1 200 OK"
+2025-08-05 17:07:22,020 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot7970286602%3AAAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/documents/file_2.xlsx "HTTP/1.1 200 OK"
+2025-08-05 17:07:22,269 - services.import_service - INFO - DEBUG: Найденные листы в файле: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:07:22,270 - services.import_service - INFO - DEBUG: Будем обрабатывать листы: ['disciplines', 'construction_objects', 'work_types']
+2025-08-05 17:07:22,320 - services.import_service - INFO - DEBUG: Найденные листы в файле: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:07:22,320 - services.import_service - INFO - DEBUG: Будем обрабатывать листы: ['disciplines', 'construction_objects', 'work_types']
+2025-08-05 17:07:22,612 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 17:07:22,907 - bot.handlers.export - INFO - Временный файл удален: temp_files\restore_353175654.xlsx
+2025-08-05 17:07:29,170 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:29,598 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:07:30,765 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:07:39,310 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:49,442 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:07:59,575 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:08:09,710 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:08:19,844 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:08:29,985 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:08:40,124 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:08:50,261 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:09:00,397 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:09:10,537 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:09:20,673 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:09:30,814 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:09:40,951 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:09:51,098 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:10:01,243 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:10:11,393 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:10:21,531 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:10:31,663 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:10:41,798 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:10:51,932 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:11:02,062 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:11:12,191 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:11:22,324 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:11:32,451 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:11:42,606 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:11:52,734 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:02,876 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:13,013 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:19,087 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 17:12:19,088 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 17:12:19,088 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 17:12:19,090 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 17:12:19,524 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:19,526 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 17:12:19,527 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 17:12:19,534 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 17:12:19,536 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 17:12:19,540 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 17:12:19,542 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 17:12:19,543 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 17:12:19,544 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 17:12:19,550 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 17:12:19,551 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 17:12:21,005 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 17:12:21,132 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 17:12:23,256 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 17:12:25,373 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 17:12:25,374 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 17:12:26,526 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 17:12:26,526 - bot.app - INFO - ==================================================
+2025-08-05 17:12:26,526 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 17:12:26,527 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 17:12:26,527 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 17:12:26,527 - bot.app - INFO - ==================================================
+2025-08-05 17:12:26,912 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 17:12:26,912 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 17:12:27,010 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 17:12:27,011 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 17:12:27,012 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 17:12:27,014 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 17:12:27,021 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 17:12:27,024 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 17:12:27,040 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 17:12:27,106 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 17:12:27,106 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 17:12:27,107 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 17:12:27,107 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 17:12:27,107 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 17:12:27,108 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 17:12:27,108 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 17:12:27,534 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 17:12:27,536 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 17:12:27,537 - telegram.ext.Application - INFO - Application started
+2025-08-05 17:12:27,675 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 17:12:27,676 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 17:12:28,664 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:28,814 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:12:30,022 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:12:35,111 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:35,528 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:12:35,684 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:12:37,131 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:37,279 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 17:12:37,444 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 17:12:41,872 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:12:42,047 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 17:12:42,268 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getFile "HTTP/1.1 200 OK"
+2025-08-05 17:12:42,550 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot7970286602%3AAAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/documents/file_3.xlsx "HTTP/1.1 200 OK"
+2025-08-05 17:12:42,551 - services.import_service - INFO - DEBUG: Начинаем восстановление БД из файла: temp_files\restore_353175654.xlsx
+2025-08-05 17:12:42,767 - services.import_service - INFO - DEBUG: Найденные листы в файле: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:12:42,768 - services.import_service - INFO - DEBUG: Будем обрабатывать листы: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:12:42,815 - services.import_service - INFO - DEBUG: Начинаем импорт из файла: temp_files\restore_353175654.xlsx
+2025-08-05 17:12:42,826 - services.import_service - INFO - DEBUG: Найденные листы в файле: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:12:42,826 - services.import_service - INFO - DEBUG: Будем обрабатывать листы: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:12:42,868 - services.import_service - INFO - DEBUG: Найденные листы для импорта: ['disciplines', 'construction_objects', 'work_types', 'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok', 'reports', 'topic_mappings', 'personnel_roles', 'daily_rosters', 'daily_roster_details']
+2025-08-05 17:12:42,979 - services.import_service - INFO - DEBUG: Обрабатываем дисциплины из листа 'disciplines', строк: 8
+2025-08-05 17:12:42,983 - services.import_service - INFO - DEBUG: Дисциплин добавлено: 7
+2025-08-05 17:12:42,987 - services.import_service - INFO - DEBUG: Обрабатываем корпуса из листа 'construction_objects', строк: 50
+2025-08-05 17:12:43,036 - services.import_service - INFO - DEBUG: Корпусов добавлено: 50
+2025-08-05 17:12:43,049 - services.import_service - INFO - DEBUG: Обрабатываем виды работ из листа 'work_types', строк: 165
+2025-08-05 17:12:43,069 - services.import_service - WARNING - Дисциплина '6' для вида работ 'МОНТАЖ СБОРНЫХ ЖЕЛЕЗОБЕТОННЫХ КОНСТРУКТИВНЫХ ЭЛЕМЕНТОВ ЗДАНИЙ И СООРУЖЕНИЙ: БАЛОК, ШТ' не найдена
+2025-08-05 17:12:43,070 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТАНОВКА СБОРНЫХ ЖЕЛЕЗОБЕТОННЫХ ФУНДАМЕНТОВ, ШТ' не найдена
+2025-08-05 17:12:43,072 - services.import_service - WARNING - Дисциплина '6' для вида работ 'МОНОЛИТНЫЕ ЖЕЛЕЗОБЕТОННЫЕ КОНСТРУКЦИИ, М3' не найдена
+2025-08-05 17:12:43,073 - services.import_service - WARNING - Дисциплина '6' для вида работ 'МОНТАЖ СБОРНЫХ ЖЕЛЕЗОБЕТОННЫХ КОЛОДЦЕВ, М3' не найдена
+2025-08-05 17:12:43,075 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО МОНОЛИТНЫХ ЖЕЛЕЗОБЕТОННЫХ КОЛОДЦЕВ, М3' не найдена
+2025-08-05 17:12:43,076 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ЖЕЛЕЗОБЕТОННЫХ МОНОЛИТНЫХ ЛОТКОВ, М3' не найдена
+2025-08-05 17:12:43,077 - services.import_service - WARNING - Дисциплина '6' для вида работ 'НАСЕЧКА ЖЕЛЕЗОБЕТОННЫХ ФУНДАМЕНТОВ, М2' не найдена
+2025-08-05 17:12:43,078 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО БЕТОННОЙ ПОДГОТОВКИ, М3' не найдена
+2025-08-05 17:12:43,079 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО БЕТОННОЙ ПОДЛИВКИ, М3' не найдена
+2025-08-05 17:12:43,081 - services.import_service - WARNING - Дисциплина '6' для вида работ 'МОНТАЖ И ДЕМОНТАЖ ОПАЛУБКИ, М2' не найдена
+2025-08-05 17:12:43,082 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ЖЕЛЕЗОБЕТОННЫХ ФУНДАМЕНТОВ, М3' не найдена
+2025-08-05 17:12:43,084 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО БЕТОННЫХ ФУНДАМЕНТОВ ОБЩЕГО НАЗНАЧЕНИЯ ОБЪЕМОМ ДО 1 М3, М3' не найдена
+2025-08-05 17:12:43,086 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ВЯЗКА АРМАТУРНЫХ СТЕРЖНЕЙ ПОД ФУНДАМЕНТЫ, ПОЛЫ И ОТМОСТКИ, ТН' не найдена
+2025-08-05 17:12:43,087 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ВЯЗКА АРМАТУРНЫХ СТЕРЖНЕЙ ПОД КОЛОННЫ, СТЕНЫ, БАЛКИ, РИГЕЛИ, ПЕРЕКРЫТИЯ, ТН' не найдена
+2025-08-05 17:12:43,088 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ИЗГОТОВЛЕНИЕ АРМАТУРНЫХ СТЕРЖНЕЙ, ТН' не найдена
+2025-08-05 17:12:43,091 - services.import_service - WARNING - Дисциплина '6' для вида работ 'МОНТАЖ АНКЕРНЫХ БОЛТОВ, ТН' не найдена
+2025-08-05 17:12:43,091 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТАНОВКА ЗАКЛАДНЫХ ДЕТАЛЕЙ ДО 4 КГ, ТН' не найдена
+2025-08-05 17:12:43,093 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТАНОВКА ЗАКЛАДНЫХ ДЕТАЛЕЙ СВЫШЕ 4 КГ, ТН' не найдена
+2025-08-05 17:12:43,095 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ПРИГОТОВЛЕНИЕ ТЯЖЕЛОГО БЕТОНА, М3' не найдена
+2025-08-05 17:12:43,096 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ИЗГОТОВЛЕНИЕ МЕЛКИХ МЕТАЛЛОКОНСТРУКЦИЙ НА СТРОЙПЛОЩАДКЕ, ТН' не найдена
+2025-08-05 17:12:43,096 - services.import_service - WARNING - Дисциплина '6' для вида работ 'СВЕРЛЕНИЕ ОТВЕРСТИЙ В ЖЕЛЕЗОБЕТОННЫХ КОНСТРУКЦИЯХ, ШТ' не найдена
+2025-08-05 17:12:43,096 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТАНОВКА АНКЕРНЫХ БОЛТОВ: ХИМИЧЕСКИХ, ШТ' не найдена
+2025-08-05 17:12:43,098 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТАНОВКА И ДЕМОНТАЖ ИНВЕНТАРНЫХ ЛЕСОВ, М2' не найдена
+2025-08-05 17:12:43,100 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ПОЛОВ БЕТОННЫХ ТОЛЩИНОЙ ДО 20 СМ, М3' не найдена
+2025-08-05 17:12:43,101 - services.import_service - WARNING - Дисциплина '6' для вида работ 'АРМИРОВАНИЕ ПОДСТИЛАЮЩИХ СЛОЕВ И НАБЕТОНОК СЕТКОЙ ЗАВОДСКОГО ИЗГОТОВЛЕНИЯ, ТН' не найдена
+2025-08-05 17:12:43,102 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТАНОВКА ЖЕЛЕЗОБЕТОННЫХ ОГРАД ИЗ ПАНЕЛЕЙ : ПО БЕТОННЫМ СТОЛБАМ Ж/Б ПАНЕЛИ ДЛИНОЙ ДО 3 МЕТРОВ, М' не найдена
+2025-08-05 17:12:43,103 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ДЕФОРМАЦИОННЫХ ШВОВ С ПРИМЕНЕНИЕМ ГЕРМЕТИКА, М' не найдена
+2025-08-05 17:12:43,105 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ПРОКЛАДОЧНОЙ ГИДРОИЗОЛЯЦИИ ФУНДАМЕНТОВ РУЛОННЫМИ МАТЕРИАЛАМИ В ОДИН СЛОЙ НАСУХО, М2' не найдена
+2025-08-05 17:12:43,106 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ДЕМОНТАЖ ФУНДАМЕНТОВ ЖЕЛЕЗОБЕТОННЫХ, М3' не найдена
+2025-08-05 17:12:43,109 - services.import_service - WARNING - Дисциплина '6' для вида работ 'СВЕРЛЕНИЕ ОТВЕРСТИЙ В БЕТОННЫХ КОНСТРУКЦИЯХ ПЕРФОРАТОРОМ ГЛУБИНОЙ 200 ММ ДО Ø 80 ММ, ШТ' не найдена
+2025-08-05 17:12:43,110 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ШТРОБЛЕНИЕ БЕТОННЫХ СТЕН, М' не найдена
+2025-08-05 17:12:43,111 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ДОРОГ ИЗ СБОРНЫХ ЖЕЛЕЗОБЕТОННЫХ ПЛИТ, М3' не найдена
+2025-08-05 17:12:43,111 - services.import_service - WARNING - Дисциплина '6' для вида работ 'УСТРОЙСТВО ЖЕЛЕЗОБЕТОННЫХ СБОРНЫХ ЛОТКОВ, М3' не найдена
+2025-08-05 17:12:43,112 - services.import_service - WARNING - Дисциплина '6' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,114 - services.import_service - WARNING - Дисциплина '11' для вида работ 'УПЛОТНЕНИЕ ГРУНТА ЩЕБНЕМ ТОЛЩ. 10 СМ, М2' не найдена
+2025-08-05 17:12:43,116 - services.import_service - WARNING - Дисциплина '11' для вида работ 'УСТРОЙСТВО ПОДСТИЛАЮЩИХ СЛОЕВ ВРУЧНУЮ (ЩЕБЕНОЧНЫХ, ПЕСЧАННЫХ, ГРАВИЙНЫХ), М3' не найдена
+2025-08-05 17:12:43,117 - services.import_service - WARNING - Дисциплина '11' для вида работ 'ПЛАНИРОВКА ПЛОЩАДЕЙ РУЧНЫМ СПОСОБОМ, М2' не найдена
+2025-08-05 17:12:43,118 - services.import_service - WARNING - Дисциплина '11' для вида работ 'УСТРОЙСТВО ПОКРЫТИЙ ЩЕБЕНОЧНЫХ С ПРОПИТКОЙ БИТУМОМ, М3' не найдена
+2025-08-05 17:12:43,119 - services.import_service - WARNING - Дисциплина '11' для вида работ 'ПОСЕВ ГАЗОНОВ ВРУЧНУЮ С ПОДГОТОВКОЙ ПОЧВЫ, М2' не найдена
+2025-08-05 17:12:43,119 - services.import_service - WARNING - Дисциплина '11' для вида работ 'ПОСАДКА ДЕРЕВЬЕВ С ПОДГОТОВКОЙ ПОСАДОЧНЫХ МЕСТ, ШТ' не найдена
+2025-08-05 17:12:43,121 - services.import_service - WARNING - Дисциплина '11' для вида работ 'ОБРАТНАЯ ЗАСЫПКА С УПЛОТНЕНИЕМ ВРУЧНУЮ, М3' не найдена
+2025-08-05 17:12:43,122 - services.import_service - WARNING - Дисциплина '11' для вида работ 'ДОРАБОТКА ГРУНТА ВРУЧНУЮ, М3' не найдена
+2025-08-05 17:12:43,123 - services.import_service - WARNING - Дисциплина '11' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,124 - services.import_service - WARNING - Дисциплина '7' для вида работ 'МОНТАЖ ИМПУЛЬСНОЙ ТРУБКИ, М' не найдена
+2025-08-05 17:12:43,125 - services.import_service - WARNING - Дисциплина '7' для вида работ 'МОНТАЖ МЕТАЛЛИЧЕСКИХ ШТАМПОВАННЫХ ЛОТКОВ, ТН' не найдена
+2025-08-05 17:12:43,126 - services.import_service - WARNING - Дисциплина '7' для вида работ 'ПРОКЛАДКА КАБЕЛЯ ПО ЛОТКАМ, М' не найдена
+2025-08-05 17:12:43,127 - services.import_service - WARNING - Дисциплина '7' для вида работ 'ПРОКЛАДКА КАБЕЛЯ ПО ТРАНШЕЕ, М' не найдена
+2025-08-05 17:12:43,128 - services.import_service - WARNING - Дисциплина '7' для вида работ 'МОНТАЖ ПРИБОРОВ, ШТ' не найдена
+2025-08-05 17:12:43,129 - services.import_service - WARNING - Дисциплина '7' для вида работ 'ПРОКЛАДКА КАБЕЛЯ В БЛОКАХ И КОРОБАХ, М' не найдена
+2025-08-05 17:12:43,130 - services.import_service - WARNING - Дисциплина '7' для вида работ 'ЗАДЕЛКА ДЛЯ КАБЕЛЯ, ШТ' не найдена
+2025-08-05 17:12:43,131 - services.import_service - WARNING - Дисциплина '7' для вида работ 'ПРИСОЕДИНЕНИЕ, ЖИЛА' не найдена
+2025-08-05 17:12:43,132 - services.import_service - WARNING - Дисциплина '7' для вида работ 'МОНТАЖ КОРОБКИ, ШТ' не найдена
+2025-08-05 17:12:43,133 - services.import_service - WARNING - Дисциплина '7' для вида работ 'МОНТАЖ ЩИТА, ШТ' не найдена
+2025-08-05 17:12:43,134 - services.import_service - WARNING - Дисциплина '7' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,136 - services.import_service - WARNING - Дисциплина '8' для вида работ 'МОНТАЖ ЛЕСТНИЦ, ПЛОЩАДОК, СТОЕК И ДР. МАЛОТОННАЖНЫХ КОНСТРУКЦИЙ НА СВАРКЕ, ТН' не найдена
+2025-08-05 17:12:43,136 - services.import_service - WARNING - Дисциплина '8' для вида работ 'МОНТАЖ МЕТАЛЛОКОНСТРУКЦИЙ, ТН' не найдена
+2025-08-05 17:12:43,137 - services.import_service - WARNING - Дисциплина '8' для вида работ 'ИЗГОТОВЛЕНИЕ МЕТАЛЛОКОНСТРУКЦИЙ, ТН' не найдена
+2025-08-05 17:12:43,138 - services.import_service - WARNING - Дисциплина '8' для вида работ 'ИЗГОТОВЛЕНИЕ МЕЛКИХ МЕТАЛЛОКОНСТРУКЦИЙ НА СТРОЙПЛОЩАДКЕ, ТН' не найдена
+2025-08-05 17:12:43,139 - services.import_service - WARNING - Дисциплина '8' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,139 - services.import_service - WARNING - Дисциплина '5' для вида работ 'МОНТАЖ ВНУТРЕННИХ СПЕЦИАЛИЗИРОВАННЫХ КОНСТРУКЦИЙ ОБОРУДОВАНИЯ, ТН' не найдена
+2025-08-05 17:12:43,140 - services.import_service - WARNING - Дисциплина '5' для вида работ 'ФУТЕРОВКА СТЕН ТЕПЛОВЫХ АГРЕГАТОВ ПЛИТНЫМИ МАТЕРИАЛАМИ, М2' не найдена
+2025-08-05 17:12:43,141 - services.import_service - WARNING - Дисциплина '5' для вида работ 'УСТРОЙСТВО БЕТОННОЙ ПОДЛИВКИ (УММР), М3' не найдена
+2025-08-05 17:12:43,142 - services.import_service - WARNING - Дисциплина '5' для вида работ 'МОНТАЖ АГРЕГАТОВ НАСОСНЫХ ЦЕНТРОБЕЖНЫХ, ШТ' не найдена
+2025-08-05 17:12:43,143 - services.import_service - WARNING - Дисциплина '5' для вида работ 'КОНВЕЙЕР ЛЕНТОЧНЫЙ СТАЦИОНАРНЫЙ, ТН' не найдена
+2025-08-05 17:12:43,144 - services.import_service - WARNING - Дисциплина '5' для вида работ 'ФЛОТАЦИОННАЯ МАШИНА: МОНТАЖ, ТН' не найдена
+2025-08-05 17:12:43,145 - services.import_service - WARNING - Дисциплина '5' для вида работ 'МОНТАЖ СТЕНКИ РЕЗЕРВУАРА (РУЛОННЫХ ЗАГОТОВОК), ТН' не найдена
+2025-08-05 17:12:43,145 - services.import_service - WARNING - Дисциплина '5' для вида работ 'МОНТАЖ ДНИЩА ИЗ РУЛОННЫХ ЗАГОТОВОК ДЛЯ РЕЗЕРВУАРОВ, ТН' не найдена
+2025-08-05 17:12:43,146 - services.import_service - WARNING - Дисциплина '5' для вида работ 'МОНТАЖ КРОВЛИ ИЗ РУЛОННЫХ ЗАГОТОВОК ДЛЯ РЕЗЕРВУАРОВ, ТН' не найдена
+2025-08-05 17:12:43,147 - services.import_service - WARNING - Дисциплина '5' для вида работ 'МЕЛЬНИЦА ШАРОВАЯ МОКРОГО ПОМОЛА: БАРАБАН ДИАМЕТРОМ СВЫШЕ 7000 ММ, ДЛИНА СВЫШЕ 13000 ММ, ТН' не найдена
+2025-08-05 17:12:43,147 - services.import_service - WARNING - Дисциплина '5' для вида работ 'ДРОБИЛКА КОНУСНАЯ ДЛЯ КРУПНОГО ДРОБЛЕНИЯ, ШИРИНА ЗАГРУЗОЧНОГО/РАЗГРУЗОЧНОГО ОТВЕРСТИЯ ММ 1500/200, ТН' не найдена
+2025-08-05 17:12:43,148 - services.import_service - WARNING - Дисциплина '5' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,149 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТАНОВКА ДВЕРНЫХ И ОКОННЫХ БЛОКОВ В СТЕНАХ, М2' не найдена
+2025-08-05 17:12:43,150 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ШТУКАТУРКА СТЕН, М2' не найдена
+2025-08-05 17:12:43,150 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ШТУКАТУРКА ПОТОЛКОВ, М2' не найдена
+2025-08-05 17:12:43,151 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ШТУКАТУРКА ОТКОСОВ, М' не найдена
+2025-08-05 17:12:43,151 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ШПАТЛЕВКА БЕТОННЫХ ПОВЕРХНОСТЕЙ СТЕН, КОЛОНН, М2' не найдена
+2025-08-05 17:12:43,152 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ШПАТЛЕВКА РИГЕЛЕЙ И ПОТОЛКОВ, М2' не найдена
+2025-08-05 17:12:43,153 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОКРАСКА ВОДОЭМУЛЬСИОННЫМИ СОСТАВАМИ ПО ШТУКАТУРКЕ СТЕН ВЫСОКОКАЧЕСТВЕННАЯ, М2' не найдена
+2025-08-05 17:12:43,153 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОКРАСКА ВОДОЭМУЛЬСИОННЫМИ СОСТАВАМИ РИГЕЛЕЙ, ПОТОЛКОВ, М2' не найдена
+2025-08-05 17:12:43,154 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОБЛИЦОВКА СТЕН КЕРАМИЧЕСКОЙ ПЛИТКОЙ, М2' не найдена
+2025-08-05 17:12:43,154 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОКЛЕЙКА СТЕН МОЮЩИМИСЯ ОБОЯМИ, М2' не найдена
+2025-08-05 17:12:43,155 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОКРАСКА ПОВЕРХНОСТЕЙ СТЕН МАСЛЯННЫМИ СОСТАВАМИ ЗА ДВА РАЗА, М2' не найдена
+2025-08-05 17:12:43,155 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОКРАСКА ПОВЕРХНОСТЕЙ ПОТОЛКОВ МАСЛЯННЫМИ СОСТАВАМИ ЗА ДВА РАЗА, М2' не найдена
+2025-08-05 17:12:43,156 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОТДЕЛКА СТЕН ДЕКОРАТИВНЫМ ПОКРЫТИЕМ "ТРАВЕРТИН" С НАНЕСЕНИЕМ РИСУНКА И ПОЛИРОВКОЙ ПОВЕРХНОСТИ РУЧНЫМ СПОСОБОМ, М2' не найдена
+2025-08-05 17:12:43,157 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПЕРЕГОРОДОК С ОДИНАРНЫМ МЕТАЛЛИЧЕСКИМ КАРКАСОМ И ДВУХСЛОЙНОЙ ОБШИВКОЙ ГИПСОКАРТОННЫМИ ПЛИТАМИ С ОБЕИХ СТОРОН С УТЕПЛЕНИЕМ, М2' не найдена
+2025-08-05 17:12:43,158 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОБЛИЦОВКА СТЕН ГИПСОКАРТОННЫМИ ЛИСТАМИ В ОДИН СЛОЙ С УТЕПЛЕНИЕМ, М2' не найдена
+2025-08-05 17:12:43,159 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОДВЕСНОГО ПОТОЛКА ГИПСОКАРТОННЫМИ ПЛИТАМИ ПО МЕТАЛЛИЧЕСКИМ НЕСУЩИМ КОНСТРУКЦИЯМ, М2' не найдена
+2025-08-05 17:12:43,159 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОДВЕСНЫХ ПОТОЛКОВ ТИПА "АРМСТРОНГ", М2' не найдена
+2025-08-05 17:12:43,159 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОБЛИЦОВКА ФАСАДА ПАНЕЛЯМИ "АЛЮПАН" ИЛИ "АЛЮКОБОНД" С УСТРОЙСТВОМ КАРКАСА, М2' не найдена
+2025-08-05 17:12:43,161 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОКРЫТИЙ ПОЛОВ ИЗ КЕРАМИЧЕСКИХ ПЛИТОК, М2' не найдена
+2025-08-05 17:12:43,162 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОКРЫТИЙ ПОЛОВ ИЗ ЛИНОЛЕУМА И КОВРОЛИНА С ПЛИНТУСОМ, М2' не найдена
+2025-08-05 17:12:43,163 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО СТЯЖЕК ТОЛЩИНОЙ ДО 10 СМ, М2' не найдена
+2025-08-05 17:12:43,164 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОКРЫТИЙ ПОЛОВ ИЗ ЛАМИНАТА, М2' не найдена
+2025-08-05 17:12:43,164 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО НАЛИВНЫХ ПОЛОВ, М2' не найдена
+2025-08-05 17:12:43,165 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОКРЫТИЙ ИЗ МОЗАИЧНОЙ ПЛИТКИ ТОЛЩ. 25ММ, М2' не найдена
+2025-08-05 17:12:43,166 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ФАЛЬШПОЛА ТОЛЩ. 75 ММ, М2' не найдена
+2025-08-05 17:12:43,166 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО СТЯЖКИ КРОВЛИ ТОЛЩ. 20 ММ, М2' не найдена
+2025-08-05 17:12:43,167 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО КРОВЕЛЬ СКАТНЫХ ИЗ НАПЛАВЛЯЕМЫХ МАТЕРИАЛОВ В ТРИ СЛОЯ, М2' не найдена
+2025-08-05 17:12:43,167 - services.import_service - WARNING - Дисциплина '9' для вида работ 'КЛАДКА АРМИРОВАННЫХ СТЕН ИЗ КИРПИЧА, М3' не найдена
+2025-08-05 17:12:43,168 - services.import_service - WARNING - Дисциплина '9' для вида работ 'КЛАДКА ПЕРЕГОРОДОК ИЗ КИРПИЧА АРМИРОВАННЫХ ТОЛЩИНОЙ В 1/2 КИРПИЧА, М2' не найдена
+2025-08-05 17:12:43,168 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ДЕРЕВЯННЫХ КАРКАСОВ КРОВЛИ, М3' не найдена
+2025-08-05 17:12:43,169 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ГИДРОИЗОЛЯЦИЯ ОКЛЕЕЧНАЯ В ДВА СЛОЯ, М2' не найдена
+2025-08-05 17:12:43,170 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ГИДРОИЗОЛЯЦИЯ ОБМАЗОЧНАЯ БИТУМНАЯ В ДВА СЛОЯ, М2' не найдена
+2025-08-05 17:12:43,170 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ПРИГОТОВЛЕНИЕ ТЯЖЕЛЫХ ОТДЕЛОЧНЫХ РАСТВОРОВ, М3' не найдена
+2025-08-05 17:12:43,171 - services.import_service - WARNING - Дисциплина '9' для вида работ 'МОНТАЖ ПОКРЫТИЯ ИЗ ПРОФЛИСТА: КРОВЕЛЬНОГО, М2' не найдена
+2025-08-05 17:12:43,172 - services.import_service - WARNING - Дисциплина '9' для вида работ 'МОНТАЖ ПОКРЫТИЯ ИЗ ПРОФЛИСТА: СТЕНОВОГО, М2' не найдена
+2025-08-05 17:12:43,172 - services.import_service - WARNING - Дисциплина '9' для вида работ 'МОНТАЖ МЕТАЛЛИЧЕСКИХ ВОРОТ И ДВЕРЕЙ, М2' не найдена
+2025-08-05 17:12:43,173 - services.import_service - WARNING - Дисциплина '9' для вида работ 'МОНТАЖ КОЛЮЧЕЙ ПРОВОЛОКИ, М' не найдена
+2025-08-05 17:12:43,173 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ОГРАЖДЕНИЙ: ИЗ МЕТАЛЛИЧЕСКИХ ПАНЕЛЕЙ ПО Ж/Б СТОЛБАМ, М' не найдена
+2025-08-05 17:12:43,173 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ОГРАЖДЕНИЙ: ИЗ МЕТАЛЛИЧЕСКИХ ПАНЕЛЕЙ ПО МЕТАЛЛИЧЕСКИМ СТОЛБАМ, М' не найдена
+2025-08-05 17:12:43,174 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ОГРАЖДЕНИЙ: УСТАНОВКА ВОРОТ СЕТЧАТЫХ, ШТ' не найдена
+2025-08-05 17:12:43,174 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ОГРАЖДЕНИЙ: УСТАНОВКА КАЛИТОК СЕТЧАТЫХ, ШТ' не найдена
+2025-08-05 17:12:43,175 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ИЗГОТОВЛЕНИЕ ПОЛОТЕН (ВОРОТ, КАЛИТОК) ОГРАЖДЕНИЙ, ТН' не найдена
+2025-08-05 17:12:43,175 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО СЭНДВИЧ-ПАНЕЛЕЙ : СТЕНЫ, М2' не найдена
+2025-08-05 17:12:43,176 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО СЭНДВИЧ-ПАНЕЛЕЙ : КРОВЛИ, М2' не найдена
+2025-08-05 17:12:43,176 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО МЕЛКИХ ПОКРЫТИЙ (ПАРАПЕТЫ, СВЕСЫ, ОБДЕЛКИ, ЖЕЛОБЫ), М2' не найдена
+2025-08-05 17:12:43,178 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОБЛИЦОВКА СТЕН ДЕКОРАТИВНЫМИ ПЛАСТИКОВЫМИ И МДФ ПАНЕЛЯМИ С УСТРОЙСТВОМ С КАРКАСА БЕЗ ОТНОСА ОТ СТЕНЫ, М2' не найдена
+2025-08-05 17:12:43,179 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОБЛИЦОВКА ПОТОЛКА ДЕКОРАТИВНЫМИ ПЛАСТИКОВЫМИ И МДФ ПАНЕЛЯМИ С УСТРОЙСТВОМ КАРКАСА БЕЗ ОТНОСА ОТ ПОТОЛКА, М2' не найдена
+2025-08-05 17:12:43,179 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОДВЕСНЫХ ПОТОЛКОВ: РЕЕЧНЫХ АЛЮМИНИЕВЫХ И КАССЕТНЫХ, М2' не найдена
+2025-08-05 17:12:43,180 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОБЛИЦОВКА ФАСАДОВ КЕРАМОГРАНИТНЫМИ ПЛИТАМИ НА ЦЕМЕНТНОМ РАСТВОРЕ С ЗАТИРКОЙ ШВОВ, М2' не найдена
+2025-08-05 17:12:43,180 - services.import_service - WARNING - Дисциплина '9' для вида работ 'НАРУЖНАЯ ОБЛИЦОВКА ФАСАДОВ САЙДИНГОМ (КЕРАМОСАЙДИНГ, САЙДИНГ ИЗ ДРЕВЕСИНЫ), М2' не найдена
+2025-08-05 17:12:43,180 - services.import_service - WARNING - Дисциплина '9' для вида работ 'НАВЕСКА ВОДОСТОЧНЫХ ТРУБ, М' не найдена
+2025-08-05 17:12:43,181 - services.import_service - WARNING - Дисциплина '9' для вида работ 'КЛАДКА СТЕН И ПЕРЕГОРОДОК ИЗ ЛЕГКОБЕТОННЫХ КАМНЕЙ, ГАЗОБЛОКОВ БЕЗ ОБЛИЦОВКИ), М3' не найдена
+2025-08-05 17:12:43,181 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ДЕФОРМАЦИОННЫХ ШВОВ С ПРИМЕНЕНИЕМ РЕЗИНОВЫХ ПРОКЛАДОК, ЦЕМЕНТНЫХ РАСТВОРОВ, М' не найдена
+2025-08-05 17:12:43,181 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПОКРЫТИЙ ПОЛОВ ИЗ ДОСОК ПАРКЕТНЫХ (ДОЩАТЫХ, ИЗ БРУСКОВ), М2' не найдена
+2025-08-05 17:12:43,183 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТАНОВКА ПОТОЛОЧНЫХ ПЛИНТУСОВ, М' не найдена
+2025-08-05 17:12:43,183 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО КАРКАСОВ ЗДАНИЙ ИЗ ТОНКОЛИСТОВОЙ СТАЛИ (ЛСТК) НА БОЛТОВЫХ СОЕДИНЕНИЯХ, ТН' не найдена
+2025-08-05 17:12:43,183 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО НАРУЖНОЙ ТЕПЛОИЗОЛЯЦИИ ЗДАНИЙ С ТОНКОЙ ШТУКАТУРКОЙ ПО УТЕПЛИТЕЛЮ ТОЛЩИНОЙ ПЛИТ ДО: 100 ММ, М2' не найдена
+2025-08-05 17:12:43,188 - services.import_service - WARNING - Дисциплина '9' для вида работ 'МОНТАЖ ПЕРЕГОРОДОК ИЗ АЛЮМИНИЕВЫХ СПЛАВОВ СБОРНО-РАЗБОРНЫХ С ОСТЕКЛЕНИЕМ, М2' не найдена
+2025-08-05 17:12:43,188 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПЕРЕГОРОДОК ИЗ МДФ-ПАНЕЛЕЙ, АЛЮМИНИЯ, ПВХ ПРОФИЛЕЙ, М2' не найдена
+2025-08-05 17:12:43,188 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ОКРАСКА ПОВЕРХНОСТЕЙ МЕТАЛЛИЧЕСКИХ ВРУЧНУЮ, ВКЛЮЧАЯ ПОДГОТОВКУ ПОВЕРХНОСТИ, М2' не найдена
+2025-08-05 17:12:43,189 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ПЛИНТУСОВ ПВХ НА ВИНТАХ САМОНАРЕЗАЮЩИХ, М' не найдена
+2025-08-05 17:12:43,189 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТАНОВКА ПОДОКОННЫХ ДОСОК ИЗ ПВХ, М' не найдена
+2025-08-05 17:12:43,190 - services.import_service - WARNING - Дисциплина '9' для вида работ 'УСТРОЙСТВО ДЕКОРАТИВНОГО ПОКРЫТИЯ ТИПА "OTTOCENTO", М2' не найдена
+2025-08-05 17:12:43,190 - services.import_service - WARNING - Дисциплина '9' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,191 - services.import_service - WARNING - Дисциплина '10' для вида работ 'МОНТАЖ ОПОР ДЛЯ ТРУБОПРОВОДА, ШТ' не найдена
+2025-08-05 17:12:43,192 - services.import_service - WARNING - Дисциплина '10' для вида работ 'СВАРКА СТЫКОВ ТЕХНОЛОГИЧЕСКИХ ТРУБОПРОВОДОВ, Di' не найдена
+2025-08-05 17:12:43,192 - services.import_service - WARNING - Дисциплина '10' для вида работ 'МОНТАЖ ЗРА, ШТ' не найдена
+2025-08-05 17:12:43,192 - services.import_service - WARNING - Дисциплина '10' для вида работ 'ГИДРАВЛИЧЕСКОЕ ИСПЫТАНИЕ ТРУБОПРОВОДОВ, М' не найдена
+2025-08-05 17:12:43,193 - services.import_service - WARNING - Дисциплина '10' для вида работ 'МОНТАЖ ПАРАФЛАНЦЕВОГО СОЕДИНЕНИЯ, ШТ' не найдена
+2025-08-05 17:12:43,193 - services.import_service - WARNING - Дисциплина '10' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,194 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ЗАСЫПКА ВРУЧНУЮ ТРАНШЕЙ, М3' не найдена
+2025-08-05 17:12:43,194 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ДОРАБОТКА ГРУНТА ВРУЧНУЮ В ТРАНШЕЕ, М3' не найдена
+2025-08-05 17:12:43,195 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ПРОКЛАДКА ТРУБЫ ПНД, М' не найдена
+2025-08-05 17:12:43,195 - services.import_service - WARNING - Дисциплина '12' для вида работ 'СВЕРЛЕНИЕ В БЕТОННЫХ КОНСТРУКЦИЯХ ПЕРФОРАТОРОМ (ГЛУБИННОЕ), ШТ' не найдена
+2025-08-05 17:12:43,196 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ШТРОБЛЕНИЕ БЕТОННЫХ СТЕН, ПОЛОВ И ПОТОЛКОВ, М' не найдена
+2025-08-05 17:12:43,196 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ИЗГОТОВЛЕНИЕ МЕЛКИХ МЕТАЛЛОКОНСТРУКЦИЙ НА СТРОЙПЛОЩАДКЕ, ТН' не найдена
+2025-08-05 17:12:43,197 - services.import_service - WARNING - Дисциплина '12' для вида работ 'МОНТАЖ ЛОТКОВ, М' не найдена
+2025-08-05 17:12:43,198 - services.import_service - WARNING - Дисциплина '12' для вида работ 'УСТАНОВКА СТОЙКИ, ШТ' не найдена
+2025-08-05 17:12:43,198 - services.import_service - WARNING - Дисциплина '12' для вида работ 'УСТАНОВКА ПАНЕЛЕЙ, ШТ' не найдена
+2025-08-05 17:12:43,198 - services.import_service - WARNING - Дисциплина '12' для вида работ 'УКЛАДКА МЕТАЛЛОРУКАВА, М' не найдена
+2025-08-05 17:12:43,199 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ПРОКЛАДКА ТРУБЫ ГОФРИРОВАННОЙ ПВХ ДЛЯ ЗАЩИТЫ ПРОВОДОВ И КАБЕЛЕЙ, М' не найдена
+2025-08-05 17:12:43,199 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ПРОКЛАДКА КАБЕЛЯ, М' не найдена
+2025-08-05 17:12:43,200 - services.import_service - WARNING - Дисциплина '12' для вида работ 'УКЛАДКА КАБЕЛЯ, М' не найдена
+2025-08-05 17:12:43,200 - services.import_service - WARNING - Дисциплина '12' для вида работ 'МОНТАЖ ПОЛОСЫ ЗАЗЕМЛЕНИЯ, М' не найдена
+2025-08-05 17:12:43,201 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ПОДКЛЮЧЕНИЕ ИМПУЛЬСНОЙ ТРУБКИ, ШТ' не найдена
+2025-08-05 17:12:43,201 - services.import_service - WARNING - Дисциплина '12' для вида работ 'СПЕТАНИЕ ИМПУЛЬСНОЙ ТРУБКИ, М' не найдена
+2025-08-05 17:12:43,202 - services.import_service - WARNING - Дисциплина '12' для вида работ 'МОНТАЖ ИМПУЛЬСНОЙ ТРУБКИ, М' не найдена
+2025-08-05 17:12:43,202 - services.import_service - WARNING - Дисциплина '12' для вида работ 'УСТАНОВКА ПРИБОРОВ, ШТ' не найдена
+2025-08-05 17:12:43,203 - services.import_service - WARNING - Дисциплина '12' для вида работ 'МОНТАЖ 1 КАБЕЛЬНОЙ МУФТЫ КИП, ШТ' не найдена
+2025-08-05 17:12:43,203 - services.import_service - WARNING - Дисциплина '12' для вида работ 'МОНТАЖ 1 М ЗАЗЕМЛЯЮЩЕГО ПРОВОДНИКА ДЛЯ КИП, М' не найдена
+2025-08-05 17:12:43,204 - services.import_service - WARNING - Дисциплина '12' для вида работ 'РАЗДЕЛКА КОНЦОВ КАБЕЛЕЙ, ШТ' не найдена
+2025-08-05 17:12:43,204 - services.import_service - WARNING - Дисциплина '12' для вида работ 'РАСКЛЮЧЕНИЕ КАБЕЛЯ, ШТ' не найдена
+2025-08-05 17:12:43,205 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ПРОВЕРКА СОСТОЯНИЯ ИЗОЛЯЦИИ КАБЕЛЯ ДО И ПОСЛЕ ПРОКЛАДКИ, М' не найдена
+2025-08-05 17:12:43,205 - services.import_service - WARNING - Дисциплина '12' для вида работ 'ПРОЧИЕ РАБОТЫ (УСТРАНЕНИЕ ЗАМЕЧАНИЙ, ОЧИСТКА ТЕРРИТОРИИ, ПОДСОБНИЧЕСТВО И Т.Д.),' не найдена
+2025-08-05 17:12:43,205 - services.import_service - INFO - DEBUG: Видов работ добавлено: 0, пропущено: 165
+2025-08-05 17:12:43,226 - services.import_service - INFO - DEBUG: Транзакция успешно закоммичена
+2025-08-05 17:12:43,227 - services.import_service - INFO - DEBUG: Результат восстановления: {'success': True, 'counters': {'disciplines': 7, 'objects': 50, 'work_types': 0}, 'errors': ['Пропущено 165 видов работ']}
+2025-08-05 17:12:43,411 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 17:12:43,664 - bot.handlers.export - INFO - Временный файл удален: temp_files\restore_353175654.xlsx
+2025-08-05 17:12:52,018 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:13:02,155 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:13:12,287 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:13:22,438 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:13:32,577 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:13:42,722 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:13:52,865 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:14:03,003 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:14:05,807 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 17:14:05,807 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 17:14:05,809 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 17:14:05,811 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 17:14:06,224 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 17:14:06,226 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 17:14:06,227 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 17:14:06,230 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 17:14:06,230 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 17:14:06,231 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 17:14:06,238 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 17:14:06,238 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 17:14:06,238 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 17:14:06,241 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 17:14:06,241 - __main__ - INFO - 👋 Программа завершена

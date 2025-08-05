@@ -13,6 +13,7 @@ from config.settings import OWNER_ID
 from datetime import date, timedelta
 from telegram.constants import ParseMode
 import os
+import gc
 
 logger = logging.getLogger(__name__)
 
@@ -356,63 +357,82 @@ async def export_all_users_to_excel(update: Update, context: ContextTypes.DEFAUL
 
 @auto_clean
 async def handle_db_restore_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обрабатывает загруженный файл для восстановления БД (адаптировано из старого кода)"""
-    
-    user_id = str(update.effective_user.id)
-    
-    # Проверяем права (только владелец)
-    if user_id != OWNER_ID:
-        await update.message.reply_text("⛔️ Доступ к восстановлению БД имеет только владелец бота.")
-        return
-    
-    # Проверяем тип файла
-    excel_mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    if not update.message.document or update.message.document.mime_type != excel_mime_type:
-        await update.message.reply_text("❌ Пожалуйста, отправьте Excel файл (.xlsx)")
-        return
-    
-    await update.message.reply_text("⏳ Начинаю восстановление БД... Это может занять несколько минут.")
-    
-    try:
-        from services.import_service import ImportService
-        from utils.constants import TEMP_DIR
-        
-        # Скачиваем файл
-        file = await context.bot.get_file(update.message.document.file_id)
-        file_path = os.path.join(TEMP_DIR, f"restore_{user_id}.xlsx")
-        await file.download_to_drive(file_path)
-        
-        # Восстанавливаем БД через сервис
-        result = ImportService.restore_database_from_excel(file_path)
-        
-        if result.get('success', False):
-            restored_tables = result.get('restored_tables', [])
-            restored_count = len(restored_tables)
-            
-            success_text = (
-                f"✅ База данных успешно восстановлена!\n\n"
-                f"Восстановлено таблиц: **{restored_count}**\n"
-                f"Список: {', '.join(restored_tables)}"
-            )
-            
-            await update.message.reply_text(
-                success_text,
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_start")
-                ]]),
-                parse_mode=ParseMode.MARKDOWN
-            )
-        else:
-            error_msg = result.get('error', 'Неизвестная ошибка')
-            await update.message.reply_text(f"❌ Ошибка восстановления: {error_msg}")
-            
-    except Exception as e:
-        logger.error(f"Ошибка восстановления БД: {e}")
-        await update.message.reply_text("❌ Произошла ошибка при восстановлении.")
-    finally:
-        # Удаляем временный файл
-        if 'file_path' in locals() and os.path.exists(file_path):
-            os.remove(file_path)
+   """Обрабатывает загруженный файл для восстановления БД (адаптировано из старого кода)"""
+   
+   user_id = str(update.effective_user.id)
+   
+   # Проверяем права (только владелец)
+   if user_id != OWNER_ID:
+       await update.message.reply_text("⛔️ Доступ к восстановлению БД имеет только владелец бота.")
+       return
+   
+   # Проверяем тип файла
+   excel_mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+   if not update.message.document or update.message.document.mime_type != excel_mime_type:
+       await update.message.reply_text("❌ Пожалуйста, отправьте Excel файл (.xlsx)")
+       return
+   
+   # FIXED: Проверяем что файл ожидается для восстановления БД
+   if not context.user_data.get('awaiting_db_backup'):
+       return  # Игнорируем файл если не ожидаем восстановление
+   
+   # Очищаем флаг ожидания
+   context.user_data.pop('awaiting_db_backup', None)
+   
+   await update.message.reply_text("⏳ Начинаю восстановление БД... Это может занять несколько минут.")
+   
+   try:
+       from services.import_service import ImportService
+       from utils.constants import TEMP_DIR
+       
+       # Скачиваем файл
+       file = await context.bot.get_file(update.message.document.file_id)
+       file_path = os.path.join(TEMP_DIR, f"restore_{user_id}.xlsx")
+       await file.download_to_drive(file_path)
+       
+       # Восстанавливаем БД через сервис
+       result = ImportService.restore_database_from_excel(file_path)
+       
+       if result.get('success', False):
+           restored_tables = result.get('restored_tables', [])
+           restored_count = len(restored_tables)
+           
+           success_text = (
+               f"✅ База данных успешно восстановлена!\n\n"
+               f"Восстановлено таблиц: **{restored_count}**\n"
+               f"Список: {', '.join(restored_tables)}"
+           )
+           
+           await update.message.reply_text(
+               success_text,
+               reply_markup=InlineKeyboardMarkup([[
+                   InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_start")
+               ]]),
+               parse_mode=ParseMode.MARKDOWN
+           )
+       else:
+           error_msg = result.get('error', 'Неизвестная ошибка')
+           await update.message.reply_text(f"❌ Ошибка восстановления: {error_msg}")
+           
+   except Exception as e:
+       logger.error(f"Ошибка восстановления БД: {e}")
+       await update.message.reply_text("❌ Произошла ошибка при восстановлении.")
+
+   finally:
+     # FIXED: Безопасное удаление временного файла для Windows
+     if 'file_path' in locals() and os.path.exists(file_path):
+         try:
+             import gc
+             import time
+             gc.collect()  # Принудительная сборка мусора
+             time.sleep(0.2)  # Задержка для освобождения файла
+             os.remove(file_path)
+             logger.info(f"Временный файл удален: {file_path}")
+         except (PermissionError, OSError):
+             # Windows может держать файл, оставляем его (не критично)
+             logger.warning(f"Временный файл не удален (занят процессом): {file_path}")
+         except Exception as e:
+             logger.error(f"Ошибка удаления временного файла: {e}")
 
 # === ПРОМЕЖУТОЧНЫЕ ОБРАБОТЧИКИ ===
 
