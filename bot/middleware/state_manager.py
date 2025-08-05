@@ -54,12 +54,19 @@ class StateManager:
         """Устанавливает состояние пользователя с данными"""
         user_states = StateManager._ensure_user_states(context)
         
-        user_states[user_id] = {
-            'current_state': state.value,
-            'data': data or {},
-            'updated_at': context.bot_data.get('current_time', 'unknown')
-        }
-        
+        if user_id in user_states:
+            # Сохраняем существующие данные
+            user_states[user_id]['current_state'] = state.value
+            user_states[user_id]['updated_at'] = context.bot_data.get('current_time', 'unknown')
+        if data:
+            user_states[user_id]['data'].update(data)
+        else:
+        # Создаем новую запись
+            user_states[user_id] = {
+                'current_state': state.value,
+                'data': data or {},
+                'updated_at': context.bot_data.get('current_time', 'unknown')
+            }
         logger.debug(f"Set state for user {user_id}: {state.value}")
     
     @staticmethod

@@ -56,7 +56,7 @@ async def handle_approval(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if action == 'approve':
         # --- FIXED: Добавлена проверка на существование пользователя ---
         if table_name:
-            user_exists = db_query(f"SELECT 1 FROM {table_name} WHERE user_id = %s", (user_id,))
+            user_exists = await db_query(f"SELECT 1 FROM {table_name} WHERE user_id = %s", (user_id,))
             if user_exists:
                 admin_text = f"⚠️ **Действие не требуется.**\n\nПользователь уже существует с ролью «{role_text}»."
                 await query.edit_message_text(admin_text, parse_mode=ParseMode.HTML)

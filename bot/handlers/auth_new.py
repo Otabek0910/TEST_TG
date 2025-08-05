@@ -63,7 +63,9 @@ async def select_role(update: Update, context: ContextTypes.DEFAULT_TYPE):
     selected_role = query.data.replace('auth_', '')
     
     # Сохраняем выбранную роль
-    StateManager.update_state_data(context, user_id, {'selected_role': selected_role})
+    current_data = StateManager.get_state_data(context, user_id)
+    current_data['selected_role'] = selected_role
+    StateManager.update_state_data(context, user_id, current_data)
     
     # Переходим к запросу имени
     StateManager.set_state(context, user_id, UserState.GETTING_NAME)
@@ -72,7 +74,9 @@ async def select_role(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text=get_text('auth_prompt_name', lang),
         parse_mode=ParseMode.HTML
     )
-    StateManager.update_state_data(context, user_id, {'last_prompt_id': sent_message.message_id})
+    current_data = StateManager.get_state_data(context, user_id)
+    current_data['last_prompt_id'] = sent_message.message_id
+    StateManager.update_state_data(context, user_id, current_data)
 
 # ============================================================================
 # NAME INPUT
@@ -104,18 +108,21 @@ async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode=ParseMode.HTML
         )
 
-        StateManager.update_state_data(context, user_id, {'last_prompt_id': sent_message.message_id})
+        current_data = StateManager.get_state_data(context, user_id)
+        current_data['last_prompt_id'] = sent_message.message_id
+        StateManager.update_state_data(context, user_id, current_data)
         # НЕ меняем состояние - остаемся в GETTING_NAME
         return
     
     parts = user_input.split(' ', 1)
     
     # Сохраняем имя и фамилию
-    StateManager.update_state_data(context, user_id, {
+    current_data = StateManager.get_state_data(context, user_id)
+    current_data.update({
         'first_name': parts[0],
         'last_name': parts[1]
     })
-    
+    StateManager.update_state_data(context, user_id, current_data)
     # Переходим к запросу контакта
     StateManager.set_state(context, user_id, UserState.GETTING_CONTACT)
     
@@ -130,7 +137,9 @@ async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=reply_markup,
         parse_mode=ParseMode.HTML
     )
-    StateManager.update_state_data(context, user_id, {'last_prompt_id': sent_message.message_id})
+    current_data = StateManager.get_state_data(context, user_id)
+    current_data['last_prompt_id'] = sent_message.message_id
+    StateManager.update_state_data(context, user_id, current_data)
 
 # ============================================================================
 # CONTACT INPUT
@@ -171,9 +180,11 @@ async def get_contact(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Сохраняем номер телефона в состоянии
     if update.message.contact:
-        StateManager.update_state_data(context, user_id, {
-            'phone_number': update.message.contact.phone_number
-        })
+        current_data = StateManager.get_state_data(context, user_id)
+        current_data['phone_number'] = update.message.contact.phone_number
+        StateManager.update_state_data(context, user_id, current_data)
+
+    logger.info(f"DEBUG >>> Сохранен телефон: {update.message.contact.phone_number}")
 
     # Получаем роль и решаем, что делать дальше
     current_state_data = StateManager.get_state_data(context, user_id)
@@ -216,7 +227,9 @@ async def handle_manager_level(update: Update, context: ContextTypes.DEFAULT_TYP
     user_id = str(query.from_user.id)
     level = int(query.data.replace('level_', ''))
     
-    StateManager.update_state_data(context, user_id, {'manager_level': level})
+    current_data = StateManager.get_state_data(context, user_id)
+    current_data['manager_level'] = level
+    StateManager.update_state_data(context, user_id, current_data)
     
     if level == 1:
         # Уровень 1 - сразу финализируем
@@ -284,7 +297,9 @@ async def handle_discipline(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = str(query.from_user.id)
     discipline_id = query.data.replace('disc_', '')
     
-    StateManager.update_state_data(context, user_id, {'discipline_id': discipline_id})
+    current_data = StateManager.get_state_data(context, user_id)
+    current_data['discipline_id'] = discipline_id
+    StateManager.update_state_data(context, user_id, current_data)
     
     await finalize_registration(update, context)
 
@@ -292,7 +307,6 @@ async def handle_discipline(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # FINALIZATION
 # ============================================================================
 
-@StateDecorator.clear_state_after
 async def finalize_registration(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Финализация регистрации с очисткой состояния"""
     user_id = str(update.effective_user.id)
@@ -300,9 +314,12 @@ async def finalize_registration(update: Update, context: ContextTypes.DEFAULT_TY
     
     # Получаем все данные
     user_data = StateManager.get_state_data(context, user_id)
-    
+    logger.info(f"DEBUG >>> StateManager data: {user_data}")
+
     # Отправляем заявку админам
     success = await AdminService.send_approval_request(context, user_data, user_id)
+
+    StateManager.clear_state(context, user_id)
     
     if success:
         text = get_text('auth_pending_approval', lang)

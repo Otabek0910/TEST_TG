@@ -29,7 +29,15 @@ class AdminService:
     ) -> bool:
         """Отправка запроса на одобрение админам"""
         try:
+
+            logger.info(f"DEBUG >>> ПОЛУЧИЛИ user_data: {user_data}")
+            logger.info(f"DEBUG >>> СОХРАНЯЕМ в context.bot_data[{user_id}]")
             context.bot_data[user_id] = user_data
+            logger.info(f"DEBUG >>> ПРОВЕРЯЕМ что сохранили: {context.bot_data.get(user_id)}")
+            test_data = context.bot_data.get(user_id)
+            logger.info(f"DEBUG >>> ИЗВЛЕКЛИ обратно: {test_data}")
+            logger.info(f"DEBUG >>> selected_role из извлеченных: {test_data.get('selected_role') if test_data else 'NO DATA'}")
+
             
             # # FIXED: Добавлены новые роли для корректного отображения
             role_map = {
