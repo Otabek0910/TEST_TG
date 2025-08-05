@@ -1,106 +1,63 @@
-#!/usr/bin/env python3
+# main.py
+
 """
-Точка входа Telegram бота для управления строительными отчетами
-ИСПРАВЛЕНО для PTB v20 с правильной обработкой сигналов
+Главный модуль запуска Telegram бота - ИСПРАВЛЕННАЯ ВЕРСИЯ
 """
 
-import logging
 import sys
 import asyncio
+import logging
 import signal
+from pathlib import Path
+
+# Добавляем текущую директорию в Python path
+current_dir = Path(__file__).parent
+sys.path.insert(0, str(current_dir))
 
 # Настройка логирования
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("bot.log", encoding='utf-8'),
+        logging.FileHandler('bot.log', encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
+
 logger = logging.getLogger(__name__)
 
-# Глобальная переменная для graceful shutdown
-shutdown_event = None
-
-def signal_handler():
-    """Обработчик сигналов для graceful shutdown"""
-    logger.info("🛑 Получен сигнал остановки, завершаем работу...")
-    if shutdown_event:
-        shutdown_event.set()
-
 async def main():
-    """Главная функция запуска приложения"""
-    global shutdown_event
-    shutdown_event = asyncio.Event()
+    """Главная асинхронная функция"""
+    logger.info("✅ Конфигурация загружена успешно")
     
     try:
-        # Проверяем настройки
-        from config.settings import TOKEN
-        logger.info("✅ Конфигурация загружена успешно")
-
-        # Инициализируем БД
+        # Инициализация БД и миграции
         from database.migrations import run_all_migrations
-        if not await run_all_migrations():
-            logger.critical("❌ Ошибка инициализации БД")
-            sys.exit(1)
-
-        # Настраиваем обработку сигналов для graceful shutdown
-        if sys.platform != "win32":
-            # Unix/Linux системы
-            for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGABRT):
-                try:
-                    asyncio.get_running_loop().add_signal_handler(sig, signal_handler)
-                except NotImplementedError:
-                    # Некоторые event loop не поддерживают signal handlers
-                    logger.warning(f"⚠️ Signal handler для {sig} не поддерживается")
-        else:
-            # Windows - используем альтернативный подход
-            logger.info("🪟 Windows система - используем KeyboardInterrupt для остановки")
-
-        # Импортируем и запускаем бота
+        await run_all_migrations()
+        
+        # Запуск бота
         from bot.app import run_bot
         logger.info("🚀 Запуск бота...")
+        await run_bot()
         
-        # Запускаем бот с graceful shutdown
-        bot_task = asyncio.create_task(run_bot())
-        
-        # Ждем либо завершения бота, либо сигнала остановки
-        try:
-            await bot_task
-        except asyncio.CancelledError:
-            logger.info("🔄 Задача бота была отменена")
-        except Exception as e:
-            logger.error(f"❌ Ошибка в работе бота: {e}")
-            
-    except (ValueError, ImportError) as e:
-        logger.critical(f"❌ Ошибка конфигурации или импорта: {e}")
-        sys.exit(1)
     except KeyboardInterrupt:
         logger.info("🛑 Получен Ctrl+C, завершаем работу...")
     except Exception as e:
-        logger.critical(f"❌ Критическая ошибка: {e}")
+        logger.error(f"❌ Ошибка в работе бота: {e}")
         raise
-    finally:
-        # Очистка ресурсов
-        logger.info("🧹 Очистка ресурсов...")
-        
-        # Закрываем соединение с БД если оно открыто
-        try:
-            from database.connection import db_manager
-            await db_manager.close()
-            logger.info("✅ Соединение с БД закрыто")
-        except Exception as e:
-            logger.error(f"⚠️ Ошибка при закрытии БД: {e}")
 
 if __name__ == "__main__":
-    try:
-        # Для Windows устанавливаем политику event loop
-        if sys.platform == "win32":
-            # Используем WindowsSelectorEventLoopPolicy для лучшей совместимости
+    # FIXED: Для Windows - правильная политика event loop
+    if sys.platform == "win32":
+        # Устанавливаем правильную политику для Windows
+        try:
+            asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+        except AttributeError:
+            # Fallback для старых версий Python
             asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-        
-        # Запускаем основную функцию
+    
+    try:
+        # FIXED: Простой запуск без дополнительной обработки сигналов
         asyncio.run(main())
         
     except KeyboardInterrupt:

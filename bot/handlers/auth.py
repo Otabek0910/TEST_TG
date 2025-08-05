@@ -1,14 +1,15 @@
+# bot/handlers/auth.py
+
 """
-Handlers для авторизации (простые, без ConversationHandler)
+Handlers для авторизации - ОБНОВЛЕННАЯ ВЕРСИЯ
 """
 
 import logging
 
 logger = logging.getLogger(__name__)
 
-# Убираем старые handlers - теперь авторизация работает через ConversationHandler
-
 def register_auth_handlers(application):
-    """Регистрация handlers авторизации"""
-    # ConversationHandler регистрируется отдельно в app.py
-    logger.info("✅ Auth handlers зарегистрированы (через ConversationHandler)")
+    """Регистрация handlers авторизации - используем auth_new.py"""
+    from .auth_new import register_new_auth_handlers
+    register_new_auth_handlers(application)
+    logger.info("✅ Auth handlers зарегистрированы (через auth_new)")

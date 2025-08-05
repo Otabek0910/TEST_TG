@@ -27,19 +27,26 @@ class AdminService:
         user_data: Dict[str, Any],
         user_id: str
     ) -> bool:
-        """Отправка запроса на одобрение админам"""
+        """Отправка запроса на одобрение админам - ИСПРАВЛЕНО для StateManager"""
         try:
-
+            # FIXED: Детальное логирование для отладки
             logger.info(f"DEBUG >>> ПОЛУЧИЛИ user_data: {user_data}")
-            logger.info(f"DEBUG >>> СОХРАНЯЕМ в context.bot_data[{user_id}]")
-            context.bot_data[user_id] = user_data
-            logger.info(f"DEBUG >>> ПРОВЕРЯЕМ что сохранили: {context.bot_data.get(user_id)}")
-            test_data = context.bot_data.get(user_id)
-            logger.info(f"DEBUG >>> ИЗВЛЕКЛИ обратно: {test_data}")
-            logger.info(f"DEBUG >>> selected_role из извлеченных: {test_data.get('selected_role') if test_data else 'NO DATA'}")
-
+            logger.info(f"DEBUG >>> Ключи в user_data: {list(user_data.keys())}")
             
-            # # FIXED: Добавлены новые роли для корректного отображения
+            # FIXED: Проверяем обязательные поля
+            required_fields = ['selected_role', 'first_name', 'last_name', 'phone_number']
+            missing_fields = [field for field in required_fields if not user_data.get(field)]
+            
+            if missing_fields:
+                logger.error(f"DEBUG >>> ОТСУТСТВУЮТ ОБЯЗАТЕЛЬНЫЕ ПОЛЯ: {missing_fields}")
+                logger.error(f"DEBUG >>> ПОЛНЫЕ ДАННЫЕ: {user_data}")
+                return False
+            
+            # FIXED: Сохраняем данные в правильном месте для обработчика одобрения
+            context.bot_data[user_id] = user_data
+            logger.info(f"DEBUG >>> СОХРАНИЛИ в context.bot_data[{user_id}]: {context.bot_data.get(user_id)}")
+            
+            # FIXED: Добавлены новые роли для корректного отображения
             role_map = {
                 'foreman': 'Бригадир', 'manager': 'Менеджер', 'pto': 'ПТО',
                 'kiok': 'КИОК', 'supervisor': 'Супервайзер', 'master': 'Мастер'
@@ -57,13 +64,17 @@ class AdminService:
             if user_data.get('manager_level'):
                 level_text = f"\n⚙️ Уровень: {user_data['manager_level']}"
             
+            # FIXED: Проверяем наличие телефона и выводим его корректно
+            phone_number = user_data.get('phone_number', 'Не указан')
+            logger.info(f"DEBUG >>> Номер телефона для отправки: {phone_number}")
+            
             request_text = (
                 f"🔐 <b>Запрос на авторизацию</b>\n\n"
                 f"👤 Имя: {user_data.get('first_name', '')} {user_data.get('last_name', '')}\n"
                 f"🆔 ID: <code>{user_id}</code>\n"
                 f"👔 Роль: {role_text}"
                 f"{discipline_text}{level_text}\n"
-                f"📞 Телефон: {user_data.get('phone_number', 'Не указан')}\n\n"
+                f"📞 Телефон: {phone_number}\n\n"
                 f"Одобрить заявку?"
             )
             
@@ -83,6 +94,7 @@ class AdminService:
                         reply_markup=InlineKeyboardMarkup(keyboard),
                         parse_mode=ParseMode.HTML
                     )
+                    logger.info(f"DEBUG >>> Запрос отправлен админу {admin_id}")
                 except Exception as e:
                     logger.error(f"Не удалось отправить запрос админу {admin_id}: {e}")
             
@@ -93,7 +105,7 @@ class AdminService:
     
     @staticmethod
     async def create_user_in_db(user_data: Dict[str, Any], user_id: str) -> bool:
-        """Создание пользователя в соответствующей таблице БД"""
+        """Создание пользователя в соответствующей таблице БД - ИСПРАВЛЕНО под реальную схему"""
         try:
             role = user_data.get('selected_role')
             first_name = user_data.get('first_name', '')
@@ -101,57 +113,86 @@ class AdminService:
             phone = user_data.get('phone_number', '')
             discipline_id = user_data.get('discipline_id')
             
-            # # FIXED: Добавлена логика для supervisor
+            # FIXED: Исправлены запросы под реальную схему БД
             if role == 'supervisor':
                 supervisor_name = f"{first_name} {last_name}"
-                return await db_execute(
+                result = await db_execute(
                     """INSERT INTO supervisors (user_id, supervisor_name, discipline_id, phone_number) 
-                       VALUES (%s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""",
+                       VALUES (%s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET
+                       supervisor_name = EXCLUDED.supervisor_name,
+                       discipline_id = EXCLUDED.discipline_id,
+                       phone_number = EXCLUDED.phone_number""",
                     (user_id, supervisor_name, discipline_id, phone)
                 )
-            # # FIXED: Добавлена логика для master
+                
             elif role == 'master':
                 master_name = f"{first_name} {last_name}"
-                return await db_execute(
+                result = await db_execute(
                     """INSERT INTO masters (user_id, master_name, discipline_id, phone_number) 
-                       VALUES (%s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""",
+                       VALUES (%s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET
+                       master_name = EXCLUDED.master_name,
+                       discipline_id = EXCLUDED.discipline_id,
+                       phone_number = EXCLUDED.phone_number""",
                     (user_id, master_name, discipline_id, phone)
                 )
-            # # FIXED: Исправлена логика для foreman (теперь добавляет в brigades)
+                
             elif role == 'foreman':
                 brigade_name = f"{first_name} {last_name}"
-                return await db_execute(
+                result = await db_execute(
                     """INSERT INTO brigades (user_id, brigade_name, discipline_id, first_name, last_name, phone_number) 
-                       VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""",
+                       VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET
+                       brigade_name = EXCLUDED.brigade_name,
+                       discipline_id = EXCLUDED.discipline_id,
+                       first_name = EXCLUDED.first_name,
+                       last_name = EXCLUDED.last_name,
+                       phone_number = EXCLUDED.phone_number""",
                     (user_id, brigade_name, discipline_id, first_name, last_name, phone)
                 )
+                
             elif role == 'manager':
                 level = user_data.get('manager_level', 2)
-                # Для Уровня 1 discipline_id должен быть NULL
-                manager_discipline = discipline_id if level == 2 else None
-                # Используем 'discipline' для таблицы manager, как мы выяснили ранее
-                return await db_execute(
+                # Для Уровня 1 discipline_id может быть NULL
+                final_discipline_id = discipline_id if level == 2 else None
+                result = await db_execute(
                     """INSERT INTO managers (user_id, level, discipline, first_name, last_name, phone_number) 
-                       VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""",
-                    (user_id, level, manager_discipline, first_name, last_name, phone)
+                       VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET
+                       level = EXCLUDED.level,
+                       discipline = EXCLUDED.discipline,
+                       first_name = EXCLUDED.first_name,
+                       last_name = EXCLUDED.last_name,
+                       phone_number = EXCLUDED.phone_number""",
+                    (user_id, level, final_discipline_id, first_name, last_name, phone)
                 )
-            # # FIXED: Запросы для pto и kiok теперь используют discipline_id
-            elif role == 'pto':
-                return await db_execute(
-                    """INSERT INTO pto (user_id, discipline_id, first_name, last_name, phone_number) 
-                       VALUES (%s, %s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""",
-                    (user_id, discipline_id, first_name, last_name, phone)
-                )
-            elif role == 'kiok':
-                return await db_execute(
-                    """INSERT INTO kiok (user_id, discipline_id, first_name, last_name, phone_number) 
-                       VALUES (%s, %s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""",
-                    (user_id, discipline_id, first_name, last_name, phone)
-                )
-            else:
-                logger.error(f"Неизвестная роль при создании пользователя: {role}")
-                return False
                 
+            elif role == 'pto':
+                result = await db_execute(
+                    """INSERT INTO pto (user_id, discipline_id, first_name, last_name, phone_number) 
+                       VALUES (%s, %s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET
+                       discipline_id = EXCLUDED.discipline_id,
+                       first_name = EXCLUDED.first_name,
+                       last_name = EXCLUDED.last_name,
+                       phone_number = EXCLUDED.phone_number""",
+                    (user_id, discipline_id, first_name, last_name, phone)
+                )
+                
+            elif role == 'kiok':
+                kiok_name = f"{first_name} {last_name}"
+                result = await db_execute(
+                    """INSERT INTO kiok (user_id, kiok_name, discipline_id, phone_number) 
+                       VALUES (%s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET
+                       kiok_name = EXCLUDED.kiok_name,
+                       discipline_id = EXCLUDED.discipline_id,
+                       phone_number = EXCLUDED.phone_number""",
+                    (user_id, kiok_name, discipline_id, phone)
+                )
+                
+            else:
+                logger.error(f"Неизвестная роль: {role}")
+                return False
+            
+            logger.info(f"Пользователь {user_id} создан с ролью {role}, затронуто строк: {result}")
+            return result > 0
+            
         except Exception as e:
-            logger.error(f"Ошибка создания пользователя {user_id} в БД: {e}")
+            logger.error(f"Ошибка создания пользователя в БД: {e}")
             return False

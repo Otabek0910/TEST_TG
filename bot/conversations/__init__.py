@@ -1,8 +1,10 @@
+# bot/conversations/__init__.py
+
 """
-ConversationHandler'ы для сложных диалогов
+ConversationHandler'ы для сложных диалогов - ОБНОВЛЕННАЯ ВЕРСИЯ
 """
 
-from .auth_flow import create_auth_conversation
+# REMOVED: auth_flow - теперь используем auth_new.py без ConversationHandler
 from .report_flow import create_report_conversation
 
-__all__ = ['create_auth_conversation', 'create_report_conversation']
+__all__ = ['create_report_conversation']

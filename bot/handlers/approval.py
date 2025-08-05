@@ -6,7 +6,6 @@ from telegram.constants import ParseMode
 from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from config.settings import OWNER_ID
-# FIXED: Импортируем db_query для проверки
 from database.queries import db_query
 from ..middleware.security import check_user_role
 from services.admin_service import AdminService
@@ -16,7 +15,7 @@ logger = logging.getLogger(__name__)
 async def handle_approval(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработка одобрения/отклонения заявки с проверкой на дубликаты."""
     query = update.callback_query
-    print(f"DEBUG >>> КНОПКА НАЖАТА! ДАННЫЕ: {query.data}") # <-- ДОБАВЬТЕ ЭТУ СТРОКУ
+    print(f"DEBUG >>> КНОПКА НАЖАТА! ДАННЫЕ: {query.data}")
    
     approver_id = str(query.from_user.id)
     
@@ -69,19 +68,38 @@ async def handle_approval(update: Update, context: ContextTypes.DEFAULT_TYPE):
             admin_text = f"✅ <b>Заявка одобрена</b>\n\nПользователь {user_data.get('first_name', '')} добавлен с ролью «{role_text}»."
             await query.edit_message_text(admin_text, parse_mode=ParseMode.HTML)
             
-            user_text = f"🎉 <b>Ваша заявка одобрена!</b>\n\nВам присвоена роль «{role_text}»."
+            # FIXED: Отправляем пользователю уведомление с правильным меню
+            user_text = f"🎉 <b>Ваша заявка одобрена!</b>\n\nВам присвоена роль «{role_text}».\n\n✨ Добро пожаловать! Теперь вы можете пользоваться всеми функциями бота."
             keyboard = [[InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_start")]]
             try:
-                await context.bot.send_message(user_id, user_text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.HTML)
+                await context.bot.send_message(
+                    user_id, 
+                    user_text, 
+                    reply_markup=InlineKeyboardMarkup(keyboard), 
+                    parse_mode=ParseMode.HTML
+                )
+                logger.info(f"Уведомление об одобрении отправлено пользователю {user_id}")
             except Exception as e:
-                logger.error(f"Не удалось уведомить пользователя {user_id}: {e}")
+                logger.error(f"Не удалось уведомить пользователю {user_id}: {e}")
         else:
             await query.edit_message_text("❌ Ошибка при создании пользователя в БД.")
             
     elif action == 'reject':
         admin_text = f"❌ <b>Заявка отклонена</b> по роли «{role_text}»."
         await query.edit_message_text(admin_text, parse_mode=ParseMode.HTML)
-        # Здесь можно добавить уведомление пользователю об отклонении
+        
+        # FIXED: Уведомляем пользователя об отклонении
+        user_text = f"😔 <b>Ваша заявка отклонена</b>\n\nРоль «{role_text}» не была присвоена.\n\nВы можете повторить авторизацию позже."
+        keyboard = [[InlineKeyboardButton("🔑 Попробовать снова", callback_data="start_auth")]]
+        try:
+            await context.bot.send_message(
+                user_id, 
+                user_text, 
+                reply_markup=InlineKeyboardMarkup(keyboard), 
+                parse_mode=ParseMode.HTML
+            )
+        except Exception as e:
+            logger.error(f"Не удалось уведомить пользователя {user_id} об отклонении: {e}")
     
     # Очищаем временные данные в любом случае
     if user_id in context.bot_data:
@@ -90,6 +108,6 @@ async def handle_approval(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def register_approval_handlers(application):
     """Регистрация handlers для одобрения заявок"""
-    print("DEBUG >>> РЕГИСТРАЦИЯ ОБРАБОТЧИКА КНОПОК ОДОБРЕНИЯ...") # <-- ДОБАВЬТЕ ЭТУ СТРОКУ
+    print("DEBUG >>> РЕГИСТРАЦИЯ ОБРАБОТЧИКА КНОПОК ОДОБРЕНИЯ...")
     application.add_handler(CallbackQueryHandler(handle_approval, pattern="^(approve|reject)_"))
     logger.info("✅ Approval handlers зарегистрированы")

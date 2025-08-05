@@ -40,7 +40,7 @@ class UserState(Enum):
     AWAITING_KIOK_REJECTION = "awaiting_kiok_rejection"
 
 class StateManager:
-    """Надежный менеджер состояний пользователей"""
+    """Надежный менеджер состояний пользователей - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
     
     @staticmethod
     def _ensure_user_states(context) -> Dict:
@@ -51,23 +51,26 @@ class StateManager:
     
     @staticmethod
     def set_state(context, user_id: str, state: UserState, data: Optional[Dict[str, Any]] = None) -> None:
-        """Устанавливает состояние пользователя с данными"""
+        """Устанавливает состояние пользователя с данными - ИСПРАВЛЕНО"""
         user_states = StateManager._ensure_user_states(context)
         
         if user_id in user_states:
-            # Сохраняем существующие данные
+            # FIXED: Сохраняем существующие данные при смене состояния
             user_states[user_id]['current_state'] = state.value
             user_states[user_id]['updated_at'] = context.bot_data.get('current_time', 'unknown')
-        if data:
-            user_states[user_id]['data'].update(data)
+            
+            # FIXED: Обновляем данные только если переданы новые
+            if data:
+                user_states[user_id]['data'].update(data)
         else:
-        # Создаем новую запись
+            # Создаем новую запись
             user_states[user_id] = {
                 'current_state': state.value,
                 'data': data or {},
                 'updated_at': context.bot_data.get('current_time', 'unknown')
             }
-        logger.debug(f"Set state for user {user_id}: {state.value}")
+        
+        logger.debug(f"Set state for user {user_id}: {state.value}, data keys: {list(user_states[user_id]['data'].keys())}")
     
     @staticmethod
     def get_state(context, user_id: str) -> Optional[Dict[str, Any]]:
@@ -90,15 +93,25 @@ class StateManager:
     def get_state_data(context, user_id: str) -> Dict[str, Any]:
         """Получает данные состояния пользователя"""
         state_data = StateManager.get_state(context, user_id)
-        return state_data.get('data', {}) if state_data else {}
+        result = state_data.get('data', {}) if state_data else {}
+        logger.debug(f"Get state data for user {user_id}: {list(result.keys())}")
+        return result
     
     @staticmethod
     def update_state_data(context, user_id: str, new_data: Dict[str, Any]) -> None:
-        """Обновляет данные состояния без смены состояния"""
+        """Обновляет данные состояния без смены состояния - ИСПРАВЛЕНО"""
         user_states = StateManager._ensure_user_states(context)
         if user_id in user_states:
             user_states[user_id]['data'].update(new_data)
-            logger.debug(f"Updated state data for user {user_id}")
+            logger.debug(f"Updated state data for user {user_id}: {list(user_states[user_id]['data'].keys())}")
+        else:
+            # FIXED: Если пользователя нет, создаем запись
+            user_states[user_id] = {
+                'current_state': 'unknown',
+                'data': new_data,
+                'updated_at': context.bot_data.get('current_time', 'unknown')
+            }
+            logger.debug(f"Created new state data for user {user_id}: {list(new_data.keys())}")
     
     @staticmethod
     def clear_state(context, user_id: str) -> None:
