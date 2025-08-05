@@ -25,7 +25,7 @@ async def start_auth(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Устанавливаем состояние
     StateManager.set_state(context, user_id, UserState.SELECTING_ROLE)
@@ -58,7 +58,7 @@ async def select_role(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     selected_role = query.data.replace('auth_', '')
     
@@ -68,18 +68,11 @@ async def select_role(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Переходим к запросу имени
     StateManager.set_state(context, user_id, UserState.GETTING_NAME)
 
-        # FIXED: Отслеживаем сообщение с подсказкой для последующего удаления
     sent_message = await query.edit_message_text(
         text=get_text('auth_prompt_name', lang),
         parse_mode=ParseMode.HTML
     )
     StateManager.update_state_data(context, user_id, {'last_prompt_id': sent_message.message_id})
-
-    
-    await query.edit_message_text(
-        text=get_text('auth_prompt_name', lang),
-        parse_mode=ParseMode.HTML
-    )
 
 # ============================================================================
 # NAME INPUT
@@ -89,7 +82,7 @@ async def select_role(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Получение имени - с проверкой состояния"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
 
         # FIXED: Удаляем предыдущее сообщение с подсказкой
     state_data = StateManager.get_state_data(context, user_id)
@@ -131,12 +124,13 @@ async def get_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
         resize_keyboard=True, one_time_keyboard=True
     )
     
-    await context.bot.send_message(
+    sent_message = await context.bot.send_message(
         update.effective_chat.id,
         get_text('auth_prompt_contact', lang),
         reply_markup=reply_markup,
         parse_mode=ParseMode.HTML
     )
+    StateManager.update_state_data(context, user_id, {'last_prompt_id': sent_message.message_id})
 
 # ============================================================================
 # CONTACT INPUT
@@ -197,7 +191,7 @@ async def get_contact(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_manager_level_selection(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработка выбора уровня менеджера"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     StateManager.set_state(context, user_id, UserState.SELECTING_MANAGER_LEVEL)
     
@@ -238,11 +232,11 @@ async def handle_manager_level(update: Update, context: ContextTypes.DEFAULT_TYP
 async def handle_discipline_selection(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Выбор дисциплины"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     StateManager.set_state(context, user_id, UserState.SELECTING_DISCIPLINE)
     
-    disciplines = db_query("SELECT id, name FROM disciplines ORDER BY name")
+    disciplines = await db_query("SELECT id, name FROM disciplines ORDER BY name")
     
     if not disciplines:
         await context.bot.send_message(
@@ -302,7 +296,7 @@ async def handle_discipline(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def finalize_registration(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Финализация регистрации с очисткой состояния"""
     user_id = str(update.effective_user.id)
-    lang = get_user_language(user_id)
+    lang = await get_user_language(user_id)
     
     # Получаем все данные
     user_data = StateManager.get_state_data(context, user_id)

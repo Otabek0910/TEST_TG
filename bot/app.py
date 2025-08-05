@@ -48,7 +48,6 @@ async def run_bot():
         if "scheduler" in app.bot_data:
             app.bot_data["scheduler"].shutdown()
         await db_manager.close()
-        await application.stop() 
         logger.info("✅ Ресурсы освобождены")
 
     # Регистрация handlers
@@ -99,7 +98,7 @@ async def run_bot():
             logger.info("🛑 Получен Ctrl+C")
         finally:
             logger.info("🔄 Останавливаем бота...")
-            await application.stop()
+            await application.updater.stop()
 
 if __name__ == "__main__":
     asyncio.run(run_bot())

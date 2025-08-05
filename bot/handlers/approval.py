@@ -29,7 +29,7 @@ async def handle_approval(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     try:
         parts = query.data.split('_')
-        action, role, user_id = parts[0], parts[1], parts[2]
+        action, _, user_id = parts[0], parts[1], parts[2]
     except (IndexError, ValueError):
         await query.edit_message_text("❌ Некорректные данные запроса.")
         return

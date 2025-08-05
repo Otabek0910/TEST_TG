@@ -67,7 +67,7 @@ async def main():
         
         # Ждем либо завершения бота, либо сигнала остановки
         try:
-            await asyncio.wait_for(bot_task, timeout=None)
+            await bot_task
         except asyncio.CancelledError:
             logger.info("🔄 Задача бота была отменена")
         except Exception as e:
