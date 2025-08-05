@@ -32,7 +32,7 @@ async def track_message(context: ContextTypes.DEFAULT_TYPE, message: Message):
     """
     if 'tracked_messages' not in context.user_data:
         context.user_data['tracked_messages'] = []
-    if message:
+    if message and hasattr(message, 'message_id'):
         context.user_data['tracked_messages'].append(message.message_id)
 
 def auto_clean(func):

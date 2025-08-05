@@ -172,7 +172,7 @@ class RosterService:
             today_str = date.today().strftime('%Y-%m-%d')
             
             roster_info = await db_query("""
-                SELECT dr.id, dr.total_people, dr.roster_date
+                SELECT dr.id, dr.total_personnel, dr.roster_date
                 FROM daily_rosters dr
                 WHERE dr.brigade_user_id = %s AND dr.roster_date = %s
             """, (user_id, today_str))

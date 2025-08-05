@@ -2573,3 +2573,691 @@ Traceback (most recent call last):
 RuntimeError: This Application is still running!
 2025-08-05 12:24:26,549 - __main__ - INFO - 🛑 Бот остановлен пользователем
 2025-08-05 12:24:26,549 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 12:36:58,906 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 12:36:59,039 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 12:37:00,622 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 12:37:02,124 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 12:37:02,124 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 12:37:02,931 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 12:37:02,931 - bot.app - INFO - ==================================================
+2025-08-05 12:37:02,932 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 12:37:02,932 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 12:37:02,932 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 12:37:02,932 - bot.app - INFO - ==================================================
+2025-08-05 12:37:03,382 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 12:37:03,383 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 12:37:03,457 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 12:37:03,458 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 12:37:03,458 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 12:37:03,459 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 12:37:03,461 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 12:37:03,461 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 12:37:03,465 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 12:37:03,510 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 12:37:03,511 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 12:37:03,511 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 12:37:03,511 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 12:37:03,511 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 12:37:03,512 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 12:37:03,512 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 12:37:03,934 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 12:37:03,935 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 12:37:03,935 - telegram.ext.Application - INFO - Application started
+2025-08-05 12:37:04,062 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 12:37:14,473 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 12:37:19,989 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 12:37:19,989 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 12:37:19,989 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 12:37:20,005 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 12:37:20,006 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 12:37:20,006 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 12:37:20,006 - __main__ - ERROR - ❌ Ошибка в работе бота: This Application is still running!
+2025-08-05 12:37:20,007 - asyncio - ERROR - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\main.py:29> exception=RuntimeError('This Application is still running!')>
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\main.py", line 41, in main
+    await run_bot()
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\bot\app.py", line 74, in run_bot
+    async with application:
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 385, in __aexit__
+    await self.shutdown()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 537, in shutdown
+    raise RuntimeError("This Application is still running!")
+RuntimeError: This Application is still running!
+2025-08-05 12:37:20,013 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 12:37:20,013 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:17:43,290 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:17:43,460 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:17:45,598 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:17:47,352 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:17:47,353 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:17:48,441 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:17:48,441 - bot.app - INFO - ==================================================
+2025-08-05 16:17:48,441 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:17:48,441 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:17:48,442 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:17:48,442 - bot.app - INFO - ==================================================
+2025-08-05 16:17:48,823 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:17:48,823 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:17:48,915 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:17:48,915 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:17:48,916 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:17:48,916 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:17:48,918 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:17:48,918 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:17:48,923 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:17:48,978 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:17:48,979 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:17:48,979 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:17:48,979 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:17:48,980 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:17:48,980 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:17:48,980 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:17:49,417 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:17:49,418 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:17:49,420 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:17:49,555 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:17:49,557 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:17:59,965 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:18:10,106 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:18:20,238 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:18:30,369 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:18:40,503 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:18:46,429 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:18:46,429 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:18:46,429 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:18:46,430 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:18:46,860 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:18:46,862 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:18:46,862 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:18:46,869 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:18:46,870 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:18:46,871 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:18:46,879 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:18:46,879 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:18:46,881 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:18:46,886 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:18:46,887 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:20:31,462 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:20:31,624 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:20:33,744 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:20:35,442 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:20:35,442 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:20:36,196 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:20:36,197 - bot.app - INFO - ==================================================
+2025-08-05 16:20:36,197 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:20:36,197 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:20:36,197 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:20:36,197 - bot.app - INFO - ==================================================
+2025-08-05 16:20:36,658 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:20:36,659 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:20:36,767 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:20:36,768 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:20:36,768 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:20:36,768 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:20:36,770 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:20:36,770 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:20:36,777 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:20:36,819 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:20:36,819 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:20:36,820 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:20:36,820 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:20:36,820 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:20:36,821 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:20:36,821 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:20:37,229 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:20:37,231 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:20:37,232 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:20:37,366 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:20:37,368 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:20:38,656 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:20:38,658 - bot.handlers.common - INFO - Пользователь 650657649 (А) запустил бота
+2025-08-05 16:20:40,539 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:41,457 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:20:41,604 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:20:42,675 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:20:44,246 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:20:44,394 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:20:45,351 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:20:51,469 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:20:52,646 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:52,791 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:52,941 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:54,642 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:20:54,845 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:55,073 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:55,265 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:55,442 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:55,447 - bot.handlers.auth_new - INFO - DEBUG >>> Сохранен телефон: +998990201807
+2025-08-05 16:20:56,671 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:57,944 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:20:58,102 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:20:59,050 - bot.handlers.auth_new - INFO - DEBUG >>> StateManager data: {'selected_role': 'foreman', 'last_prompt_id': 1122, 'first_name': 'Бригада', 'last_name': '1', 'phone_number': '+998990201807', 'discipline_id': '1'}
+2025-08-05 16:20:59,050 - services.admin_service - INFO - DEBUG >>> ПОЛУЧИЛИ user_data: {'selected_role': 'foreman', 'last_prompt_id': 1122, 'first_name': 'Бригада', 'last_name': '1', 'phone_number': '+998990201807', 'discipline_id': '1'}
+2025-08-05 16:20:59,050 - services.admin_service - INFO - DEBUG >>> Ключи в user_data: ['selected_role', 'last_prompt_id', 'first_name', 'last_name', 'phone_number', 'discipline_id']
+2025-08-05 16:20:59,051 - services.admin_service - INFO - DEBUG >>> СОХРАНИЛИ в context.bot_data[650657649]: {'selected_role': 'foreman', 'last_prompt_id': 1122, 'first_name': 'Бригада', 'last_name': '1', 'phone_number': '+998990201807', 'discipline_id': '1'}
+2025-08-05 16:20:59,162 - services.admin_service - INFO - DEBUG >>> Номер телефона для отправки: +998990201807
+2025-08-05 16:20:59,571 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:20:59,574 - services.admin_service - INFO - DEBUG >>> Запрос отправлен админу 353175654
+2025-08-05 16:20:59,747 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:21:03,328 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:03,623 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:21:03,836 - services.admin_service - INFO - Пользователь 650657649 создан с ролью foreman, затронуто строк: 1
+2025-08-05 16:21:04,258 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:21:04,596 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:21:04,599 - bot.handlers.approval - INFO - Уведомление об одобрении отправлено пользователю 650657649
+2025-08-05 16:21:07,849 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:08,014 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:21:10,086 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:21:11,216 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:11,360 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:21:11,522 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:21:21,352 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:31,502 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:41,661 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:44,917 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:21:44,918 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:21:44,919 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:21:44,920 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:21:45,310 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:21:45,313 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:21:45,314 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:21:45,325 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:21:45,326 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:21:45,329 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:21:45,343 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:21:45,344 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:21:45,345 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:21:45,353 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:21:45,354 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:24:16,844 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:24:16,994 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:24:19,238 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:24:20,835 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:24:20,835 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:24:21,650 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:24:21,650 - bot.app - INFO - ==================================================
+2025-08-05 16:24:21,651 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:24:21,651 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:24:21,651 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:24:21,651 - bot.app - INFO - ==================================================
+2025-08-05 16:24:22,023 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:24:22,023 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:24:22,196 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:24:22,197 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:24:22,198 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:24:22,198 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:24:22,200 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:24:22,201 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:24:22,208 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:24:22,257 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:24:22,258 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:24:22,258 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:24:22,258 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:24:22,259 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:24:22,259 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:24:22,259 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:24:22,691 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:24:22,692 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:24:22,692 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:24:22,819 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:24:22,820 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:24:25,726 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:24:25,869 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:24:27,726 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:24:30,208 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:24:30,368 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:24:31,944 - database.queries - ERROR - Ошибка выполнения DB query: ОШИБКА:  столбец dr.total_people не существует
+LINE 2:                 SELECT dr.id, dr.total_people, dr.roster_dat...
+                                      ^
+
+Запрос: 
+                SELECT dr.id, dr.total_people, dr.roster_date
+                FROM daily_rosters dr
+                WHERE dr.brigade_user_id = %s AND dr.roster_date = %s
+            
+2025-08-05 16:24:32,222 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:24:32,225 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1311, in process_update
+    await coroutine
+  File "C:\Python310\lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+  File "C:\Python310\lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\utils\chat_utils.py", line 51, in wrapper
+    await track_message(context, result_message)
+  File "H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\utils\chat_utils.py", line 36, in track_message
+    context.user_data['tracked_messages'].append(message.message_id)
+AttributeError: 'int' object has no attribute 'message_id'
+2025-08-05 16:24:40,363 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:24:50,508 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:25:00,651 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:25:10,786 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:25:20,918 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:25:31,056 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:25:41,192 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:25:51,327 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:26:01,461 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:26:11,596 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:26:21,729 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:26:31,862 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:26:41,994 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:26:52,136 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:27:02,265 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:27:12,405 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:27:22,536 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:27:32,670 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:27:42,802 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:27:52,939 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:03,072 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:13,215 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:23,357 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:29,241 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:28:29,241 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:28:29,242 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:28:29,243 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:28:29,738 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:29,740 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:28:29,741 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:28:29,745 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:28:29,748 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:28:29,749 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:28:29,760 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:28:29,760 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:28:29,761 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:28:29,766 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:28:29,766 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:28:36,271 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:28:36,426 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:28:38,056 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:28:39,821 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:28:39,821 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:28:40,711 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:28:40,711 - bot.app - INFO - ==================================================
+2025-08-05 16:28:40,712 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:28:40,712 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:28:40,712 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:28:40,713 - bot.app - INFO - ==================================================
+2025-08-05 16:28:41,117 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:28:41,118 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:28:41,216 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:28:41,217 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:28:41,218 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:28:41,219 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:28:41,222 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:28:41,223 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:28:41,231 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:28:41,286 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:28:41,287 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:28:41,288 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:28:41,289 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:28:41,289 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:28:41,290 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:28:41,290 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:28:41,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:28:41,700 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:28:41,702 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:28:41,834 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:28:41,835 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:28:43,662 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:43,664 - bot.handlers.common - INFO - Пользователь 650657649 (А) запустил бота
+2025-08-05 16:28:45,086 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:28:46,033 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:28:46,188 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:28:48,080 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:28:56,174 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:04,379 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:29:04,380 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:29:04,381 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:29:04,382 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:29:04,777 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:04,779 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:29:04,779 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:29:04,787 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:29:04,788 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:29:04,790 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:29:04,804 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:29:04,805 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:29:04,806 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:29:04,812 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:29:04,813 - __main__ - INFO - 👋 Программа завершена
+2025-08-05 16:29:17,174 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-05 16:29:17,276 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-05 16:29:19,232 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-05 16:29:21,143 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-05 16:29:21,144 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-05 16:29:22,224 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-05 16:29:22,224 - bot.app - INFO - ==================================================
+2025-08-05 16:29:22,225 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-05 16:29:22,225 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-05 16:29:22,225 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-05 16:29:22,225 - bot.app - INFO - ==================================================
+2025-08-05 16:29:22,615 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-05 16:29:22,616 - bot.app - INFO - ✅ Database инициализирована
+2025-08-05 16:29:22,734 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-05 16:29:22,734 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-05 16:29:22,735 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-05 16:29:22,736 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-05 16:29:22,739 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-05 16:29:22,741 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-05 16:29:22,750 - bot.app - INFO - ✅ Все обработчики зарегистрированы
+2025-08-05 16:29:22,825 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:29:22,826 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-05 16:29:22,826 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-05 16:29:22,827 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-05 16:29:22,827 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:29:22,827 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-05 16:29:22,827 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-05 16:29:23,234 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-05 16:29:23,235 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-05 16:29:23,236 - telegram.ext.Application - INFO - Application started
+2025-08-05 16:29:23,374 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-05 16:29:23,375 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-05 16:29:25,455 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:25,457 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 16:29:26,495 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:29:27,763 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:27,907 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:29:28,909 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:29:30,463 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:30,625 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:29:30,804 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:29:34,353 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:34,494 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:29:34,643 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:29:37,458 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:37,606 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:29:37,771 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:29:39,132 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:39,284 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:29:39,446 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:29:42,449 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendDocument "HTTP/1.1 200 OK"
+2025-08-05 16:29:42,593 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteMessage "HTTP/1.1 200 OK"
+2025-08-05 16:29:49,276 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:29:59,415 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:30:09,560 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:30:19,702 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:30:29,838 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:30:39,979 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:30:50,115 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:31:00,261 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:31:10,393 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:31:20,543 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:31:30,675 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:31:40,812 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:31:50,951 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:32:01,095 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:32:11,230 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:32:21,359 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:32:31,499 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:32:41,643 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:32:51,786 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:33:01,935 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:33:12,069 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:33:22,210 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:33:32,346 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:33:42,478 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:33:52,614 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:34:02,747 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:34:12,888 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:34:23,027 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:34:33,162 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:34:43,295 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:34:53,430 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:35:03,572 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:35:13,707 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:35:23,852 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:35:33,988 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:35:44,122 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:35:54,258 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:04,397 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:14,545 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:24,693 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:32,552 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:32,554 - bot.handlers.common - INFO - Пользователь 353175654 (Otabek) запустил бота
+2025-08-05 16:36:33,798 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-05 16:36:34,957 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:35,195 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:36:36,213 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:36:37,048 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:37,299 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:36:37,599 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:36:38,549 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:38,720 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:36:38,885 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:36:40,845 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:36:50,977 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:37:01,111 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:37:11,246 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:37:21,395 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:37:31,527 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:37:41,670 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:37:51,811 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:01,953 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:02,102 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:02,540 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:38:02,691 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:38:04,051 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:04,200 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:38:05,438 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:38:08,260 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:08,414 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:38:09,271 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:38:17,038 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:17,478 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:38:18,589 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:38:27,181 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:28,770 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:29,260 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-05 16:38:29,483 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-05 16:38:38,909 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:49,043 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:38:59,187 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:39:09,326 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:39:19,466 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:39:29,598 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:39:38,307 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-05 16:39:38,308 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-05 16:39:38,308 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-05 16:39:38,309 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:39:38,734 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-05 16:39:38,735 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-05 16:39:38,735 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-05 16:39:38,741 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-05 16:39:38,741 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-05 16:39:38,743 - bot.app - INFO - ✅ Application остановлен
+2025-08-05 16:39:38,745 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-05 16:39:38,745 - bot.app - INFO - ✅ База данных отключена
+2025-08-05 16:39:38,745 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-05 16:39:38,748 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-05 16:39:38,749 - __main__ - INFO - 👋 Программа завершена

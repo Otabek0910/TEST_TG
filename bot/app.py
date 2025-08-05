@@ -68,35 +68,48 @@ async def run_bot():
         logger.warning(f"⚠️ Ошибка запуска планировщика: {e}")
 
     try:
-        # FIXED: Прямое управление Application без вложенных event loops
+        # FIXED: Правильное управление жизненным циклом
         logger.info("🚀 Запускаем polling...")
         
-        async with application:
-            await application.start()
-            await application.updater.start_polling(drop_pending_updates=True)
+        await application.initialize()
+        await application.start()
+        await application.updater.start_polling(drop_pending_updates=True)
+        
+        logger.info("✅ Бот запущен успешно!")
+        
+        # Ждем сигнала завершения
+        try:
+            # Создаем Future который будет отменен при KeyboardInterrupt
+            stop_event = asyncio.Event()
+            await stop_event.wait()
+        except asyncio.CancelledError:
+            logger.info("🛑 Получен сигнал завершения...")
             
-            # Простое ожидание бесконечного цикла
-            try:
-                await asyncio.Future()  # Ждем до прерывания
-            except asyncio.CancelledError:
-                pass
-                
     except KeyboardInterrupt:
-        logger.info("👋 Получен сигнал завершения...")
+        logger.info("👋 Получен Ctrl+C...")
     finally:
-        # Очистка ресурсов в правильном порядке
+        # FIXED: Правильная последовательность остановки
         logger.info("🔄 Очистка ресурсов...")
         
-        # 1. Останавливаем планировщик
         try:
+            # 1. Останавливаем планировщик
             if 'scheduler' in locals() and scheduler.running:
-                scheduler.shutdown()
+                scheduler.shutdown(wait=False)
                 logger.info("✅ Планировщик остановлен")
         except Exception as e:
             logger.warning(f"⚠️ Ошибка остановки планировщика: {e}")
         
-        # 2. Закрываем БД
         try:
+            # 2. Останавливаем Application в правильном порядке
+            await application.updater.stop()
+            await application.stop()
+            await application.shutdown()
+            logger.info("✅ Application остановлен")
+        except Exception as e:
+            logger.warning(f"⚠️ Ошибка остановки Application: {e}")
+        
+        try:
+            # 3. Закрываем БД
             await db_manager.close()
             logger.info("✅ База данных отключена")
         except Exception as e:

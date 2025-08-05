@@ -65,7 +65,7 @@ async def show_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     user_id = str(update.effective_user.id)
     user_role = check_user_role(user_id)  # СИНХРОННЫЙ вызов
-    lang = get_user_language(user_id)  # АСИНХРОННЫЙ выз
+    lang = await get_user_language(user_id)  # АСИНХРОННЫЙ выз
     
     profile_text = "👤 **Ваш профиль**\n\n"
     user_info = await UserService.get_user_info(user_id)
@@ -109,7 +109,7 @@ async def show_language_menu(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await query.answer()
     
     user_id = str(update.effective_user.id)
-    current_lang = get_user_language(user_id)
+    current_lang = await get_user_language(user_id)
     
     # Доступные языки
     languages = {
@@ -180,10 +180,13 @@ def register_common_handlers(application):
 
     # Заглушки для функций в разработке
     placeholders = [
-        "owner_reports_menu", "owner_management_menu", "approve_reports",
-        "submit_roster", "reports_menu_role", "admin_panel"
+        "owner_reports_menu", "owner_management_menu",
+        "reports_menu_role", "admin_panel"
     ]
     for ph in placeholders:
         application.add_handler(CallbackQueryHandler(placeholder_handler, pattern=f"^{ph}$"))
+
+    from bot.conversations.roster_flow import create_roster_conversation
+    application.add_handler(create_roster_conversation())
 
     logger.info("✅ Common handlers зарегистрированы")
