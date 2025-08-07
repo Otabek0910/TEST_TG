@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 @auto_clean
 async def handle_directories_excel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обрабатывает загруженный Excel-файл со справочниками (адаптировано из старого кода)"""
+    """Обрабатывает загруженный Excel-файл со справочниками"""
     
     # Проверяем тип файла
     excel_mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -25,7 +25,6 @@ async def handle_directories_excel(update: Update, context: ContextTypes.DEFAULT
     
     user_id = str(update.effective_user.id)
     user_role = check_user_role(user_id)
-    lang = get_user_language(user_id)
     
     # Проверяем права доступа
     if not user_role.get('isAdmin'):
@@ -95,7 +94,7 @@ async def handle_directories_excel(update: Update, context: ContextTypes.DEFAULT
             ImportService.cleanup_temp_file(file_path)
 
 async def handle_database_restore_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обрабатывает файл для восстановления БД (расширенная функция из старого кода)"""
+    """Обрабатывает файл для полного восстановления БД (только для владельца)"""
     from config.settings import OWNER_ID
     
     user_id = str(update.effective_user.id)
@@ -111,46 +110,110 @@ async def handle_database_restore_file(update: Update, context: ContextTypes.DEF
         await update.message.reply_text("❌ Для восстановления БД требуется Excel файл.")
         return
     
-    await update.message.reply_text(
-        "✅ Файл получен. Начинаю процесс восстановления БД. "
-        "⚠️ **ВНИМАНИЕ:** Все текущие данные будут удалены!",
+    # Предупреждение о том, что данные будут удалены
+    warning_message = await update.message.reply_text(
+        "⚠️ **ВНИМАНИЕ!** Вы собираетесь восстановить БД из файла.\n"
+        "**ВСЕ ТЕКУЩИЕ ДАННЫЕ БУДУТ УДАЛЕНЫ!**\n\n"
+        "Для подтверждения отправьте сообщение: `CONFIRM RESTORE`",
         parse_mode=ParseMode.MARKDOWN
     )
     
-    file_path = None
-    
+    # Сохраняем файл для последующей обработки
     try:
-        # Скачиваем файл
         ImportService.create_temp_directory()
         file = await context.bot.get_file(update.message.document.file_id)
-        file_path = os.path.join(TEMP_DIR, "restore_db.xlsx")
+        file_path = os.path.join(TEMP_DIR, f"restore_db_{user_id}.xlsx")
         await file.download_to_drive(file_path)
         
-        # TODO: Реализовать полное восстановление БД
-        # Пока что заглушка - эта функция требует отдельной реализации
-        await update.message.reply_text(
-            "⚠️ Функция восстановления БД находится в разработке. "
-            "Используйте стандартный импорт справочников.",
-            parse_mode=ParseMode.MARKDOWN
-        )
+        # Сохраняем путь к файлу в контексте пользователя
+        context.user_data['pending_restore_file'] = file_path
         
-        logger.info(f"Запрос на восстановление БД от владельца {user_id}")
+        logger.info(f"Файл для восстановления БД загружен от владельца {user_id}: {file_path}")
         
     except Exception as e:
-        logger.error(f"Ошибка при попытке восстановления БД: {e}")
+        logger.error(f"Ошибка при загрузке файла для восстановления БД: {e}")
         await update.message.reply_text(
-            "❌ Произошла ошибка при попытке восстановления БД.",
+            "❌ Произошла ошибка при загрузке файла.",
             parse_mode=ParseMode.MARKDOWN
         )
+
+async def handle_restore_confirmation(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обрабатывает подтверждение восстановления БД"""
+    from config.settings import OWNER_ID
+    
+    user_id = str(update.effective_user.id)
+    
+    # Только владелец может восстанавливать БД
+    if user_id != OWNER_ID:
+        return
+    
+    # Проверяем команду подтверждения
+    if update.message.text != "CONFIRM RESTORE":
+        return
+    
+    # Проверяем, есть ли файл для восстановления
+    file_path = context.user_data.get('pending_restore_file')
+    if not file_path or not os.path.exists(file_path):
+        await update.message.reply_text(
+            "❌ Файл для восстановления не найден. Загрузите файл заново.",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return
+    
+    # Начинаем восстановление
+    processing_message = await update.message.reply_text(
+        "🔄 **Начинаю полное восстановление БД...**\n"
+        "⏳ Это может занять несколько минут.",
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    try:
+        # Выполняем восстановление
+        result = ImportService.restore_full_database_from_excel(file_path)
+        
+        # Форматируем результат
+        summary_text = ImportService.format_restore_summary(result)
+        
+        # Отправляем результат
+        await processing_message.edit_text(
+            summary_text,
+            parse_mode=ParseMode.MARKDOWN
+        )
+        
+        # Логируем результат
+        if result['success']:
+            restored_count = len(result.get('restored_tables', []))
+            logger.info(f"Полное восстановление БД завершено владельцем {user_id}: восстановлено {restored_count} таблиц")
+        else:
+            logger.error(f"Ошибка восстановления БД владельцем {user_id}: {result.get('error')}")
+        
+        # Очищаем контекст
+        context.user_data.pop('pending_restore_file', None)
+        
+    except Exception as e:
+        logger.error(f"Критическая ошибка при восстановлении БД: {e}")
+        
+        try:
+            await processing_message.edit_text(
+                "❌ Произошла критическая ошибка при восстановлении БД. "
+                "Проверьте логи для подробностей.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        except Exception:
+            await update.message.reply_text(
+                "❌ Критическая ошибка при восстановлении БД.",
+                parse_mode=ParseMode.MARKDOWN
+            )
     
     finally:
+        # Очищаем временный файл
         if file_path:
             ImportService.cleanup_temp_file(file_path)
 
 def register_import_handlers(application):
     """Регистрация обработчиков импорта"""
     
-    # Обработчик Excel файлов (будет вызываться для всех документов Excel)
+    # Обработчик Excel файлов (справочники)
     application.add_handler(
         MessageHandler(
             filters.Document.MimeType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
@@ -158,13 +221,12 @@ def register_import_handlers(application):
         )
     )
     
-    # Можно добавить дополнительные обработчики для других типов импорта
-    # Например, для CSV файлов:
-    # application.add_handler(
-    #     MessageHandler(
-    #         filters.Document.MimeType("text/csv"),
-    #         handle_csv_import
-    #     )
-    # )
+    # Обработчик подтверждения восстановления БД
+    application.add_handler(
+        MessageHandler(
+            filters.TEXT & filters.Regex(r'^CONFIRM RESTORE$'),
+            handle_restore_confirmation
+        )
+    )
     
     logger.info("✅ Import handlers зарегистрированы")

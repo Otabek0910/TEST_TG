@@ -1,5 +1,8 @@
 # utils/constants.py
 
+import os
+
+TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp_files')
 """
 Константы, используемые в разных частях бота, в основном для состояний ConversationHandler.
 """
@@ -85,3 +88,33 @@ ALL_TABLE_NAMES_FOR_BACKUP = [
     'reports', 'brigades_reference', 'daily_rosters', 'daily_roster_details',
     'topic_mappings', 'scheduled_notifications'
 ]
+
+ALL_TABLE_NAMES_FOR_BACKUP = [
+    'disciplines',
+    'construction_objects', 
+    'work_types',
+    'admins',
+    'managers',
+    'supervisors',
+    'masters',
+    'brigades',
+    'pto',
+    'kiok',
+    'reports',
+    'personnel_roles',
+    'daily_rosters',
+    'daily_roster_details',
+    'topic_mappings',
+    'scheduled_notifications'
+]
+
+MAX_PHOTO_SIZE = 20 * 1024 * 1024  # 20MB
+ALLOWED_PHOTO_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
+
+WORKFLOW_STATUSES = {
+    'draft': 'Черновик',
+    'pending_master': 'Ожидает мастера',
+    'pending_kiok': 'Ожидает КИОК',
+    'approved': 'Утвержден',
+    'rejected': 'Отклонен'
+}

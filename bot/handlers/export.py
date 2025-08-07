@@ -391,7 +391,7 @@ async def handle_db_restore_file(update: Update, context: ContextTypes.DEFAULT_T
        await file.download_to_drive(file_path)
        
        # Восстанавливаем БД через сервис
-       result = ImportService.restore_database_from_excel(file_path)
+       result = ImportService.restore_full_database_from_excel(file_path)
        
        if result.get('success', False):
            restored_tables = result.get('restored_tables', [])

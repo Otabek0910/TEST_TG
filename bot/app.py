@@ -1,7 +1,7 @@
 # bot/app.py
 
 """
-Основной модуль Telegram бота - ИСПРАВЛЕННАЯ ВЕРСИЯ (убран auth_flow)
+Основной модуль Telegram бота - ИСПРАВЛЕННАЯ ВЕРСИЯ с import handlers
 """
 
 import logging
@@ -21,11 +21,12 @@ from bot.handlers.auth_new import register_new_auth_handlers  # CHANGED: исп�
 from bot.conversations.report_flow import create_report_conversation
 from bot.conversations.roster_flow import create_roster_conversation
 from bot.handlers.export import register_export_handlers
+from bot.handlers.data_import import register_import_handlers  # ADDED: Импорт handlers для import/export
 
 logger = logging.getLogger(__name__)
 
 async def run_bot():
-    """Запуск Telegram бота - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
+    """Запуск Telegram бота - ИСПРАВЛЕННАЯ ВЕРСИЯ с import handlers"""
     logger.info("=" * 50)
     logger.info("🚀 БОТ ЗАПУСКАЕТСЯ...")
     logger.info(f"🗄️ База данных: {DATABASE_URL.split('@')[1] if '@' in DATABASE_URL else 'локальная'}")
@@ -47,6 +48,7 @@ async def run_bot():
     register_analytics_handlers(application)
     register_admin_handlers(application)
     register_export_handlers(application)
+    register_import_handlers(application)  # ADDED: Регистрация import handlers
 
     # ConversationHandlers
     application.add_handler(create_report_conversation())
@@ -56,7 +58,7 @@ async def run_bot():
     application.add_handler(create_db_restore_conversation())
     application.add_handler(create_hr_date_conversation())
 
-    logger.info("✅ Все обработчики зарегистрированы")
+    logger.info("✅ Все обработчики зарегистрированы (включая import/export)")
     
     # Настройка планировщика
     scheduler = AsyncIOScheduler(timezone='Asia/Tashkent')
