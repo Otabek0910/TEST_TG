@@ -411,7 +411,7 @@ async def handle_db_restore_file(update: Update, context: ContextTypes.DEFAULT_T
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_start")
                 ]]),
-                parse_mode=ParseMode.MARKDOWN
+           
             )
        else:
            error_msg = result.get('error', 'Неизвестная ошибка')
