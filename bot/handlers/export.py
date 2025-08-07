@@ -394,22 +394,25 @@ async def handle_db_restore_file(update: Update, context: ContextTypes.DEFAULT_T
        result = ImportService.restore_full_database_from_excel(file_path)
        
        if result.get('success', False):
-           restored_tables = result.get('restored_tables', [])
-           restored_count = len(restored_tables)
-           
-           success_text = (
-               f"✅ База данных успешно восстановлена!\n\n"
-               f"Восстановлено таблиц: **{restored_count}**\n"
-               f"Список: {', '.join(restored_tables)}"
-           )
-           
-           await update.message.reply_text(
-               success_text,
-               reply_markup=InlineKeyboardMarkup([[
-                   InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_start")
-               ]]),
-               parse_mode=ParseMode.MARKDOWN
-           )
+            restored_tables = result.get('restored_tables', [])
+            restored_count = len(restored_tables)
+    
+            # FIXED: Извлекаем только названия таблиц
+            table_names = [table_info['table'] for table_info in restored_tables]
+    
+            success_text = (
+                f"✅ База данных успешно восстановлена!\n\n"
+                f"Восстановлено таблиц: **{restored_count}**\n"
+                f"Список: {', '.join(table_names)}"  # FIXED: передаем список строк
+            )
+    
+            await update.message.reply_text(
+                success_text,
+                reply_markup=InlineKeyboardMarkup([[
+                    InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_start")
+                ]]),
+                parse_mode=ParseMode.MARKDOWN
+            )
        else:
            error_msg = result.get('error', 'Неизвестная ошибка')
            await update.message.reply_text(f"❌ Ошибка восстановления: {error_msg}")

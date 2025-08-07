@@ -34,93 +34,124 @@ class ImportService:
         except Exception as e:
             return {'valid': False, 'error': f'Ошибка чтения файла: {str(e)}'}
 
+# В services/import_service.py найти и заменить метод _sync_table_from_dataframe:
+
+# В services/import_service.py заменить метод _sync_table_from_dataframe:
+
     @staticmethod
     def _sync_table_from_dataframe(cursor, table_name: str, df: pd.DataFrame, 
-                               id_column: str = 'id') -> Dict[str, int]:
+                                id_column: str = 'id') -> Dict[str, int]:
      """Универсальная синхронизация таблицы из DataFrame"""
      result = {'inserted': 0, 'updated': 0, 'deleted': 0}
     
      if df.empty:
-        # Если DataFrame пустой, очищаем таблицу
-        cursor.execute(f"DELETE FROM {table_name}")
-        result['deleted'] = cursor.rowcount
-        return result
+         cursor.execute(f"DELETE FROM {table_name}")
+         result['deleted'] = cursor.rowcount
+         return result
     
-     # Проверяем существование ID столбца в таблице
-     try:
-         cursor.execute(f"SELECT {id_column} FROM {table_name} LIMIT 1")
-     except Exception:
-        # Если столбец не существует, пропускаем таблицу
-        logger.warning(f"Столбец {id_column} не найден в таблице {table_name}, пропускаем")
-        return result
+     # FIXED: Получаем информацию о столбцах таблицы
+     cursor.execute("""
+         SELECT column_name, data_type 
+         FROM information_schema.columns 
+         WHERE table_name = %s AND table_schema = 'public'
+     """, (table_name,))
     
-     # Получаем список колонок (исключая id если он пустой)
-     df_columns = [col for col in df.columns if col.lower() != id_column or not df[col].isna().all()]
+     table_columns = {row[0]: row[1] for row in cursor.fetchall()}
+     if id_column not in table_columns:
+         logger.warning(f"Столбец {id_column} не найден в таблице {table_name}, пропускаем")
+         return result
+    
+     # Получаем тип ID столбца
+     id_column_type = table_columns[id_column]
+     is_integer_id = 'integer' in id_column_type or 'serial' in id_column_type
+    
+      # Получаем список колонок из DataFrame
+     df_columns = [col for col in df.columns if col in table_columns]
     
      # Получаем существующие ID из БД
      cursor.execute(f"SELECT {id_column} FROM {table_name}")
-     existing_ids = {str(row[0]) for row in cursor.fetchall()}  # Конвертируем в строки
+     if is_integer_id:
+         existing_ids = {int(row[0]) for row in cursor.fetchall()}
+     else:
+         existing_ids = {str(row[0]) for row in cursor.fetchall()}
     
-     # ID из файла (только непустые)
+     # ID из файла
      file_ids = set()
      for _, row in df.iterrows():
          if id_column in df.columns and pd.notna(row[id_column]):
-             file_ids.add(str(row[id_column]))  # Конвертируем в строки
+             if is_integer_id:
+                 file_ids.add(int(row[id_column]))
+             else:
+                 file_ids.add(str(row[id_column]))
     
      # Удаляем записи, которых нет в файле
      ids_to_delete = existing_ids - file_ids
      if ids_to_delete:
-         cursor.execute(f"DELETE FROM {table_name} WHERE {id_column} = ANY(%s)", 
-                      (list(ids_to_delete),))
+         if is_integer_id:
+             cursor.execute(f"DELETE FROM {table_name} WHERE {id_column} = ANY(%s)", 
+                           (list(ids_to_delete),))
+         else:
+             cursor.execute(f"DELETE FROM {table_name} WHERE {id_column} = ANY(%s)", 
+                           (list(ids_to_delete),))
          result['deleted'] = cursor.rowcount
     
-     # Обрабатываем каждую строку из файла
+     # Обрабатываем каждую строку
      for _, row in df.iterrows():
-         # Проверяем, есть ли основные данные
          has_data = any(pd.notna(row[col]) and str(row[col]).strip() 
-                      for col in df_columns if col.lower() != id_column)
+                       for col in df_columns if col != id_column)
         
          if not has_data:
              continue
             
-         # Подготавливаем данные
          data = {}
          specified_id = None
         
          for col in df_columns:
-            if col.lower() == id_column:
-                if pd.notna(row[col]):
-                    specified_id = str(row[col])  # Конвертируем в строку
-                    data[col] = specified_id
-            else:
-                if pd.notna(row[col]):
-                    data[col] = str(row[col]).strip()
-                else:
-                    data[col] = None
+             if col == id_column:
+                 if pd.notna(row[col]):
+                     if is_integer_id:
+                         specified_id = int(row[col])
+                     else:
+                         specified_id = str(row[col])
+                     data[col] = specified_id
+             else:
+                 if pd.notna(row[col]):
+                     # FIXED: Приводим к правильному типу
+                     col_type = table_columns.get(col, 'text')
+                     if 'integer' in col_type or 'serial' in col_type:
+                         try:
+                             data[col] = int(row[col])
+                         except:
+                             data[col] = None
+                     elif 'boolean' in col_type:
+                         data[col] = bool(row[col])
+                     else:
+                         data[col] = str(row[col]).strip()
+                 else:
+                     data[col] = None
         
          if not data:
              continue
             
-         # Формируем запрос
          columns = list(data.keys())
          values = list(data.values())
          placeholders = ', '.join(['%s'] * len(values))
         
          if specified_id and specified_id in existing_ids:
-             # UPDATE существующей записи
-             set_clause = ', '.join([f"{col} = %s" for col in columns if col.lower() != id_column])
+             # UPDATE
+             set_clause = ', '.join([f"{col} = %s" for col in columns if col != id_column])
              if set_clause:
-                update_values = [v for k, v in data.items() if k.lower() != id_column]
-                update_values.append(specified_id)
-                cursor.execute(f"UPDATE {table_name} SET {set_clause} WHERE {id_column} = %s", 
-                             update_values)
-                if cursor.rowcount > 0:
-                    result['updated'] += 1
+                 update_values = [v for k, v in data.items() if k != id_column]
+                 update_values.append(specified_id)
+                 cursor.execute(f"UPDATE {table_name} SET {set_clause} WHERE {id_column} = %s", 
+                              update_values)
+                 if cursor.rowcount > 0:
+                     result['updated'] += 1
          else:
-             # INSERT новой записи
+             # INSERT
              columns_str = ', '.join(columns)
              cursor.execute(f"INSERT INTO {table_name} ({columns_str}) VALUES ({placeholders})", 
-                         values)
+                          values)
              result['inserted'] += 1
     
      return result
