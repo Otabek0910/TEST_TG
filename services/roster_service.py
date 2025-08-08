@@ -1,4 +1,4 @@
-# services/roster_service.py
+# services/roster_service.py - ИСПРАВЛЕНИЯ
 
 import logging
 from datetime import date
@@ -8,21 +8,56 @@ from database.queries import db_query, db_execute
 logger = logging.getLogger(__name__)
 
 class RosterService:
-    """Сервис для управления табелями учета рабочего времени (АДАПТИРОВАННЫЙ ИЗ СТАРОГО КОДА)"""
+    """Сервис для управления табелями учета рабочего времени"""
     
     @staticmethod
-    async def get_available_roles() -> List[Dict[str, Any]]:
-        """Получает список доступных ролей персонала из БД"""
+    async def get_available_roles(user_id: str) -> List[Dict[str, Any]]:
+        """Получает роли персонала для дисциплины бригадира"""
         try:
-            roles_raw = await db_query("SELECT id, role_name FROM personnel_roles ORDER BY role_name")
-            return [{'id': role_id, 'name': role_name} for role_id, role_name in roles_raw] if roles_raw else []
+            # Получаем дисциплину бригадира
+            brigade_info = await db_query(
+                "SELECT discipline_id FROM brigades WHERE user_id = %s", 
+                (user_id,)
+            )
+            
+            if not brigade_info:
+                logger.error(f"Бригадир {user_id} не найден в таблице brigades")
+                return []
+            
+            discipline_id = brigade_info[0][0]
+            if not discipline_id:
+                logger.error(f"У бригадира {user_id} не указана дисциплина")
+                return []
+            
+            # Получаем роли для этой дисциплины
+            roles_raw = await db_query("""
+                SELECT pr.id, pr.role_name, d.name as discipline_name
+                FROM personnel_roles pr
+                JOIN disciplines d ON pr.discipline_id = d.id
+                WHERE pr.discipline_id = %s
+                ORDER BY pr.display_order, pr.role_name
+            """, (discipline_id,))
+            
+            if not roles_raw:
+                logger.warning(f"Роли для дисциплины {discipline_id} не найдены")
+                return []
+            
+            return [
+                {
+                    'id': role_id, 
+                    'name': role_name,
+                    'discipline': discipline_name
+                } 
+                for role_id, role_name, discipline_name in roles_raw
+            ]
+            
         except Exception as e:
-            logger.error(f"Ошибка получения списка ролей: {e}")
+            logger.error(f"Ошибка получения ролей для бригадира {user_id}: {e}")
             return []
     
     @staticmethod
     def parse_roles_input(input_text: str, available_roles: List[Dict[str, Any]]) -> Optional[Dict[str, int]]:
-        """Парсит ввод пользователя с количеством ролей (адаптировано из старого кода)"""
+        """Парсит ввод пользователя с количеством ролей"""
         try:
             parsed_roles = {}
             lines = input_text.strip().split('\n')
@@ -74,11 +109,10 @@ class RosterService:
     
     @staticmethod
     async def check_roster_safety(user_id: str, total_people_new: int, brigade_name: str) -> Dict[str, Any]:
-        """Проверяет безопасность сохранения табеля (адаптировано из старого кода)"""
+        """Проверяет безопасность сохранения табеля"""
         try:
             today_str = date.today().strftime('%Y-%m-%d')
             
-            # CHANGED: Адаптируем под новую схему БД
             assigned_info = await db_query("""
                 SELECT SUM(CAST(report_data->>'people_count' AS INTEGER)) 
                 FROM reports 
@@ -108,17 +142,17 @@ class RosterService:
     
     @staticmethod
     async def save_roster(user_id: str, roster_summary: Dict[str, Any]) -> bool:
-        """Сохраняет табель в БД (адаптировано из старого кода)"""
+        """Сохраняет табель в БД"""
         try:
             today_str = date.today().strftime('%Y-%m-%d')
             total_people_new = roster_summary['total']
             
-            # Удаляем старый табель, если он был (для чистоты)
+            # Удаляем старый табель
             await db_execute("DELETE FROM daily_rosters WHERE brigade_user_id = %s AND roster_date = %s", (user_id, today_str))
             
-            # Сохраняем "шапку" табеля
+            # FIXED: Используем правильное поле total_personnel
             roster_id_raw = await db_query(
-                "INSERT INTO daily_rosters (roster_date, brigade_user_id, total_people) VALUES (%s, %s, %s) RETURNING id",
+                "INSERT INTO daily_rosters (roster_date, brigade_user_id, total_personnel) VALUES (%s, %s, %s) RETURNING id",
                 (today_str, user_id, total_people_new)
             )
             
@@ -136,8 +170,9 @@ class RosterService:
             for role_name, count in details_to_save.items():
                 role_id = roles_map.get(role_name)
                 if role_id:
+                    # FIXED: Используем правильное поле personnel_count
                     await db_execute(
-                        "INSERT INTO daily_roster_details (roster_id, role_id, people_count) VALUES (%s, %s, %s)",
+                        "INSERT INTO daily_roster_details (roster_id, role_id, personnel_count) VALUES (%s, %s, %s)",
                         (roster_id, role_id, count)
                     )
             
@@ -150,13 +185,12 @@ class RosterService:
     
     @staticmethod
     async def force_save_with_reports_deletion(user_id: str, roster_summary: Dict[str, Any], brigade_name: str) -> bool:
-        """Принудительно сохраняет табель, удаляя отчеты за день (адаптировано из старого кода)"""
+        """Принудительно сохраняет табель, удаляя отчеты за день"""
         try:
             today_str = date.today().strftime('%Y-%m-%d')
             
             # Удаляем отчеты за день
             await db_execute("DELETE FROM reports WHERE brigade_name = %s AND report_date = %s", (brigade_name, today_str))
-            
             
             # Сохраняем табель
             return await RosterService.save_roster(user_id, roster_summary)
@@ -180,9 +214,9 @@ class RosterService:
             if roster_info:
                 roster_id, total_people, roster_date = roster_info[0]
                 
-                # Получаем детали
+                # FIXED: Используем правильное поле personnel_count
                 details_raw = await db_query("""
-                    SELECT pr.role_name, drd.people_count
+                    SELECT pr.role_name, drd.personnel_count
                     FROM daily_roster_details drd
                     JOIN personnel_roles pr ON drd.role_id = pr.id
                     WHERE drd.roster_id = %s
@@ -222,39 +256,3 @@ class RosterService:
         except Exception as e:
             logger.error(f"Ошибка удаления табеля для {user_id}: {e}")
             return False
-    
-    @staticmethod
-    async def get_roster_history(user_id: str, days: int = 7) -> List[Dict[str, Any]]:
-        """Получает историю табелей пользователя"""
-        try:
-            history_raw = await db_query("""
-                SELECT dr.roster_date, dr.total_people, dr.id
-                FROM daily_rosters dr
-                WHERE dr.brigade_user_id = %s 
-                AND dr.roster_date >= CURRENT_DATE - INTERVAL '%s days'
-                ORDER BY dr.roster_date DESC
-            """, (user_id, days))
-            
-            history = []
-            for roster_date, total_people, roster_id in history_raw:
-                # Получаем детали для каждого табеля
-                details_raw = await db_query("""
-                    SELECT pr.role_name, drd.people_count
-                    FROM daily_roster_details drd
-                    JOIN personnel_roles pr ON drd.role_id = pr.id
-                    WHERE drd.roster_id = %s
-                """, (roster_id,))
-                
-                details = {role_name: count for role_name, count in details_raw} if details_raw else {}
-                
-                history.append({
-                    'date': roster_date,
-                    'total_people': total_people,
-                    'details': details
-                })
-            
-            return history
-            
-        except Exception as e:
-            logger.error(f"Ошибка получения истории табелей для {user_id}: {e}")
-            return []

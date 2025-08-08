@@ -1,4 +1,4 @@
-# utils/constants.py
+# utils/constants.py - ИСПРАВЛЕНИЯ
 
 import os
 
@@ -25,10 +25,12 @@ TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp_files'
     GETTING_PIPE_DATA, 
     CONFIRM_REPORT_NEW,
 
-    # Roster Flow (bot/conversations/roster_flow.py)
+    # Roster Flow
     AWAITING_ROLES_COUNT, 
     CONFIRM_ROSTER, 
     CONFIRM_DANGEROUS_ROSTER_SAVE,
+    AWAITING_MODE_SELECTION,      # ADDED: выбор режима
+    INTERACTIVE_ROSTER_EDIT,      # ADDED: интерактивный режим
 
     # Analytics Flow (bot/handlers/analytics.py)
     SELECTING_OVERVIEW_ACTION, 
@@ -39,21 +41,20 @@ TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp_files'
     AWAITING_KIOK_INSPECTION_NUM, 
     AWAITING_KIOK_REJECTION,
     
-    # НОВЫЕ: Admin Management Flow
+    # Admin Management Flow
     AWAITING_NEW_DISCIPLINE,
     AWAITING_NEW_LEVEL,
     AWAITING_NEW_VALUE,
     
-    # НОВЫЕ: HR Date Selection Flow  
+    # HR Date Selection Flow  
     GETTING_HR_DATE,
     
-    # НОВЫЕ: DB Restore Flow
+    # DB Restore Flow
     AWAITING_RESTORE_FILE,
     
-    # НОВЫЕ: Language Selection (если потребуется)
+    # Language Selection
     SELECTING_LANGUAGE
-    
-) = range(24)
+) = range(26)
 
 # --- Другие константы ---
 TEMP_DIR = 'temp_files'
@@ -82,17 +83,12 @@ REPORT_STATUS_LABELS = {
     'rejected': 'Отклонен'
 }
 
-ALL_TABLE_NAMES_FOR_BACKUP = [
-    'disciplines', 'construction_objects', 'work_types', 'personnel_roles',
-    'admins', 'managers', 'supervisors', 'masters', 'brigades', 'pto', 'kiok',
-    'reports', 'brigades_reference', 'daily_rosters', 'daily_roster_details',
-    'topic_mappings', 'scheduled_notifications'
-]
-
+# FIXED: Убираем дублирование ALL_TABLE_NAMES_FOR_BACKUP
 ALL_TABLE_NAMES_FOR_BACKUP = [
     'disciplines',
     'construction_objects', 
     'work_types',
+    'personnel_roles',
     'admins',
     'managers',
     'supervisors',
@@ -101,7 +97,7 @@ ALL_TABLE_NAMES_FOR_BACKUP = [
     'pto',
     'kiok',
     'reports',
-    'personnel_roles',
+    'brigades_reference',
     'daily_rosters',
     'daily_roster_details',
     'topic_mappings',

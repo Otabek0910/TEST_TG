@@ -37,8 +37,12 @@ class MenuService:
     
     @staticmethod
     def _get_user_role_info(user_role: Dict[str, Any], lang: str) -> str:
-        """Получает информацию о роли пользователя для отображения"""
+        """Получает информацию о роли пользователя для отображения - ИСПРАВЛЕНО"""
         role_parts = []
+        
+        # FIXED: Проверяем, что user_role не пустой
+        if not user_role:
+            return "Роль не определена"
         
         # Супервайзер
         if user_role.get('isSupervisor'):
@@ -81,7 +85,11 @@ class MenuService:
         if user_role.get('isAdmin'):
             role_parts.append("⚙️ Администратор")
         
-        return " | ".join(role_parts) if role_parts else ""
+        # FIXED: Если ролей нет - возвращаем базовое описание
+        if not role_parts:
+            return "Пользователь (роль не назначена)"
+        
+        return " | ".join(role_parts)
     
     @staticmethod
     async def _build_menu_buttons(user_id: str, user_role: Dict[str, Any], lang: str) -> List[List[InlineKeyboardButton]]:

@@ -59,28 +59,57 @@ async def back_to_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def show_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Показ профиля пользователя"""
+    """Показ профиля пользователя - УЛУЧШЕННАЯ ВЕРСИЯ"""
     query = update.callback_query
     await query.answer()
     
     user_id = str(update.effective_user.id)
     user_role = check_user_role(user_id)  # СИНХРОННЫЙ вызов
-    lang = await get_user_language(user_id)  # АСИНХРОННЫЙ выз
+    lang = await get_user_language(user_id)  # АСИНХРОННЫЙ вызов
     
-    profile_text = "👤 **Ваш профиль**\n\n"
     user_info = await UserService.get_user_info(user_id)
     
     if user_info:
-        profile_text += f"📝 Имя: {user_info.get('first_name', 'Не указано')} {user_info.get('last_name', '')}\n"
-        profile_text += f"📞 Телефон: {user_info.get('phone_number', 'Не указан')}\n"
+        # Определяем заголовок
+        if user_info.get('role_table') == 'owner':
+            profile_text = "👑 **Профиль владельца системы**\n\n"
+        else:
+            profile_text = "👤 **Ваш профиль**\n\n"
+        
+        # FIXED: Используем правильные поля
+        first_name = user_info.get('first_name', '')
+        last_name = user_info.get('last_name', '')
+        full_name = f"{first_name} {last_name}".strip()
+        
+        profile_text += f"📝 **Имя:** {full_name if full_name else 'Не указано'}\n"
+        profile_text += f"📞 **Телефон:** {user_info.get('phone_number', 'Не указан')}\n"
+        
+        # ADDED: Показываем дисциплину
+        discipline = user_info.get('discipline_name', 'Не указана')
+        profile_text += f"🏢 **Дисциплина:** {discipline}\n"
+        
+        # FIXED: Получаем роль
         role_info = MenuService._get_user_role_info(user_role, lang)
         if role_info:
-            profile_text += f"👔 Роль: {role_info}"
+            profile_text += f"👔 **Роль:** {role_info}\n"
+        else:
+            profile_text += f"👔 **Роль:** Не определена\n"
+            
+        # ADDED: Дополнительная информация для Owner
+        if user_info.get('role_table') == 'owner':
+            profile_text += f"\n🔑 **Привилегии:** Полный доступ ко всем функциям\n"
+            profile_text += f"⚙️ **Статус:** Владелец системы\n"
+            
     else:
-        profile_text += "❌ Информация о пользователе не найдена"
+        profile_text = "❌ **Информация о пользователе не найдена**\n\nОбратитесь к администратору."
     
     keyboard = [[InlineKeyboardButton("◀️ Назад", callback_data="back_to_start")]]
-    return await query.edit_message_text(profile_text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode='Markdown')
+    return await query.edit_message_text(
+        profile_text, 
+        reply_markup=InlineKeyboardMarkup(keyboard), 
+        parse_mode='Markdown'
+    )
+
 
 
 async def show_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
