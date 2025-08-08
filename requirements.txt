@@ -1,0 +1,10 @@
+# Telegram Bot
+python-telegram-bot>=20.0
+asyncpg>=0.28.0
+
+# Django
+Django>=4.2.0
+psycopg2-binary>=2.9.0
+
+# Общие
+python-dotenv>=1.0.0
