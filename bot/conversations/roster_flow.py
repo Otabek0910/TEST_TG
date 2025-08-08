@@ -56,37 +56,8 @@ async def start_roster_submission(update: Update, context: ContextTypes.DEFAULT_
         await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
         return ConversationHandler.END
     
-    # ДОБАВЛЯЕМ: Выбор режима подачи табеля
-    keyboard = [
-        [InlineKeyboardButton("🎯 Быстрый режим (кнопки)", callback_data="roster_mode_interactive")],
-        [InlineKeyboardButton("📝 Текстовый режим", callback_data="roster_mode_text")],
-        [InlineKeyboardButton("◀️ Назад", callback_data="back_to_start")]
-    ]
-    
-    await query.edit_message_text(
-        "📋 **Выберите способ подачи табеля:**\n\n"
-        "🎯 **Быстрый режим** - кнопки +/- для каждой роли\n"
-        "📝 **Текстовый режим** - ввод текстом как раньше",
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode=ParseMode.MARKDOWN
-    )
-    
-    return AWAITING_MODE_SELECTION 
-
-async def select_roster_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Обработка выбора режима подачи табеля"""
-    query = update.callback_query
-    await query.answer()
-    
-    if query.data == "roster_mode_interactive":
-        return await start_interactive_mode(update, context)
-    elif query.data == "roster_mode_text":
-        return await start_text_mode(update, context)
-    else:
-        await query.edit_message_text("❌ Неизвестный режим")
-        return ConversationHandler.END
-
-    
+    return await start_interactive_mode(update, context)
+   
 async def start_interactive_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Запуск интерактивного режима"""
     query = update.callback_query
@@ -108,37 +79,6 @@ async def start_interactive_mode(update: Update, context: ContextTypes.DEFAULT_T
     context.user_data['available_roles'] = available_roles
     
     return await show_interactive_roster_edit(update, context)
-
-async def start_text_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Запуск текстового режима (существующая логика)"""
-    query = update.callback_query
-    user_id = str(query.from_user.id)
-    
-    # FIXED: Получаем роли ДЛЯ ДИСЦИПЛИНЫ бригадира
-    available_roles = await RosterService.get_available_roles(user_id)
-    
-    if not available_roles:
-        await query.edit_message_text("❌ Ошибка: не найдены роли персонала для вашей дисциплины.")
-        return ConversationHandler.END
-    
-    # Сохраняем роли в контекст
-    context.user_data['available_roles'] = available_roles
-    
-    # Формируем текст с примером
-    discipline_name = available_roles[0]['discipline'] if available_roles else 'Неизвестная'
-    roles_list = "\n".join([f"  - {role['name']}" for role in available_roles])
-    
-    text = (
-        f"📋 **Подача табеля для дисциплины «{discipline_name}»**\n\n"
-        f"**Доступные роли:**\n{roles_list}\n\n"
-        f"**Введите количество людей по ролям в формате:**\n"
-        f"`Сварщик 6 разряда 3`\n"
-        f"`Помощник сварщика 2`\n\n"
-        f"💡 Одна роль на строку, в конце строки - количество человек."
-    )
-    
-    await query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN)
-    return AWAITING_ROLES_COUNT
 
 async def show_interactive_roster_edit(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Показывает КОМПАКТНОЕ интерактивное окно табеля"""
@@ -164,9 +104,7 @@ async def show_interactive_roster_edit(update: Update, context: ContextTypes.DEF
         total_people += count
         
         # Сокращаем название роли
-        short_name = role['name']
-        if len(short_name) > 20:
-            short_name = short_name[:17] + "..."
+        role_name = role['name']
         
         # Используем эмодзи для визуализации
         status_emoji = "✅" if count > 0 else "⚪"
@@ -177,32 +115,16 @@ async def show_interactive_roster_edit(update: Update, context: ContextTypes.DEF
     # Компактная сетка кнопок 2x3
     keyboard = []
     
-    for i in range(0, len(available_roles), 2):
-        row = []
+    for role in available_roles:
+        role_id = role['id']
+        count = roster_counts.get(role_id, 0)
+        role_name = role['name']
         
-        # Первая роль в строке
-        role1 = available_roles[i]
-        count1 = roster_counts.get(role1['id'], 0)
-        role1_short = role1['name'][:8] + "..." if len(role1['name']) > 8 else role1['name']
-        
-        row.extend([
-            InlineKeyboardButton("➖", callback_data=f"r-_{role1['id']}"),
-            InlineKeyboardButton(f"{role1_short}:{count1}", callback_data=f"r_info_{role1['id']}"),
-            InlineKeyboardButton("➕", callback_data=f"r+_{role1['id']}")
-        ])
-        
-        # Вторая роль в строке (если есть)
-        if i + 1 < len(available_roles):
-            role2 = available_roles[i + 1]
-            count2 = roster_counts.get(role2['id'], 0)
-            role2_short = role2['name'][:8] + "..." if len(role2['name']) > 8 else role2['name']
-            
-            row.extend([
-                InlineKeyboardButton("➖", callback_data=f"r-_{role2['id']}"),
-                InlineKeyboardButton(f"{role2_short}:{count2}", callback_data=f"r_info_{role2['id']}"),
-                InlineKeyboardButton("➕", callback_data=f"r+_{role2['id']}")
-            ])
-        
+        row = [
+            InlineKeyboardButton("➖", callback_data=f"r-_{role_id}"),
+            InlineKeyboardButton(f"{role_name}: {count}", callback_data=f"r_info_{role_id}"),
+            InlineKeyboardButton("➕", callback_data=f"r+_{role_id}")
+        ]
         keyboard.append(row)
     
     # Кнопки управления
@@ -308,52 +230,6 @@ async def save_interactive_roster(update: Update, context: ContextTypes.DEFAULT_
     context.user_data.pop('available_roles', None)
     
     return ConversationHandler.END
-
-@auto_clean
-async def process_roles_input(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Обрабатывает ввод ролей и количества"""
-    user_input = update.message.text
-    user_id = str(update.effective_user.id)
-    lang = await get_user_language(user_id)
-    
-    available_roles = context.user_data.get('available_roles', [])
-    
-    # Парсим ввод
-    parsed_roles = RosterService.parse_roles_input(user_input, available_roles)
-    
-    if not parsed_roles:
-        await update.message.reply_text(
-            "❌ **Ошибка формата**\n\n"
-            "Проверьте ввод. Пример правильного формата:\n"
-            "`Сварщик 6 разряда 3`\n"
-            "`Помощник сварщика 2`\n\n"
-            "Попробуйте еще раз:",
-            parse_mode=ParseMode.MARKDOWN
-        )
-        return AWAITING_ROLES_COUNT
-    
-    # Подсчитываем сводку
-    roster_summary = RosterService.calculate_roster_summary(parsed_roles)
-    context.user_data['roster_summary'] = roster_summary
-    
-    # Формируем текст подтверждения
-    total_people = roster_summary['total']
-    details_text = "\n".join([f"  - **{role}**: {count} чел." for role, count in parsed_roles.items()])
-    
-    summary_text = (
-        f"📊 **Подтверждение табеля**\n\n"
-        f"**Всего людей:** {total_people}\n\n"
-        f"**Детализация:**\n{details_text}\n\n"
-        f"Все верно?"
-    )
-
-    keyboard = [
-        [InlineKeyboardButton("✅ Да, сохранить", callback_data="confirm_roster")],
-        [InlineKeyboardButton("❌ Отмена", callback_data="cancel_roster")]
-    ]
-    
-    await update.message.reply_text(summary_text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-    return CONFIRM_ROSTER
 
 @auto_clean
 async def confirm_roster_save(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -467,15 +343,7 @@ def create_roster_conversation() -> ConversationHandler:
             CallbackQueryHandler(restart_roster_submission, pattern="^roster_submit_new$")
         ],
         states={
-            # ADDED: Выбор режима
-            AWAITING_MODE_SELECTION: [
-                CallbackQueryHandler(select_roster_mode, pattern="^roster_mode_")
-            ],
-            
-            # Текстовый режим (существующие состояния)
-            AWAITING_ROLES_COUNT: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, process_roles_input)
-            ],
+                   
             CONFIRM_ROSTER: [
                 CallbackQueryHandler(confirm_roster_save, pattern="^confirm_roster$")
             ],

@@ -29,7 +29,6 @@ TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp_files'
     AWAITING_ROLES_COUNT, 
     CONFIRM_ROSTER, 
     CONFIRM_DANGEROUS_ROSTER_SAVE,
-    AWAITING_MODE_SELECTION,      # ADDED: выбор режима
     INTERACTIVE_ROSTER_EDIT,      # ADDED: интерактивный режим
 
     # Analytics Flow (bot/handlers/analytics.py)
@@ -54,7 +53,7 @@ TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp_files'
     
     # Language Selection
     SELECTING_LANGUAGE
-) = range(26)
+) = range(25)
 
 # --- Другие константы ---
 TEMP_DIR = 'temp_files'
