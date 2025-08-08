@@ -12,8 +12,8 @@ from utils.localization import get_user_language, get_text
 
 # FIXED: Правильный импорт ВСЕХ констант
 from utils.constants import (
-    AWAITING_ROLES_COUNT, CONFIRM_ROSTER, CONFIRM_DANGEROUS_ROSTER_SAVE,
-    AWAITING_MODE_SELECTION, INTERACTIVE_ROSTER_EDIT
+    CONFIRM_ROSTER, CONFIRM_DANGEROUS_ROSTER_SAVE,
+    INTERACTIVE_ROSTER_EDIT
 )
 
 logger = logging.getLogger(__name__)
@@ -108,22 +108,23 @@ async def show_interactive_roster_edit(update: Update, context: ContextTypes.DEF
         
         # Используем эмодзи для визуализации
         status_emoji = "✅" if count > 0 else "⚪"
-        text_lines.append(f"{status_emoji} {short_name}: *{count}*")
+        text_lines.append(f"{status_emoji} {role_name}: *{count}*")
     
     text_lines.append(f"\n👥 *Итого: {total_people} чел.*")
     
     # Компактная сетка кнопок 2x3
     keyboard = []
-    
+        
     for role in available_roles:
         role_id = role['id']
         count = roster_counts.get(role_id, 0)
         role_name = role['name']
         
+        # Одна строка: название с количеством + кнопки справа
         row = [
-            InlineKeyboardButton("➖", callback_data=f"r-_{role_id}"),
             InlineKeyboardButton(f"{role_name}: {count}", callback_data=f"r_info_{role_id}"),
-            InlineKeyboardButton("➕", callback_data=f"r+_{role_id}")
+            InlineKeyboardButton("−", callback_data=f"r-_{role_id}"),
+            InlineKeyboardButton("+", callback_data=f"r+_{role_id}")
         ]
         keyboard.append(row)
     

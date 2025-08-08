@@ -6818,3 +6818,305 @@ asyncio.exceptions.CancelledError
 2025-08-08 11:09:14,019 - bot.app - INFO - 🔻 Бот остановлен
 2025-08-08 11:09:14,020 - __main__ - INFO - 🛑 Бот остановлен пользователем
 2025-08-08 11:09:14,020 - __main__ - INFO - 👋 Программа завершена
+2025-08-08 11:25:28,078 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-08 11:25:28,166 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-08 11:25:29,331 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-08 11:25:30,401 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-08 11:25:30,460 - database.migrations - INFO - ✅ Поле discipline_id уже существует в personnel_roles
+2025-08-08 11:25:30,622 - database.migrations - INFO - ✅ Роли персонала уже существуют (55 шт.), пропускаем создание
+2025-08-08 11:25:30,622 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-08 11:25:31,187 - __main__ - ERROR - ❌ Ошибка в работе бота: cannot import name 'AWAITING_MODE_SELECTION' from 'utils.constants' (H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\utils\constants.py)
+2025-08-08 11:25:31,188 - __main__ - CRITICAL - ❌ Фатальная ошибка при запуске: cannot import name 'AWAITING_MODE_SELECTION' from 'utils.constants' (H:\4.PYTHON\Telegramm bot 20.07 — GEMINI — 2\utils\constants.py)
+2025-08-08 11:25:31,188 - __main__ - INFO - 👋 Программа завершена
+2025-08-08 11:27:53,170 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-08 11:27:53,241 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-08 11:27:54,367 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-08 11:27:55,537 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-08 11:27:55,602 - database.migrations - INFO - ✅ Поле discipline_id уже существует в personnel_roles
+2025-08-08 11:27:55,665 - database.migrations - INFO - ✅ Роли персонала уже существуют (55 шт.), пропускаем создание
+2025-08-08 11:27:55,665 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-08 11:27:56,180 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-08 11:27:56,181 - bot.app - INFO - ==================================================
+2025-08-08 11:27:56,181 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-08 11:27:56,181 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-08 11:27:56,181 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-08 11:27:56,181 - bot.app - INFO - ==================================================
+2025-08-08 11:27:56,573 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-08 11:27:56,573 - bot.app - INFO - ✅ Database инициализирована
+2025-08-08 11:27:56,630 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-08 11:27:56,630 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-08 11:27:56,631 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-08 11:27:56,631 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-08 11:27:56,632 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-08 11:27:56,632 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-08 11:27:56,633 - bot.handlers.data_import - INFO - ✅ Import handlers зарегистрированы
+2025-08-08 11:27:56,636 - bot.app - INFO - ✅ Все обработчики зарегистрированы (включая import/export)
+2025-08-08 11:27:56,686 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-08 11:27:56,686 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-08 11:27:56,686 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-08 11:27:56,687 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-08 11:27:56,687 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-08 11:27:56,687 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-08 11:27:56,687 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-08 11:27:57,210 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-08 11:27:57,211 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-08 11:27:57,211 - telegram.ext.Application - INFO - Application started
+2025-08-08 11:27:57,336 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-08 11:27:57,338 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-08 11:27:59,407 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:27:59,408 - bot.handlers.common - INFO - Пользователь 650657649 (А) запустил бота
+2025-08-08 11:28:00,507 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-08 11:28:01,786 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:28:01,918 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-08 11:28:02,834 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-08 11:28:11,910 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:28:22,032 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:28:32,155 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:28:42,279 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:28:52,403 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:29:02,538 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:29:06,934 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-08 11:29:06,934 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-08 11:29:06,935 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-08 11:29:06,935 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-08 11:29:07,344 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:29:07,345 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-08 11:29:07,345 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-08 11:29:07,347 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-08 11:29:07,347 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-08 11:29:07,348 - bot.app - INFO - ✅ Application остановлен
+2025-08-08 11:29:07,351 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-08 11:29:07,351 - bot.app - INFO - ✅ База данных отключена
+2025-08-08 11:29:07,351 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-08 11:29:07,353 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-08 11:29:07,353 - __main__ - INFO - 👋 Программа завершена
+2025-08-08 11:29:49,906 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-08 11:29:49,980 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-08 11:29:51,174 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-08 11:29:52,164 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-08 11:29:52,223 - database.migrations - INFO - ✅ Поле discipline_id уже существует в personnel_roles
+2025-08-08 11:29:52,278 - database.migrations - INFO - ✅ Роли персонала уже существуют (55 шт.), пропускаем создание
+2025-08-08 11:29:52,279 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-08 11:29:52,744 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-08 11:29:52,744 - bot.app - INFO - ==================================================
+2025-08-08 11:29:52,745 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-08 11:29:52,745 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-08 11:29:52,745 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-08 11:29:52,745 - bot.app - INFO - ==================================================
+2025-08-08 11:29:52,979 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-08 11:29:52,979 - bot.app - INFO - ✅ Database инициализирована
+2025-08-08 11:29:53,031 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-08 11:29:53,031 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-08 11:29:53,031 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-08 11:29:53,031 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-08 11:29:53,032 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-08 11:29:53,033 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-08 11:29:53,033 - bot.handlers.data_import - INFO - ✅ Import handlers зарегистрированы
+2025-08-08 11:29:53,035 - bot.app - INFO - ✅ Все обработчики зарегистрированы (включая import/export)
+2025-08-08 11:29:53,062 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-08 11:29:53,063 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-08 11:29:53,063 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-08 11:29:53,063 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-08 11:29:53,063 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-08 11:29:53,063 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-08 11:29:53,064 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-08 11:29:53,457 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-08 11:29:53,458 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-08 11:29:53,458 - telegram.ext.Application - INFO - Application started
+2025-08-08 11:29:53,583 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-08 11:29:53,583 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-08 11:29:54,903 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:29:54,905 - bot.handlers.common - INFO - Пользователь 650657649 (А) запустил бота
+2025-08-08 11:29:55,921 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-08 11:29:57,032 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:29:57,168 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-08 11:29:57,883 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-08 11:30:07,163 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:30:17,294 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:30:27,433 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:30:37,563 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:30:47,693 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:30:57,825 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:07,955 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:17,520 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-08 11:31:17,520 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-08 11:31:17,520 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-08 11:31:17,521 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-08 11:31:17,907 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:17,908 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-08 11:31:17,909 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-08 11:31:17,912 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-08 11:31:17,912 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-08 11:31:17,913 - bot.app - INFO - ✅ Application остановлен
+2025-08-08 11:31:17,916 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-08 11:31:17,917 - bot.app - INFO - ✅ База данных отключена
+2025-08-08 11:31:17,917 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-08 11:31:17,918 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-08 11:31:17,918 - __main__ - INFO - 👋 Программа завершена
+2025-08-08 11:31:18,846 - __main__ - INFO - ✅ Конфигурация загружена успешно
+2025-08-08 11:31:18,919 - database.migrations - INFO - 🔄 Запуск миграций БД...
+2025-08-08 11:31:20,026 - database.migrations - INFO - ✅ Все таблицы созданы успешно
+2025-08-08 11:31:21,017 - database.migrations - INFO - ✅ Индексы созданы успешно
+2025-08-08 11:31:21,081 - database.migrations - INFO - ✅ Поле discipline_id уже существует в personnel_roles
+2025-08-08 11:31:21,137 - database.migrations - INFO - ✅ Роли персонала уже существуют (55 шт.), пропускаем создание
+2025-08-08 11:31:21,137 - database.migrations - INFO - ✅ Миграции успешно завершены!
+2025-08-08 11:31:21,623 - __main__ - INFO - 🚀 Запуск бота...
+2025-08-08 11:31:21,624 - bot.app - INFO - ==================================================
+2025-08-08 11:31:21,624 - bot.app - INFO - 🚀 БОТ ЗАПУСКАЕТСЯ...
+2025-08-08 11:31:21,624 - bot.app - INFO - 🗄️ База данных: localhost:5432/face_test_db
+2025-08-08 11:31:21,624 - bot.app - INFO - 👑 Owner ID: 353175654
+2025-08-08 11:31:21,624 - bot.app - INFO - ==================================================
+2025-08-08 11:31:21,906 - database.connection - INFO - ✅ Асинхронный пул соединений с БД успешно создан.
+2025-08-08 11:31:21,906 - bot.app - INFO - ✅ Database инициализирована
+2025-08-08 11:31:21,955 - bot.handlers.common - INFO - ✅ Common handlers зарегистрированы
+2025-08-08 11:31:21,955 - bot.handlers.auth_new - INFO - ✅ NEW Auth handlers зарегистрированы (БЕЗ ConversationHandler)
+2025-08-08 11:31:21,956 - bot.handlers.approval - INFO - ✅ Approval handlers зарегистрированы
+2025-08-08 11:31:21,956 - bot.handlers.workflow - INFO - ✅ Workflow handlers зарегистрированы
+2025-08-08 11:31:21,957 - bot.handlers.analytics - INFO - ✅ Analytics handlers зарегистрированы
+2025-08-08 11:31:21,958 - bot.handlers.admin - INFO - ✅ Admin handlers зарегистрированы
+2025-08-08 11:31:21,958 - bot.handlers.data_import - INFO - ✅ Import handlers зарегистрированы
+2025-08-08 11:31:21,961 - bot.app - INFO - ✅ Все обработчики зарегистрированы (включая import/export)
+2025-08-08 11:31:21,990 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-08 11:31:21,990 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-08 11:31:21,991 - apscheduler.scheduler - INFO - Added job "NotificationService.process_scheduled_notifications" to job store "default"
+2025-08-08 11:31:21,991 - apscheduler.scheduler - INFO - Added job "NotificationService.send_pending_report_reminders" to job store "default"
+2025-08-08 11:31:21,991 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-08 11:31:21,991 - bot.app - INFO - ✅ Планировщик уведомлений запущен
+2025-08-08 11:31:21,991 - bot.app - INFO - 🚀 Запускаем polling...
+2025-08-08 11:31:22,393 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getMe "HTTP/1.1 200 OK"
+2025-08-08 11:31:22,394 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-08 11:31:22,394 - telegram.ext.Application - INFO - Application started
+2025-08-08 11:31:22,529 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-08 11:31:22,531 - bot.app - INFO - ✅ Бот запущен успешно!
+2025-08-08 11:31:26,239 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:26,240 - bot.handlers.common - INFO - Пользователь 650657649 (А) запустил бота
+2025-08-08 11:31:27,233 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/sendMessage "HTTP/1.1 200 OK"
+2025-08-08 11:31:28,119 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:28,255 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-08 11:31:29,107 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/editMessageText "HTTP/1.1 200 OK"
+2025-08-08 11:31:38,292 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:48,419 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:31:58,548 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:32:08,678 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:32:18,832 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:32:28,973 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:32:39,100 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:32:49,226 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:32:59,356 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:33:03,742 - bot.app - INFO - 🛑 Получен сигнал завершения...
+2025-08-08 11:33:03,742 - bot.app - INFO - 🔄 Очистка ресурсов...
+2025-08-08 11:33:03,743 - bot.app - INFO - ✅ Планировщик остановлен
+2025-08-08 11:33:03,743 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-08 11:33:04,129 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7970286602:AAH5IlpJ7zbR7dK0MkbPWtfVWAliG92PFNY/getUpdates "HTTP/1.1 200 OK"
+2025-08-08 11:33:04,130 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-08 11:33:04,130 - telegram.ext.Application - CRITICAL - Fetching updates was aborted due to CancelledError(). Suppressing exception to ensure graceful shutdown.
+Traceback (most recent call last):
+  File "C:\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Python310\lib\asyncio\base_events.py", line 628, in run_until_complete
+    self.run_forever()
+  File "C:\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 434, in select
+    self._poll(timeout)
+  File "C:\Python310\lib\asyncio\windows_events.py", line 783, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1228, in _update_fetcher
+    await self.__update_fetcher()
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 1207, in __update_fetcher
+    update = await self.update_queue.get()
+  File "C:\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\telegram\ext\_application.py", line 673, in stop
+    self.__update_fetcher_task.result()
+asyncio.exceptions.CancelledError
+2025-08-08 11:33:04,132 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-08 11:33:04,132 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-08 11:33:04,133 - bot.app - INFO - ✅ Application остановлен
+2025-08-08 11:33:04,136 - database.connection - INFO - ✅ Асинхронный пул соединений с БД закрыт.
+2025-08-08 11:33:04,136 - bot.app - INFO - ✅ База данных отключена
+2025-08-08 11:33:04,136 - bot.app - INFO - 🔻 Бот остановлен
+2025-08-08 11:33:04,137 - __main__ - INFO - 🛑 Бот остановлен пользователем
+2025-08-08 11:33:04,137 - __main__ - INFO - 👋 Программа завершена

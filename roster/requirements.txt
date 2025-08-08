@@ -1,0 +1,17 @@
+# Django Roster App Requirements
+
+Django>=4.2.0,<5.0
+psycopg2-binary>=2.9.0  # для PostgreSQL
+# или для SQLite (по умолчанию в Django)
+# sqlite3  # уже включен в Python
+
+# Дополнительные пакеты для разработки
+django-debug-toolbar>=4.0.0
+django-extensions>=3.2.0
+
+# Для production
+gunicorn>=20.1.0
+whitenoise>=6.0.0
+
+# Для логирования
+python-json-logger>=2.0.0

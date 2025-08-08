@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подача табеля</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .roster-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .roster-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .roster-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .roster-subtitle {
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .total-counter {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .role-item {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .role-item:hover {
+            border-color: #4facfe;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.15);
+        }
+        
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .role-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            flex-grow: 1;
+        }
+        
+        .role-count {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .role-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .control-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .control-btn.decrease {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+        }
+        
+        .control-btn.increase {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .save-btn {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            color: white;
+        }
+        
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(64, 192, 87, 0.3);
+        }
+        
+        .save-btn:disabled {
+            background: #e2e8f0;
+            color: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .clear-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .clear-btn:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e0;
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        
+        .error-message {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 480px) {
+            .roster-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .role-name {
+                font-size: 14px;
+            }
+            
+            .control-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="roster-container">
+        <div class="roster-header">
+            <h1 class="roster-title">📋 Табель: {{ discipline_name }}</h1>
+            <p class="roster-subtitle">{{ today }}</p>
+        </div>
+        
+        <div class="total-counter">
+            👥 Итого: <span id="totalPeople">0</span> чел.
+        </div>
+        
+        <div class="roles-list">
+            {% for role in available_roles %}
+            <div class="role-item">
+                <div class="role-header">
+                    <div class="role-name">{{ role.name }}</div>
+                    <div class="role-count" id="count-{{ role.id }}">0</div>
+                </div>
+                <div class="role-controls">
+                    <button class="control-btn decrease" onclick="updateRole({{ role.id }}, 'decrease')">−</button>
+                    <button class="control-btn increase" onclick="updateRole({{ role.id }}, 'increase')">+</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn clear-btn" onclick="clearRoster()">Очистить</button>
+            <button class="action-btn save-btn" id="saveBtn" onclick="saveRoster()" disabled>Сохранить</button>
+        </div>
+        
+        <div id="message-container"></div>
+    </div>
+
+    <script>
+        let totalPeople = 0;
+        
+        function updateRole(roleId, action) {
+            fetch('/roster/update-role/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    role_id: roleId,
+                    action: action
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById(`count-${roleId}`).textContent = data.new_count;
+                    document.getElementById('totalPeople').textContent = data.total_people;
+                    totalPeople = data.total_people;
+                    
+                    // Активируем кнопку сохранения если есть люди
+                    const saveBtn = document.getElementById('saveBtn');
+                    saveBtn.disabled = totalPeople === 0;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        
+        function saveRoster() {
+            if (totalPeople === 0) {
+                showMessage('Нужно указать хотя бы одну роль!', 'error');
+                return;
+            }
+            
+            fetch('/roster/save/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    // Сбрасываем счетчики
+                    document.querySelectorAll('.role-count').forEach(el => el.textContent = '0');
+                    document.getElementById('totalPeople').textContent = '0';
+                    document.getElementById('saveBtn').disabled = true;
+                    totalPeople = 0;
+                } else {
+                    showMessage(data.error, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('Ошибка сохранения', 'error');
+            });
+        }
+        
+        function clearRoster() {
+            fetch('/roster/clear/', {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Сбрасываем все счетчики
+                    document.querySelectorAll('.role-count').forEach(el => el.textContent = '0');
+                    document.getElementById('totalPeople').textContent = '0';
+                    document.getElementById('saveBtn').disabled = true;
+                    totalPeople = 0;
+                    clearMessage();
+                }
+            });
+        }
+        
+        function showMessage(text, type) {
+            const container = document.getElementById('message-container');
+            container.innerHTML = `<div class="${type}-message">${text}</div>`;
+            setTimeout(() => clearMessage(), 3000);
+        }
+        
+        function clearMessage() {
+            document.getElementById('message-container').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
